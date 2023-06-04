@@ -1,7 +1,6 @@
 #include <pid.h>
-#include <math.h>
 
-static pidSet pidPars = {1.0, 10.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+static pidSet pidPars = {1.0, 10.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1};
 static double deviation;
 
 void restorePID(pidSet *newPIDpars){
@@ -11,12 +10,15 @@ void restorePID(pidSet *newPIDpars){
 	pidPars.t = newPIDpars->t;
 	pidPars.db = newPIDpars->db;
 	pidPars.out = newPIDpars->out;
+	pidPars.upOutLim = newPIDpars->upOutLim;
+	pidPars.downOutLim = newPIDpars->downOutLim;
 	pidPars.e0 = newPIDpars->e0;
 	pidPars.e1 = newPIDpars->e1;
 	pidPars.e2 = newPIDpars->e2;
 	pidPars.q0 = newPIDpars->q0;
 	pidPars.q1 = newPIDpars->q1;
 	pidPars.q2 = newPIDpars->q2;
+	pidPars.dir = newPIDpars->dir;
 }
 
 void resetPID(){
@@ -44,7 +46,17 @@ double getPIDout(double pv, double sp){
 	}
 	pidPars.e2 = pidPars.e1;
 	pidPars.e1 = pidPars.e0;
-	pidPars.e0 = deviation;
+	pidPars.e0 = deviation * pidPars.dir;
 	pidPars.out += pidPars.q0 * pidPars.e0 + pidPars.q1 * pidPars.e1 + pidPars.q2 * pidPars.e2;
-	return pidPars.out;
+	return PIDlim(pidPars.out);
+}
+
+double PIDlim(double out){
+	if (out > pidPars.upOutLim){
+		return pidPars.upOutLim;
+	}
+	if (out < pidPars.downOutLim){
+		return pidPars.downOutLim;
+	}
+	return out;
 }
