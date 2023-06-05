@@ -1,62 +1,49 @@
 #include <pid.h>
 
-static pidSet pidPars = {1.0, 10.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1};
 static double deviation;
+extern double pv;
+extern double sp;
+extern PIDset pidSet;
 
-void restorePID(pidSet *newPIDpars){
-	pidPars.kp = newPIDpars->kp;
-	pidPars.ti = newPIDpars->ti;
-	pidPars.td = newPIDpars->td;
-	pidPars.t = newPIDpars->t;
-	pidPars.db = newPIDpars->db;
-	pidPars.out = newPIDpars->out;
-	pidPars.upOutLim = newPIDpars->upOutLim;
-	pidPars.downOutLim = newPIDpars->downOutLim;
-	pidPars.e0 = newPIDpars->e0;
-	pidPars.e1 = newPIDpars->e1;
-	pidPars.e2 = newPIDpars->e2;
-	pidPars.q0 = newPIDpars->q0;
-	pidPars.q1 = newPIDpars->q1;
-	pidPars.q2 = newPIDpars->q2;
-	pidPars.dir = newPIDpars->dir;
+void restorePID(PIDset *newPIDset){
+	pidSet.kp = newPIDset->kp;
+	pidSet.ti = newPIDset->ti;
+	pidSet.td = newPIDset->td;
+	pidSet.t = newPIDset->t;
+	pidSet.db = newPIDset->db;
+	pidSet.out = newPIDset->out;
+	pidSet.upOutLim = newPIDset->upOutLim;
+	pidSet.downOutLim = newPIDset->downOutLim;
+	pidSet.e0 = newPIDset->e0;
+	pidSet.e1 = newPIDset->e1;
+	pidSet.e2 = newPIDset->e2;
+	pidSet.q0 = newPIDset->q0;
+	pidSet.q1 = newPIDset->q1;
+	pidSet.q2 = newPIDset->q2;
+	pidSet.inverse = newPIDset->inverse;
 }
 
 void resetPID(){
-	pidPars.out = 0.0;
-	pidPars.e0 = 0.0;
-	pidPars.e1 = 0.0;
-	pidPars.e2 = 0.0;
+	pidSet.out = 0.0;
+	pidSet.e0 = 0.0;
+	pidSet.e1 = 0.0;
+	pidSet.e2 = 0.0;
 }
 
-void updatePID(pidSet *newPIDpars){
-	pidPars.kp = newPIDpars->kp;
-	pidPars.ti = newPIDpars->ti;
-	pidPars.td = newPIDpars->td;
-	pidPars.t = newPIDpars->t;
-	pidPars.db = newPIDpars->db;
-	pidPars.q0 = pidPars.kp + pidPars.td / pidPars.t;
-	pidPars.q1 = -pidPars.kp + pidPars.t / pidPars.ti - 2 * pidPars.td / pidPars.t;
-	pidPars.q2 = pidPars.td / pidPars.t;
-}
-
-double getPIDout(double pv, double sp){
+double getPIDout(){
 	deviation = sp - pv;
-	if(fabs(deviation) < pidPars.db){
-		return pidPars.out; 
+	if(fabs(deviation) < pidSet.db){
+		return pidSet.out;
 	}
-	pidPars.e2 = pidPars.e1;
-	pidPars.e1 = pidPars.e0;
-	pidPars.e0 = deviation * pidPars.dir;
-	pidPars.out += pidPars.q0 * pidPars.e0 + pidPars.q1 * pidPars.e1 + pidPars.q2 * pidPars.e2;
-	return PIDlim(pidPars.out);
-}
-
-double PIDlim(double out){
-	if (out > pidPars.upOutLim){
-		return pidPars.upOutLim;
+	pidSet.e2 = pidSet.e1;
+	pidSet.e1 = pidSet.e0;
+	pidSet.e0 = deviation * pidSet.inverse? -1: 1;
+	pidSet.out += pidSet.q0 * pidSet.e0 + pidSet.q1 * pidSet.e1 + pidSet.q2 * pidSet.e2;
+	if (pidSet.out > pidSet.upOutLim){
+		return pidSet.upOutLim;
 	}
-	if (out < pidPars.downOutLim){
-		return pidPars.downOutLim;
+	if (pidSet.out < pidSet.downOutLim){
+		return pidSet.downOutLim;
 	}
-	return out;
+	return pidSet.out;
 }
