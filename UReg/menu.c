@@ -1,6 +1,6 @@
 #include "menu.h"
 
-extern uint8_t mode;
+extern uint16_t mode;
 extern uint8_t AUTO;
 extern double pv;
 extern double sp;
@@ -36,20 +36,8 @@ static char* menu1Strings[][7] = {
 		{"trES", " db ", "0tI", "1tI", " rE "},
 		{"PrOP", " tI ", " td ", " db ", "UPOL", "doOL", "dIr "}
 };
+//Поле для визуализации
 static char field[5];
-
-void setNaviLimit(){
-	if(navi[xPos] < 0){
-		navi[xPos] = sizes[xPos][navi[xPos]] - 1;
-	}
-	if(navi[xPos] > sizes[xPos][navi[xPos]] - 1){
-		navi[xPos] = 0;
-	}
-}
-
-void setMenuParameterLimit(double* value){
-
-}
 
 double getMenuParameter(){
 	switch(navi[0]){
@@ -148,131 +136,232 @@ char* getTemplate(){
 	return "%5.1f";
 }
 
-void setMenuParameter(double inc){
+
+void setMenuDigitDbl(double* value, int8_t digit, int8_t step){
+	int16_t valDigit = *value;
+	int16_t powTen = pow(10, 4 - digit);
+	valDigit /= powTen;
+	valDigit %= 10;
+	*value -= valDigit * powTen;
+	valDigit += step;
+	if(valDigit > 9){
+		valDigit = 0;
+	} else if(valDigit < 0){
+		valDigit = 9;
+	}
+	*value += valDigit * powTen;
+}
+void setMenuDigitInt(uint16_t* value, int8_t digit, int8_t step, uint16_t upLim){
+	if(upLim != 9 && digit != 4){
+		return;
+	}
+	int16_t valDigit = *value;
+	int16_t powTen = pow(10, 4 - digit);
+	valDigit /= powTen;
+	valDigit %= 10;
+	*value -= valDigit * powTen;
+	valDigit += step;
+	if(valDigit > upLim){
+		valDigit = 0;
+	} else if(valDigit < 0){
+		valDigit = upLim;
+	}
+	*value += valDigit * powTen;
+}
+
+void setMenuParameter(int8_t afterDot, int8_t step){
 	switch(navi[0]){
 	case 0:
 		switch(navi[1]){
 		case 0:
-			scale.down += inc;
+			setMenuDigitDbl(&scale.down, cursor - afterDot, step);
 			break;
 		case 1:
-			scale.up += inc;
+			setMenuDigitDbl(&scale.up, cursor - afterDot, step);
 			break;
 		}
 		break;
 	case 1:
 		switch(navi[1]){
 		case 0:
-			limit.hh += inc;
+			setMenuDigitDbl(&limit.hh, cursor - afterDot, step);
 			break;
 		case 1:
-			limit.lh += inc;
+			setMenuDigitDbl(&limit.lh, cursor - afterDot, step);
 			break;
 		case 2:
-			limit.hl += inc;
+			setMenuDigitDbl(&limit.hl, cursor - afterDot, step);
 			break;
 		case 3:
-			limit.ll += inc;
+			setMenuDigitDbl(&limit.ll, cursor - afterDot, step);
 			break;
 		}
 		break;
 	case 2:
-		mode += inc;
+		setMenuDigitInt(&mode, cursor - afterDot, step, 2);
 		break;
 	case 3:
 		switch(navi[1]){
 		case 0:
-			twoPosSet.up_indent += inc;
+			setMenuDigitDbl(&twoPosSet.up_indent, cursor - afterDot, step);
 			break;
 		case 1:
-			twoPosSet.down_indent += inc;
+			setMenuDigitDbl(&twoPosSet.down_indent, cursor - afterDot, step);
 			break;
 		case 2:
-			twoPosSet.inverse += inc;
+			setMenuDigitInt(&twoPosSet.inverse, cursor - afterDot, step, 1);
 			break;
 		}
 		break;
 	case 4:
 		switch(navi[1]){
 		case 0:
-			threePosSet.treshold += inc;
+			setMenuDigitDbl(&threePosSet.treshold, cursor - afterDot, step);
 			break;
 		case 1:
-			threePosSet.deadband += inc;
+			setMenuDigitDbl(&threePosSet.deadband, cursor - afterDot, step);
 			break;
 		case 2:
-			threePosSet.waitTime += inc;
+			setMenuDigitInt(&threePosSet.waitTime, cursor - afterDot, step, 9);
 			break;
 		case 3:
-			threePosSet.pulseTime += inc;
+			setMenuDigitInt(&threePosSet.pulseTime, cursor - afterDot, step, 9);
 			break;
 		case 4:
-			threePosSet.inverse += inc;
+			setMenuDigitInt(&threePosSet.inverse, cursor - afterDot, step, 1);
 			break;
 		}
 		break;
 	case 5:
 		switch(navi[1]){
 		case 0:
-			pidSet.kp += inc;
+			setMenuDigitDbl(&pidSet.kp, cursor - afterDot, step);
 			break;
 		case 1:
-			pidSet.ti += inc;
+			setMenuDigitDbl(&pidSet.ti, cursor - afterDot, step);
 			break;
 		case 2:
-			pidSet.td += inc;
+			setMenuDigitDbl(&pidSet.td, cursor - afterDot, step);
 			break;
 		case 3:
-			pidSet.db += inc;
+			setMenuDigitDbl(&pidSet.db, cursor - afterDot, step);
 			break;
 		case 4:
-			pidSet.upOutLim += inc;
+			setMenuDigitDbl(&pidSet.upOutLim, cursor - afterDot, step);
 			break;
 		case 5:
-			pidSet.downOutLim += inc;
+			setMenuDigitDbl(&pidSet.downOutLim, cursor - afterDot, step);
 			break;
 		case 6:
-			pidSet.inverse += inc;
+			setMenuDigitInt(&pidSet.inverse, cursor - afterDot, step, 1);
 			break;
 		}
 		break;
 	}
 }
 
-void naviUp(){
-	if(cursor > 0){
-		int8_t shift = *(getTemplate() + 3) - 49;
-		setMenuParameter(pow(10, 4 - cursor - shift));
+void changeSP(int8_t dir){
+	double step = (scale.up - scale.down) / 100;
+	if (step < 0.1){
+		step  = 0.1;
 	}
-	navi[xPos]--;
-	setNaviLimit();
+	sp += step * dir;
+	if(sp > scale.up){
+		sp = scale.up;
+	} else if(sp < scale.down){
+		sp = scale.down;
+	}
+}
+
+void changeOUT(int8_t dir){
+	switch(mode){
+	case 0:
+		if(out != 0.0){
+			out = 0.0;
+		} else {
+			out = 1.0;
+		}
+		break;
+	case 1:
+		out += dir;
+		if(out > 1.0){
+			out = 1.0;
+		} else if(out < -1){
+			out = -1.0;
+		}
+		break;
+	case 2:
+		out += dir;
+		if(out > 100.0){
+			out = 100.0;
+		} else if(out < 0.0){
+			out = 0.0;
+		}
+		break;
+	}
+}
+
+void setNaviLimit(){
+	if(navi[xPos] < 0){
+		navi[xPos] = sizes[xPos][navi[xPos]] - 1;
+	}
+	if(navi[xPos] > sizes[xPos][navi[xPos]] - 1){
+		navi[xPos] = 0;
+	}
+}
+
+void naviUp(){
+	if(prog){
+		if(cursor > 0){
+			setMenuParameter(*(getTemplate() + 3) - 49, 1);
+		}
+		navi[xPos]--;
+		setNaviLimit();
+	} else {
+		if(AUTO){
+			changeSP(1);
+		} else {
+			changeOUT(1);
+		}
+	}
 }
 
 void naviDown(){
-	if(cursor > 0){
-		int8_t shift = *(getTemplate() + 3) - 49;
-		setMenuParameter(-pow(10, 4 - cursor - shift));
+	if(prog){
+		if(cursor > 0){
+			setMenuParameter(*(getTemplate() + 3) - 49, -1);
+		}
+		navi[xPos]++;
+		setNaviLimit();
+	} else {
+		if(AUTO){
+			changeSP(-1);
+		} else {
+			changeOUT(-1);
+		}
 	}
-	navi[xPos]++;
-	setNaviLimit();
 }
 
 void naviRight(){
-	if(xPos < 2){
-		xPos ++;
-	} else if(cursor < 3){
-		cursor ++;
+	if(prog){
+		if(xPos < 2){
+			xPos ++;
+		} else if(cursor < 3){
+			cursor ++;
+		}
 	}
 }
 
 void naviLeft(){
-	if(cursor == 0){
-		xPos --;
-	} else {
-		cursor--;
-	}
-	if(xPos < 0){
-		xPos = 0;
+	if(prog){
+		if(cursor == 0){
+			xPos --;
+		} else {
+			cursor--;
+		}
+		if(xPos < 0){
+			xPos = 0;
+		}
 	}
 }
 

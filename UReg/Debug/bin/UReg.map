@@ -3,13 +3,11 @@ Archive member included to satisfy reference by file (symbol)
 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_arm_addsubdf3.o)
                               ..\obj\twoPos.o (__aeabi_dsub)
 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_arm_muldivdf3.o)
-                              ..\obj\threePos.o (__aeabi_dmul)
+                              ..\obj\menu.o (__aeabi_dmul)
 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_arm_cmpdf2.o)
-                              ..\obj\threePos.o (__aeabi_dcmpeq)
+                              ..\obj\menu.o (__aeabi_dcmpeq)
 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_arm_fixdfsi.o)
                               ..\obj\menu.o (__aeabi_d2iz)
-c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_arm_fixunsdfsi.o)
-                              ..\obj\menu.o (__aeabi_d2uiz)
 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libg.a(lib_a-sprintf.o)
                               ..\obj\menu.o (sprintf)
 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libg.a(lib_a-svfprintf.o)
@@ -164,14 +162,14 @@ Discarded input sections
  .text.setTwoPosPars
                 0x00000000       0x38 ..\obj\twoPos.o
  .text.getTwoPosOut
-                0x00000000       0xb4 ..\obj\twoPos.o
- .debug_info    0x00000000      0x151 ..\obj\twoPos.o
+                0x00000000       0xa0 ..\obj\twoPos.o
+ .debug_info    0x00000000      0x167 ..\obj\twoPos.o
  .debug_abbrev  0x00000000       0xdd ..\obj\twoPos.o
  .debug_aranges
                 0x00000000       0x28 ..\obj\twoPos.o
  .debug_ranges  0x00000000       0x18 ..\obj\twoPos.o
  .debug_line    0x00000000      0x152 ..\obj\twoPos.o
- .debug_str     0x00000000      0x1dc ..\obj\twoPos.o
+ .debug_str     0x00000000      0x1f0 ..\obj\twoPos.o
  .comment       0x00000000       0x6f ..\obj\twoPos.o
  .debug_frame   0x00000000       0x5c ..\obj\twoPos.o
  .ARM.attributes
@@ -265,21 +263,29 @@ Discarded input sections
  .data          0x00000000       0xd4 ..\obj\menu.o
  .bss           0x00000000       0x11 ..\obj\menu.o
  .rodata        0x00000000       0xed ..\obj\menu.o
- .text.setNaviLimit
-                0x00000000       0xb0 ..\obj\menu.o
  .text.getMenuParameter
-                0x00000000      0x1ec ..\obj\menu.o
+                0x00000000      0x1e4 ..\obj\menu.o
  .text.getTemplate
                 0x00000000       0x80 ..\obj\menu.o
+ .text.setMenuDigitDbl
+                0x00000000      0x110 ..\obj\menu.o
+ .text.setMenuDigitInt
+                0x00000000       0xf0 ..\obj\menu.o
  .text.setMenuParameter
-                0x00000000      0x3a8 ..\obj\menu.o
- .text.naviUp   0x00000000       0x88 ..\obj\menu.o
+                0x00000000      0x3f0 ..\obj\menu.o
+ .text.changeSP
+                0x00000000       0xf4 ..\obj\menu.o
+ .text.changeOUT
+                0x00000000      0x14c ..\obj\menu.o
+ .text.setNaviLimit
+                0x00000000       0xb0 ..\obj\menu.o
+ .text.naviUp   0x00000000       0x7c ..\obj\menu.o
  .text.naviDown
-                0x00000000       0x88 ..\obj\menu.o
+                0x00000000       0x80 ..\obj\menu.o
  .text.naviRight
-                0x00000000       0x50 ..\obj\menu.o
+                0x00000000       0x5c ..\obj\menu.o
  .text.naviLeft
-                0x00000000       0x54 ..\obj\menu.o
+                0x00000000       0x64 ..\obj\menu.o
  .text.getDisp1
                 0x00000000       0x98 ..\obj\menu.o
  .text.getDisp2
@@ -287,15 +293,15 @@ Discarded input sections
  .text.setProg  0x00000000       0x18 ..\obj\menu.o
  .text.resetProg
                 0x00000000       0x18 ..\obj\menu.o
- .debug_info    0x00000000      0x561 ..\obj\menu.o
- .debug_abbrev  0x00000000      0x16c ..\obj\menu.o
+ .debug_info    0x00000000      0x67b ..\obj\menu.o
+ .debug_abbrev  0x00000000      0x183 ..\obj\menu.o
  .debug_aranges
-                0x00000000       0x78 ..\obj\menu.o
- .debug_ranges  0x00000000       0x68 ..\obj\menu.o
- .debug_line    0x00000000      0x2a6 ..\obj\menu.o
- .debug_str     0x00000000      0x348 ..\obj\menu.o
+                0x00000000       0x98 ..\obj\menu.o
+ .debug_ranges  0x00000000       0x88 ..\obj\menu.o
+ .debug_line    0x00000000      0x344 ..\obj\menu.o
+ .debug_str     0x00000000      0x3b7 ..\obj\menu.o
  .comment       0x00000000       0x6f ..\obj\menu.o
- .debug_frame   0x00000000      0x1ac ..\obj\menu.o
+ .debug_frame   0x00000000      0x234 ..\obj\menu.o
  .ARM.attributes
                 0x00000000       0x33 ..\obj\menu.o
  .text          0x00000000        0x0 ..\obj\system_stm32f30x_temp.o
@@ -380,14 +386,14 @@ Discarded input sections
  .text.setThreePosCurrentTime
                 0x00000000       0x80 ..\obj\threePos.o
  .text.getThreePosOut
-                0x00000000      0x20c ..\obj\threePos.o
- .debug_info    0x00000000      0x201 ..\obj\threePos.o
+                0x00000000      0x200 ..\obj\threePos.o
+ .debug_info    0x00000000      0x1eb ..\obj\threePos.o
  .debug_abbrev  0x00000000      0x102 ..\obj\threePos.o
  .debug_aranges
                 0x00000000       0x30 ..\obj\threePos.o
  .debug_ranges  0x00000000       0x20 ..\obj\threePos.o
- .debug_line    0x00000000      0x17c ..\obj\threePos.o
- .debug_str     0x00000000      0x264 ..\obj\threePos.o
+ .debug_line    0x00000000      0x178 ..\obj\threePos.o
+ .debug_str     0x00000000      0x254 ..\obj\threePos.o
  .comment       0x00000000       0x6f ..\obj\threePos.o
  .debug_frame   0x00000000       0x88 ..\obj\threePos.o
  .ARM.attributes
@@ -407,7 +413,7 @@ Discarded input sections
                 0x00000000       0x30 ..\obj\pid.o
  .debug_ranges  0x00000000       0x20 ..\obj\pid.o
  .debug_line    0x00000000      0x180 ..\obj\pid.o
- .debug_str     0x00000000      0x1d5 ..\obj\pid.o
+ .debug_str     0x00000000      0x1d9 ..\obj\pid.o
  .comment       0x00000000       0x6f ..\obj\pid.o
  .debug_frame   0x00000000       0x88 ..\obj\pid.o
  .ARM.attributes
@@ -432,11 +438,6 @@ Discarded input sections
  .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_arm_fixdfsi.o)
  .ARM.attributes
                 0x00000000       0x1e c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_arm_fixdfsi.o)
- .text          0x00000000       0x40 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_arm_fixunsdfsi.o)
- .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_arm_fixunsdfsi.o)
- .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_arm_fixunsdfsi.o)
- .ARM.attributes
-                0x00000000       0x1e c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_arm_fixunsdfsi.o)
  .text          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libg.a(lib_a-sprintf.o)
  .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libg.a(lib_a-sprintf.o)
  .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/../../../../arm-none-eabi/lib/armv7e-m\libg.a(lib_a-sprintf.o)

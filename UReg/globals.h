@@ -17,7 +17,7 @@ typedef struct{
 typedef struct{
 	double up_indent;
 	double down_indent;
-	uint8_t inverse;
+	uint16_t inverse;
 	uint8_t out;
 } TwoPosSet;
 
@@ -32,7 +32,7 @@ typedef struct{
 	uint16_t waitTime;
 	uint16_t pulseTime;
 	uint16_t currentTime;
-	int8_t inverse;
+	uint16_t inverse;
 	ThreePosOut out;
 	uint8_t pulseFlag;
 } ThreePosSet;
@@ -52,7 +52,7 @@ typedef struct {
 	double q0;
 	double q1;
 	double q2;
-	int8_t inverse;
+	uint16_t inverse;
 } PIDset;
 
 #endif

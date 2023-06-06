@@ -4,7 +4,7 @@
       <source file="..\..\..\cmsis_lib\include\stm32f30x_rcc.h" lastModified="18874fbeb45">
          <include file="..\..\..\cmsis_boot\stm32f30x.h"/>
       </source>
-      <source file="..\..\globals.h" lastModified="1888adf2f5b">
+      <source file="..\..\globals.h" lastModified="1888fdc4616">
       </source>
       <source file="..\..\..\cmsis\core_cmInstr.h" lastModified="18874fbf30e">
       </source>
@@ -25,9 +25,6 @@
       <source file="..\..\globals.c" lastModified="18889fd298e">
          <include file="..\..\globals.h"/>
       </source>
-      <source file="..\..\menu.c" lastModified="1888ae15359">
-         <include file="..\..\menu.h"/>
-      </source>
       <source file="..\..\..\cmsis_boot\stm32f30x.h" lastModified="18874fbef2a">
          <include file="..\..\..\cmsis\core_cm4.h"/>
          <include file="..\..\..\cmsis_boot\system_stm32f30x.h"/>
@@ -44,13 +41,13 @@
       <source file="..\..\threePos.h" lastModified="1888a408107">
          <include file="..\..\globals.h"/>
       </source>
-      <source file="..\..\threePos.c" lastModified="1888ab71ba8">
+      <source file="..\..\threePos.c" lastModified="1888ae524bf">
          <include file="..\..\threePos.h"/>
       </source>
       <source file="..\..\..\cmsis_lib\source\stm32f30x_misc.c" lastModified="18874fbeb48">
          <include file="..\..\..\cmsis_lib\include\stm32f30x_misc.h"/>
       </source>
-      <source file="..\..\..\main.h" lastModified="1888adeb565">
+      <source file="..\..\..\main.h" lastModified="188900fa9ad">
          <include file="..\..\globals.h"/>
          <include file="..\..\twoPos.h"/>
          <include file="..\..\threePos.h"/>
@@ -88,10 +85,10 @@
       </source>
       <source file="..\..\..\cmsis\core_cm4_simd.h" lastModified="18874fbf30d">
       </source>
-      <source file="..\..\..\cmsis_boot\system_stm32f30x.h" lastModified="18874fbeb42">
-      </source>
-      <source file="..\..\twoPos.c" lastModified="1888ab392a2">
+      <source file="..\..\twoPos.c" lastModified="1888ae3f32a">
          <include file="..\..\twoPos.h"/>
+      </source>
+      <source file="..\..\..\cmsis_boot\system_stm32f30x.h" lastModified="18874fbeb42">
       </source>
    </includePath>
 </dependencies>
