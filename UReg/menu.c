@@ -175,9 +175,15 @@ void setMenuParameter(int8_t afterDot, int8_t step){
 		switch(navi[1]){
 		case 0:
 			setMenuDigitDbl(&scale.down, cursor - afterDot, step);
+			if(scale.down > scale.up){
+				scale.down = scale.up;
+			}
 			break;
 		case 1:
 			setMenuDigitDbl(&scale.up, cursor - afterDot, step);
+			if(scale.up < scale.down){
+				scale.up = scale.down;
+			}
 			break;
 		}
 		break;
@@ -185,15 +191,31 @@ void setMenuParameter(int8_t afterDot, int8_t step){
 		switch(navi[1]){
 		case 0:
 			setMenuDigitDbl(&limit.hh, cursor - afterDot, step);
+			if(limit.hh < limit.lh){
+				limit.hh = limit.lh;
+			}
 			break;
 		case 1:
 			setMenuDigitDbl(&limit.lh, cursor - afterDot, step);
+			if(limit.lh > limit.hh){
+				limit.lh = limit.hh;
+			} else if(limit.lh < limit.hl){
+				limit.lh = limit.hl;
+			}
 			break;
 		case 2:
 			setMenuDigitDbl(&limit.hl, cursor - afterDot, step);
+			if(limit.hl > limit.lh){
+				limit.hl = limit.lh;
+			} else if(limit.hl < limit.ll){
+				limit.hl = limit.ll;
+			}
 			break;
 		case 3:
 			setMenuDigitDbl(&limit.ll, cursor - afterDot, step);
+			if(limit.ll > limit.hl){
+				limit.ll = limit.hl;
+			}
 			break;
 		}
 		break;
@@ -248,9 +270,15 @@ void setMenuParameter(int8_t afterDot, int8_t step){
 			break;
 		case 4:
 			setMenuDigitDbl(&pidSet.upOutLim, cursor - afterDot, step);
+			if(pidSet.upOutLim < pidSet.downOutLim){
+				pidSet.upOutLim = pidSet.downOutLim;
+			}
 			break;
 		case 5:
 			setMenuDigitDbl(&pidSet.downOutLim, cursor - afterDot, step);
+			if(pidSet.downOutLim > pidSet.upOutLim){
+				pidSet.downOutLim = pidSet.upOutLim;
+			}
 			break;
 		case 6:
 			setMenuDigitInt(&pidSet.inverse, cursor - afterDot, step, 1);
