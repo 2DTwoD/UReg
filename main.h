@@ -2,14 +2,14 @@
 #define _MAIN_H
 
 #include <stdio.h>
-#include <string.h>
 
 #include "init.h"
 #include "globals.h"
+#include "menu.h"
+#include "ledDigits.h"
 #include "twoPos.h"
 #include "threePos.h"
 #include "pid.h"
-#include "menu.h"
 
 //Режим (0 - 2-позиционный, 1 - 3-позиционный, 2 - ПИД)
 uint16_t mode = 0;

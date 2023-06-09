@@ -62,22 +62,11 @@
       <source file="..\..\..\cmsis_boot\system_stm32f30x_temp.c" lastModified="188901f04e0">
          <include file="..\..\..\cmsis_boot\stm32f30x.h"/>
       </source>
-      <source file="..\..\menu.h" lastModified="188901f0cb0">
+      <source file="..\..\menu.h" lastModified="188a119f948">
          <include file="..\..\globals.h"/>
       </source>
-      <source file="..\..\..\main.h" lastModified="1889f3c2f82">
-         <include file="..\..\init.h"/>
-         <include file="..\..\globals.h"/>
-         <include file="..\..\twoPos.h"/>
-         <include file="..\..\threePos.h"/>
-         <include file="..\..\pid.h"/>
+      <source file="..\..\menu.c" lastModified="188a123e2de">
          <include file="..\..\menu.h"/>
-      </source>
-      <source file="..\..\menu.c" lastModified="1889f1568f1">
-         <include file="..\..\menu.h"/>
-      </source>
-      <source file="..\..\..\main.c" lastModified="1889f3ba19e">
-         <include file="..\..\..\main.h"/>
       </source>
       <source file="..\..\threePos.h" lastModified="188901f08c8">
          <include file="..\..\globals.h"/>
@@ -90,17 +79,17 @@
       <source file="..\..\..\cmsis_lib\include\stm32f30x_gpio.h" lastModified="188901f04e0">
          <include file="..\..\..\cmsis_boot\stm32f30x.h"/>
       </source>
-      <source file="..\..\threePos.c" lastModified="188901f08c8">
-         <include file="..\..\threePos.h"/>
-      </source>
       <source file="..\..\..\cmsis_boot\system_stm32f30x.h" lastModified="188901f04e0">
       </source>
       <source file="..\..\..\cmsis_lib\source\stm32f30x_misc.c" lastModified="188901f04e0">
          <include file="..\..\..\cmsis_lib\include\stm32f30x_misc.h"/>
       </source>
-      <source file="..\..\globals.h" lastModified="188901f08c8">
+      <source file="..\..\threePos.c" lastModified="188901f08c8">
+         <include file="..\..\threePos.h"/>
       </source>
-      <source file="..\..\globals.c" lastModified="188901f04e0">
+      <source file="..\..\globals.h" lastModified="188a125506d">
+      </source>
+      <source file="..\..\globals.c" lastModified="188a14044ec">
          <include file="..\..\globals.h"/>
       </source>
       <source file="..\..\pid.h" lastModified="188901f0cb0">
@@ -108,7 +97,7 @@
       </source>
       <source file="..\..\..\cmsis_boot\startup\startup_stm32f30x.S" lastModified="188901f04e0">
       </source>
-      <source file="..\..\pid.c" lastModified="1889f0c8c81">
+      <source file="..\..\pid.c" lastModified="188a12fc885">
          <include file="..\..\pid.h"/>
       </source>
       <source file="..\..\..\cmsis_lib\source\stm32f30x_tim.c" lastModified="1889f177676">

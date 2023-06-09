@@ -2,6 +2,7 @@
 #define _MENU_H
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
 #include "globals.h"
 
 void naviUp();

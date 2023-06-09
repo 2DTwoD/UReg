@@ -33,7 +33,7 @@ static char* menu1Strings[][7] = {
 		{" HH ", " LH ", " HL ", " LL "},
 		{"rEg "},
 		{"UInD", "DInD", " rE "},
-		{"trES", " db ", "0tI", "1tI", " rE "},
+		{"trES", " db ", "0tI ", "1tI ", " rE "},
 		{"PrOP", " tI ", " td ", " db ", "UPOL", "doOL", "dIr "}
 };
 //Поле для визуализации
