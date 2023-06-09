@@ -1,11 +1,7 @@
-#include "pid.h"
-#include "twoPos.h"
-#include "threePos.h"
+#include "main.h"
 
 int main(void)
 {
-	pidSet ps;
-	updatePID(&ps);
     while(1)
     {
     }

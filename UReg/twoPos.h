@@ -1,16 +1,10 @@
 #ifndef _TWOPOS_H
 #define _TWOPOS_H
 #include <stdio.h>
-
-typedef struct{
-	double up_indent;
-	double down_indent;
-	uint8_t inverse;
-	uint8_t out;
-} TwoPosSet;
+#include "globals.h"
 
 void setTwoPosPars(TwoPosSet *newTwoPosSet);
 
-uint8_t getTwoPosOut(double pv, double sp);
+uint8_t getTwoPosOut();
 
 #endif
