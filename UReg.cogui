@@ -31,7 +31,7 @@
 </editor>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="D:/GitProjects/UReg/main.c" title="main.c" tooltip="D:/GitProjects/UReg/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/UReg/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="140" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="78" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="pid.c" partName="pid.c" path="D:/GitProjects/UReg/UReg/pid.c" title="pid.c" tooltip="D:/GitProjects/UReg/UReg/pid.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/UReg/regulators/source/pid.c"/>
