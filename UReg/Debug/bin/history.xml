@@ -1,26 +1,27 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
-   <processor signature="5.3.1 -mcpu=cortex-m4 -mthumb -g -nostartfiles -Map=UReg.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\UReg -TC:\CooCox\CoIDE\configuration\ProgramData\UReg/arm-gcc-link.ld -g">
-      <target file="UReg.elf" lastModified="188c328453c">
-         <source file="..\obj\stm32f30x_rcc.o" lastModified="188c305f9a5"/>
-         <source file="..\obj\twoPos.o" lastModified="188c305fa0e"/>
-         <source file="..\obj\stm32f30x_adc.o" lastModified="188c305fa9e"/>
-         <source file="..\obj\globals.o" lastModified="188c305faf1"/>
-         <source file="..\obj\ledDigits.o" lastModified="188c305fb50"/>
-         <source file="..\obj\stm32f30x_gpio.o" lastModified="188c305fbb2"/>
-         <source file="..\obj\main.o" lastModified="188c3284281"/>
-         <source file="..\obj\stm32f30x_dma.o" lastModified="188c305fc8d"/>
-         <source file="..\obj\init.o" lastModified="188c32842df"/>
-         <source file="..\obj\stm32f30x_exti.o" lastModified="188c305fd47"/>
-         <source file="..\obj\menu.o" lastModified="188c305fdc2"/>
-         <source file="..\obj\system_stm32f30x_temp.o" lastModified="188c305fe1d"/>
-         <source file="..\obj\syscalls.o" lastModified="188c305fe7e"/>
-         <source file="..\obj\stm32f30x_misc.o" lastModified="188c305fed9"/>
-         <source file="..\obj\stm32f30x_tim.o" lastModified="188c305ff99"/>
-         <source file="..\obj\startup_stm32f30x.o" lastModified="188c305ffd4"/>
-         <source file="..\obj\stm32f30x_syscfg.o" lastModified="188c3060036"/>
-         <source file="..\obj\threePos.o" lastModified="188c3060096"/>
-         <source file="..\obj\pid.o" lastModified="188c30600f4"/>
+   <processor signature="5.3.1 -mcpu=cortex-m4 -mthumb -g -nostartfiles -Map=UReg.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\UReg -TC:\CooCox\CoIDE\configuration\ProgramData\UReg/arm-gcc-link.ld -g -LC:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m -lm">
+      <target file="UReg.elf" lastModified="188c4b97585">
+         <source file="C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libm.a" lastModified="153c935af20"/>
+         <source file="..\obj\stm32f30x_rcc.o" lastModified="188c47900e0"/>
+         <source file="..\obj\twoPos.o" lastModified="188c479013c"/>
+         <source file="..\obj\stm32f30x_adc.o" lastModified="188c47901cd"/>
+         <source file="..\obj\globals.o" lastModified="188c4790220"/>
+         <source file="..\obj\ledDigits.o" lastModified="188c4b61056"/>
+         <source file="..\obj\stm32f30x_gpio.o" lastModified="188c47902dd"/>
+         <source file="..\obj\main.o" lastModified="188c4a8d7ad"/>
+         <source file="..\obj\stm32f30x_dma.o" lastModified="188c47903af"/>
+         <source file="..\obj\init.o" lastModified="188c479040b"/>
+         <source file="..\obj\stm32f30x_exti.o" lastModified="188c4790468"/>
+         <source file="..\obj\menu.o" lastModified="188c4b97323"/>
+         <source file="..\obj\system_stm32f30x_temp.o" lastModified="188c4790540"/>
+         <source file="..\obj\syscalls.o" lastModified="188c47905a1"/>
+         <source file="..\obj\stm32f30x_misc.o" lastModified="188c47905fa"/>
+         <source file="..\obj\stm32f30x_tim.o" lastModified="188c47906b4"/>
+         <source file="..\obj\startup_stm32f30x.o" lastModified="188c47906ee"/>
+         <source file="..\obj\stm32f30x_syscfg.o" lastModified="188c479074c"/>
+         <source file="..\obj\threePos.o" lastModified="188c47907ad"/>
+         <source file="..\obj\pid.o" lastModified="188c479080b"/>
       </target>
    </processor>
 </history>

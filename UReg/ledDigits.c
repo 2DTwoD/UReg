@@ -50,6 +50,8 @@ uint8_t getLEDcode(char* c){
 		return 0x5C;
 	case 'A':
 		return 0x77;
+	case 'n':
+			return 0x54;
 	case '-':
 		return 0x40;
 	}

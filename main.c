@@ -3,6 +3,7 @@
 static uint8_t segment = 0;
 static uint8_t field1[4];
 static uint8_t field2[4];
+static uint8_t buttonDownFlag = 0;
 
 int main(void)
 {
@@ -28,9 +29,6 @@ void TIM7_IRQHandler(void){
 	if(segment > 3){
 		segment = 0;
 	}
-	/*if(GPIOA->IDR & 0x20){
-		GPIOE->ODR ^= 0x0100;
-	}*/
 }
 
 void EXTI9_5_IRQHandler(){
@@ -38,8 +36,17 @@ void EXTI9_5_IRQHandler(){
 	EXTI_ClearFlag(EXTI_Line6);
 	EXTI_ClearFlag(EXTI_Line7);
 	EXTI_ClearFlag(EXTI_Line8);
-	 /*if(GPIOA->IDR & 1){
-		 GPIOE->ODR ^= 0xFF00;
-	 }*/
+	if(GPIOA->IDR & GPIO_Pin_5){
+		naviUp();
+	}
+	if(GPIOA->IDR & GPIO_Pin_6){
+		naviDown();
+	}
+	if(GPIOA->IDR & GPIO_Pin_7){
+		naviRight();
+	}
+	if(GPIOA->IDR & GPIO_Pin_8){
+		naviLeft();
+	}
 	GPIOE->ODR ^= 0x0100;
 }

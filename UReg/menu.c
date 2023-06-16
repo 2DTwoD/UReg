@@ -14,16 +14,16 @@ extern PIDset pidSet;
 //Режим параметризации (0 - наблюдение, 1 - параметризация)
 static int8_t prog = 1;
 //Вертикальные позиции выбранные в меню
-static int8_t navi[] = {0, 0, 0};
+int8_t navi[] = {0, 0, 0};
 //Горизонтальная позиция меню
 static int8_t xPos = 0;
 //Курсор для редактирования значений
 static int8_t cursor = 0;
 //Размеры списков меню
 static int8_t sizes[][6] = {
-		{6},
+		{6, 6, 6, 6, 6, 6},
 		{2, 4, 1, 3, 5, 7},
-		{1}
+		{1, 1, 1, 1, 1, 1}
 };
 //Строки для меню позиции 0
 static char* menu0Strings[] = {"ISIg", " LI ", "USE ", "2POS", "3POS", "PId "};
@@ -32,9 +32,9 @@ static char* menu1Strings[][7] = {
 		{"dSL ", "uSL "},
 		{" HH ", " LH ", " HL ", " LL "},
 		{"rEg "},
-		{"UInD", "DInD", " rE "},
+		{"UInd", "dInd", " rE "},
 		{"trES", " db ", "0tI ", "1tI ", " rE "},
-		{"PrOP", " tI ", " td ", " db ", "UPOL", "doOL", "dIr "}
+		{"PrOP", " tI ", " td ", " db ", "UPOL", "doOL", " rE "}
 };
 //Поле для визуализации
 static char field[5];
@@ -329,13 +329,14 @@ void changeOUT(int8_t dir){
 	}
 }
 
-void setNaviLimit(){
-	if(navi[xPos] < 0){
-		navi[xPos] = sizes[xPos][navi[xPos]] - 1;
+int8_t getNaviLimit(int8_t step){
+	if(navi[xPos] + step < 0){
+		return sizes[xPos][navi[xPos - 1]] - 1;
 	}
-	if(navi[xPos] > sizes[xPos][navi[xPos]] - 1){
-		navi[xPos] = 0;
+	if(navi[xPos] + step > sizes[xPos][navi[xPos - 1]] - 1){
+		return 0;
 	}
+	return navi[xPos] + step;
 }
 
 void naviUp(){
@@ -343,8 +344,7 @@ void naviUp(){
 		if(cursor > 0){
 			setMenuParameter(*(getTemplate() + 3) - 49, 1);
 		}
-		navi[xPos]--;
-		setNaviLimit();
+		navi[xPos] = getNaviLimit(-1);
 	} else {
 		if(AUTO){
 			changeSP(1);
@@ -359,8 +359,7 @@ void naviDown(){
 		if(cursor > 0){
 			setMenuParameter(*(getTemplate() + 3) - 49, -1);
 		}
-		navi[xPos]++;
-		setNaviLimit();
+		navi[xPos] = getNaviLimit(1);
 	} else {
 		if(AUTO){
 			changeSP(-1);
