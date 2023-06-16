@@ -2,33 +2,80 @@
 
 void GPIOinit(){
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOD, ENABLE);
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOE, ENABLE);
 
 	GPIO_InitTypeDef gpioStruct;
-	//a8-a15 2x common cathode
+
+	// a5-a8 buttons
+	gpioStruct.GPIO_Pin = 0x1E0;
+	gpioStruct.GPIO_Mode = GPIO_Mode_IN;
+	gpioStruct.GPIO_Speed = GPIO_Speed_2MHz;
+	gpioStruct.GPIO_PuPd = GPIO_PuPd_DOWN;
+	GPIO_Init(GPIOA, &gpioStruct);
+
+	//b8-b15 2x common cathode
 	gpioStruct.GPIO_Pin = 0xFF00;
 	gpioStruct.GPIO_Mode = GPIO_Mode_OUT;
 	gpioStruct.GPIO_Speed = GPIO_Speed_Level_1;
 	gpioStruct.GPIO_OType = GPIO_OType_PP;
 	gpioStruct.GPIO_PuPd = GPIO_PuPd_NOPULL;
-	GPIO_Init(GPIOA, &gpioStruct);
+	GPIO_Init(GPIOB, &gpioStruct);
 
-	//d0-d15 2x 7 seg led
+	//d0-d15 2x 7 segment led
 	gpioStruct.GPIO_Pin = 0xFFFF;
 	gpioStruct.GPIO_Mode = GPIO_Mode_OUT;
 	gpioStruct.GPIO_Speed = GPIO_Speed_Level_1;
 	gpioStruct.GPIO_OType = GPIO_OType_PP;
 	gpioStruct.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	GPIO_Init(GPIOD, &gpioStruct);
+
+	//test
+	gpioStruct.GPIO_Pin = 0xFF00;
+	gpioStruct.GPIO_Mode = GPIO_Mode_OUT;
+	gpioStruct.GPIO_Speed = GPIO_Speed_Level_1;
+	gpioStruct.GPIO_OType = GPIO_OType_PP;
+	gpioStruct.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	GPIO_Init(GPIOE, &gpioStruct);
+}
+
+void EXTIinit(){
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
+
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOA, EXTI_PinSource5);
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOA, EXTI_PinSource6);
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOA, EXTI_PinSource7);
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOA, EXTI_PinSource8);
+
+	EXTI_InitTypeDef extiStruct;
+
+	extiStruct.EXTI_Mode = EXTI_Mode_Interrupt;
+	extiStruct.EXTI_Trigger = EXTI_Trigger_Rising;
+	extiStruct.EXTI_LineCmd = ENABLE;
+	extiStruct.EXTI_Line = EXTI_Line5;
+	EXTI_Init(&extiStruct);
+	extiStruct.EXTI_Line = EXTI_Line6;
+	EXTI_Init(&extiStruct);
+	extiStruct.EXTI_Line = EXTI_Line7;
+	EXTI_Init(&extiStruct);
+	extiStruct.EXTI_Line = EXTI_Line8;
+	EXTI_Init(&extiStruct);
 }
 
 void NVICinit(){
 	NVIC_InitTypeDef nvicStruct;
+
 	nvicStruct.NVIC_IRQChannel = TIM7_IRQn;
 	nvicStruct.NVIC_IRQChannelPreemptionPriority = 0;
 	nvicStruct.NVIC_IRQChannelSubPriority = 0;
 	nvicStruct.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&nvicStruct);
 
+	nvicStruct.NVIC_IRQChannel = EXTI9_5_IRQn;
+	nvicStruct.NVIC_IRQChannelPreemptionPriority = 0;
+	nvicStruct.NVIC_IRQChannelSubPriority = 1;
+	nvicStruct.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&nvicStruct);
 }
 
@@ -38,9 +85,8 @@ void TIMinit(){
 	TIM_TimeBaseInitTypeDef timStruct;
 	timStruct.TIM_CounterMode = TIM_CounterMode_Up;
 	timStruct.TIM_Prescaler = 36000;
-	timStruct.TIM_Period = 20;
+	timStruct.TIM_Period = 5;
 	TIM_TimeBaseInit(TIM7, &timStruct);
-
-	TIM_ITConfig(TIM7, TIM_IT_Update, ENABLE);
 	TIM_Cmd(TIM7, ENABLE);
+	TIM_ITConfig(TIM7, TIM_IT_Update, ENABLE);
 }

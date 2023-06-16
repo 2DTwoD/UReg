@@ -12,7 +12,7 @@ extern ThreePosSet threePosSet;
 extern PIDset pidSet;
 
 //–ежим параметризации (0 - наблюдение, 1 - параметризаци€)
-static int8_t prog = 0;
+static int8_t prog = 1;
 //¬ертикальные позиции выбранные в меню
 static int8_t navi[] = {0, 0, 0};
 //√оризонтальна€ позици€ меню

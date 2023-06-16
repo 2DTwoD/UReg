@@ -1,17 +1,19 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <dependencies>
    <includePath signature="/ID:\GitProjects\UReg\cmsis_boot /ID:\GitProjects\UReg\UReg /ID:\ /ID:\GitProjects\UReg\cmsis_lib\include /ID:\GitProjects\UReg\cmsis_lib /ID:\GitProjects\UReg\cmsis /ID:\GitProjects /ID:\GitProjects\UReg">
-      <source file="..\..\init.h" lastModified="1889f37db34">
+      <source file="..\..\init.h" lastModified="188c30e18d6">
+         <include file="..\..\..\cmsis_boot\stm32f30x.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f30x_gpio.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f30x_rcc.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f30x_tim.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f30x_misc.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f30x_exti.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f30x_syscfg.h"/>
       </source>
       <source file="..\..\..\cmsis_lib\include\stm32f30x_syscfg.h" lastModified="188901f04e0">
          <include file="..\..\..\cmsis_boot\stm32f30x.h"/>
       </source>
-      <source file="..\..\init.c" lastModified="1889f3622e5">
-         <include file="..\..\init.h"/>
+      <source file="..\..\ledDigits.h" lastModified="188c2da4c7f">
       </source>
       <source file="..\..\..\cmsis_lib\source\stm32f30x_exti.c" lastModified="188901f04e0">
          <include file="..\..\..\cmsis_lib\include\stm32f30x_exti.h"/>
@@ -22,6 +24,9 @@
       <source file="..\..\..\cmsis_lib\source\stm32f30x_gpio.c" lastModified="188901f04e0">
          <include file="..\..\..\cmsis_lib\include\stm32f30x_gpio.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f30x_rcc.h"/>
+      </source>
+      <source file="..\..\ledDigits.c" lastModified="188c2ee5be5">
+         <include file="..\..\ledDigits.h"/>
       </source>
       <source file="..\..\..\cmsis_lib\source\stm32f30x_syscfg.c" lastModified="188901f04e0">
          <include file="..\..\..\cmsis_lib\include\stm32f30x_syscfg.h"/>
@@ -65,7 +70,9 @@
       <source file="..\..\menu.h" lastModified="188a119f948">
          <include file="..\..\globals.h"/>
       </source>
-      <source file="..\..\menu.c" lastModified="188a123e2de">
+      <source file="..\..\..\syscalls\syscalls.c" lastModified="188b576545e">
+      </source>
+      <source file="..\..\menu.c" lastModified="188c2ca4765">
          <include file="..\..\menu.h"/>
       </source>
       <source file="..\..\threePos.h" lastModified="188901f08c8">
@@ -79,17 +86,17 @@
       <source file="..\..\..\cmsis_lib\include\stm32f30x_gpio.h" lastModified="188901f04e0">
          <include file="..\..\..\cmsis_boot\stm32f30x.h"/>
       </source>
+      <source file="..\..\threePos.c" lastModified="188901f08c8">
+         <include file="..\..\threePos.h"/>
+      </source>
       <source file="..\..\..\cmsis_boot\system_stm32f30x.h" lastModified="188901f04e0">
       </source>
       <source file="..\..\..\cmsis_lib\source\stm32f30x_misc.c" lastModified="188901f04e0">
          <include file="..\..\..\cmsis_lib\include\stm32f30x_misc.h"/>
       </source>
-      <source file="..\..\threePos.c" lastModified="188901f08c8">
-         <include file="..\..\threePos.h"/>
-      </source>
       <source file="..\..\globals.h" lastModified="188a125506d">
       </source>
-      <source file="..\..\globals.c" lastModified="188a14044ec">
+      <source file="..\..\globals.c" lastModified="188b57a9e65">
          <include file="..\..\globals.h"/>
       </source>
       <source file="..\..\pid.h" lastModified="188901f0cb0">

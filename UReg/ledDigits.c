@@ -56,17 +56,14 @@ uint8_t getLEDcode(char* c){
 	return 0;
 }
 
-void getLEDcodeArray(uint16_t* digits, char* str, uint8_t shift){
+void getLEDcodeArray(uint8_t* digits, char* str){
 	while(*str){
 		*digits = getLEDcode(str);
-		digits++;
 		str++;
 		if(*str == '.'){
 			*digits |= 0x80;
 			str++;
 		}
-		if (shift){
-			*digits = *digits << 8;
-		}
+		digits++;
 	}
 }
