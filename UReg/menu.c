@@ -10,9 +10,7 @@ extern Limit limit;
 extern TwoPosSet twoPosSet;
 extern ThreePosSet threePosSet;
 extern PIDset pidSet;
-
-//–ежим параметризации (0 - наблюдение, 1 - параметризаци€)
-static int8_t prog = 1;
+extern int8_t prog;
 //¬ертикальные позиции выбранные в меню
 int8_t navi[] = {0, 0, 0};
 //√оризонтальна€ позици€ меню
@@ -113,27 +111,27 @@ double getMenuParameter(){
 char* getTemplate(){
 	switch(navi[0]){
 	case 2:
-		return "%4.0f";
+		return "%04.0f";
 	case 3:
 		if(navi[1] == 2){
-			return "%4.0f";
+			return "%04.0f";
 		}
 		break;
 	case 4:
 		if(navi[1] > 1){
-			return "%4.0f";
+			return "%04.0f";
 		}
 		break;
 	case 5:
 		switch(navi[1]){
 		case 0:
-			return "%5.2f";
+			return "%05.2f";
 		case 6:
-			return "%4.0f";
+			return "%04.0f";
 		}
 		break;
 	}
-	return "%5.1f";
+	return "%05.1f";
 }
 
 
@@ -331,9 +329,9 @@ void changeOUT(int8_t dir){
 
 int8_t getNaviLimit(int8_t step){
 	if(navi[xPos] + step < 0){
-		return sizes[xPos][navi[xPos - 1]] - 1;
+		return sizes[xPos][navi[xPos]] - 1;
 	}
-	if(navi[xPos] + step > sizes[xPos][navi[xPos - 1]] - 1){
+	if(navi[xPos] + step > sizes[xPos][navi[xPos]] - 1){
 		return 0;
 	}
 	return navi[xPos] + step;
@@ -342,7 +340,7 @@ int8_t getNaviLimit(int8_t step){
 void naviUp(){
 	if(prog){
 		if(cursor > 0){
-			setMenuParameter(*(getTemplate() + 3) - 49, 1);
+			setMenuParameter(*(getTemplate() + 4) - 48, 1);
 		}
 		navi[xPos] = getNaviLimit(-1);
 	} else {
@@ -357,7 +355,7 @@ void naviUp(){
 void naviDown(){
 	if(prog){
 		if(cursor > 0){
-			setMenuParameter(*(getTemplate() + 3) - 49, -1);
+			setMenuParameter(*(getTemplate() + 4) - 48, -1);
 		}
 		navi[xPos] = getNaviLimit(1);
 	} else {
@@ -373,7 +371,7 @@ void naviRight(){
 	if(prog){
 		if(xPos < 2){
 			xPos ++;
-		} else if(cursor < 3){
+		} else if(cursor < 4){
 			cursor ++;
 		}
 	}
@@ -382,12 +380,12 @@ void naviRight(){
 void naviLeft(){
 	if(prog){
 		if(cursor == 0){
-			xPos --;
+			if(xPos > 0){
+				navi[xPos] = 0;
+				xPos --;
+			}
 		} else {
 			cursor--;
-		}
-		if(xPos < 0){
-			xPos = 0;
 		}
 	}
 }
@@ -404,7 +402,7 @@ char* getDisp1(){
 		}
 		return "----";
 	}
-	sprintf(field, "%5.1f", pv);
+	sprintf(field, "%05.1f", pv);
 	return field;
 }
 
@@ -422,17 +420,20 @@ char* getDisp2(){
 		return "----";
 	}
 	if(AUTO){
-		sprintf(field, "%5.1f", sp);
+		sprintf(field, "%05.1f", sp);
 		return field;
 	}
-	sprintf(field, "%5.1f", out);
+	sprintf(field, "%05.1f", out);
 	return field;
 }
-
-void setProg(){
-	prog = 1;
+void exitMenu(){
+	navi[0] = 0;
+	navi[1] = 0;
+	navi[2] = 0;
+	xPos = 0;
+	cursor = 0;
 }
 
-void resetProg(){
-	prog = 0;
+uint8_t getCursor(){
+	return cursor - 1;
 }

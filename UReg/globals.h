@@ -3,6 +3,13 @@
 #include <stdio.h>
 
 typedef struct{
+	uint8_t start;
+	uint8_t delay;
+	uint8_t currentTime;
+	uint8_t finish;
+} onDelay;
+
+typedef struct{
 	double up;
 	double down;
 } Scale;

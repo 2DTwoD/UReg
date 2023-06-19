@@ -11,6 +11,6 @@ void naviRight();
 void naviLeft();
 char* getDisp1();
 char* getDisp2();
-void setProg();
-void resetProg();
+void exitMenu();
+uint8_t getCursor();
 #endif

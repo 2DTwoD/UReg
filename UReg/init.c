@@ -51,7 +51,7 @@ void EXTIinit(){
 	EXTI_InitTypeDef extiStruct;
 
 	extiStruct.EXTI_Mode = EXTI_Mode_Interrupt;
-	extiStruct.EXTI_Trigger = EXTI_Trigger_Rising;
+	extiStruct.EXTI_Trigger = EXTI_Trigger_Rising_Falling;
 	extiStruct.EXTI_LineCmd = ENABLE;
 	extiStruct.EXTI_Line = EXTI_Line5;
 	EXTI_Init(&extiStruct);
@@ -66,6 +66,12 @@ void EXTIinit(){
 void NVICinit(){
 	NVIC_InitTypeDef nvicStruct;
 
+	nvicStruct.NVIC_IRQChannel = TIM4_IRQn;
+	nvicStruct.NVIC_IRQChannelPreemptionPriority = 0;
+	nvicStruct.NVIC_IRQChannelSubPriority = 1;
+	nvicStruct.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&nvicStruct);
+
 	nvicStruct.NVIC_IRQChannel = TIM7_IRQn;
 	nvicStruct.NVIC_IRQChannelPreemptionPriority = 0;
 	nvicStruct.NVIC_IRQChannelSubPriority = 0;
@@ -74,19 +80,30 @@ void NVICinit(){
 
 	nvicStruct.NVIC_IRQChannel = EXTI9_5_IRQn;
 	nvicStruct.NVIC_IRQChannelPreemptionPriority = 0;
-	nvicStruct.NVIC_IRQChannelSubPriority = 1;
+	nvicStruct.NVIC_IRQChannelSubPriority = 2;
 	nvicStruct.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&nvicStruct);
 }
 
 void TIMinit(){
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM7, ENABLE);
 
 	TIM_TimeBaseInitTypeDef timStruct;
+
+	timStruct.TIM_CounterMode = TIM_CounterMode_Up;
+	timStruct.TIM_Prescaler = 36000;
+	timStruct.TIM_Period = 50;
+	timStruct.TIM_ClockDivision = 1;
+	TIM_TimeBaseInit(TIM4, &timStruct);
+	TIM_Cmd(TIM4, ENABLE);
+	TIM_ITConfig(TIM4, TIM_IT_Update, ENABLE);
+
 	timStruct.TIM_CounterMode = TIM_CounterMode_Up;
 	timStruct.TIM_Prescaler = 36000;
 	timStruct.TIM_Period = 5;
 	TIM_TimeBaseInit(TIM7, &timStruct);
 	TIM_Cmd(TIM7, ENABLE);
 	TIM_ITConfig(TIM7, TIM_IT_Update, ENABLE);
+
 }
