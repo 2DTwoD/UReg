@@ -132,9 +132,8 @@ char* getTemplate(){
 
 
 void setMenuDigitDbl(double* value, int8_t digit, int8_t step){
-	int16_t valDigit = *value;
-	int16_t powTen = pow(10, 4 - digit);
-	valDigit /= powTen;
+	double powTen = pow(10, 4 - digit);
+	int16_t valDigit = ceil((*value) / powTen);
 	valDigit %= 10;
 	*value -= valDigit * powTen;
 	valDigit += step;

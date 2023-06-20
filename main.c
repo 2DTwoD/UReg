@@ -6,10 +6,10 @@ static uint8_t field2[4];
 static uint8_t blinkCount = 0;
 static uint8_t pidCount = 0;
 static uint8_t blink = 0;
-static onDelay buttonUp = {0, 1, 0, 0};
-static onDelay buttonDown = {0, 1, 0, 0};
-static onDelay buttonLeft = {0, 1, 0, 0};
-static onDelay buttonRight = {0, 1, 0, 0};
+static onDelay buttonUp = {0, 2, 0, 0};
+static onDelay buttonDown = {0, 2, 0, 0};
+static onDelay buttonLeft = {0, 2, 0, 0};
+static onDelay buttonRight = {0, 2, 0, 0};
 static onDelay auxLeft = {0, 120, 0, 0};
 static onDelay auxRight = {0, 120, 0, 0};
 static onDelay HHdelay = {0, 4, 0, 0};
@@ -25,10 +25,14 @@ int main(void)
 	TIMinit();
     while(1);
 }
-
+int u =0;
 //÷икл 1мс
 void TIM3_IRQHandler(void){
+
 	TIM_ClearITPendingBit(TIM3, TIM_IT_Update);
+	if(!AUTO){
+		return;
+	}
 	switch(mode){
 	case 0:
 		calculateTwoPosOut();
@@ -51,6 +55,7 @@ void TIM3_IRQHandler(void){
 
 //÷икл 25мс
 void TIM4_IRQHandler(void){
+	u++;
 	TIM_ClearITPendingBit(TIM4, TIM_IT_Update);
 
 	HHdelay.start = pv > limit.hh;
@@ -108,22 +113,27 @@ void EXTI9_5_IRQHandler(){
 	auxLeft.start = GPIOA->IDR & GPIO_Pin_8 && 1;
 	if(buttonUp.finish && !(GPIOA->IDR & GPIO_Pin_5)){
 		naviUp();
+		buttonUp.finish = 0;
 	}
 	if(buttonDown.finish && !(GPIOA->IDR & GPIO_Pin_6)){
 		naviDown();
+		buttonDown.finish = 0;
 	}
-	if(buttonRight.finish  && !auxRight.finish && !(GPIOA->IDR & GPIO_Pin_7)){
+	if(buttonRight.finish && !auxRight.finish && !(GPIOA->IDR & GPIO_Pin_7)){
 		naviRight();
+		buttonRight.finish = 0;
 		blink = 0;
 		blinkCount = 0;
 	}
 	if(buttonLeft.finish && !auxLeft.finish && !(GPIOA->IDR & GPIO_Pin_8)){
 		naviLeft();
+		buttonLeft.finish = 0;
 		blink = 0;
 		blinkCount = 0;
 	}
 	if(auxRight.finish && !(GPIOA->IDR & GPIO_Pin_7)){
 		prog = 1;
+		auxRight.finish = 0;
 	}
 	if(auxLeft.finish && !(GPIOA->IDR & GPIO_Pin_8)){
 		if(prog){
@@ -132,5 +142,6 @@ void EXTI9_5_IRQHandler(){
 		} else {
 			AUTO = !AUTO;
 		}
+		auxLeft.finish = 0;
 	}
 }

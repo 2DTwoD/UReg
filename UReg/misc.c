@@ -9,6 +9,7 @@ void timerUpdater(onDelay* timer){
 		}
 	} else {
 		timer->finish = 0;
+		timer->currentTime = 0;
 	}
 }
 

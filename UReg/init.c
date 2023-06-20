@@ -118,7 +118,7 @@ void TIMinit(){
 	timStruct.TIM_CounterMode = TIM_CounterMode_Up;
 	timStruct.TIM_Prescaler = 36000;
 	timStruct.TIM_Period = 50;
-	timStruct.TIM_ClockDivision = 1;
+	timStruct.TIM_ClockDivision = TIM_CKD_DIV1;
 	TIM_TimeBaseInit(TIM4, &timStruct);
 	TIM_Cmd(TIM4, ENABLE);
 	TIM_ITConfig(TIM4, TIM_IT_Update, ENABLE);
