@@ -5,6 +5,7 @@
 
 #include "init.h"
 #include "globals.h"
+#include "misc.h"
 #include "menu.h"
 #include "ledDigits.h"
 #include "twoPos.h"
@@ -32,6 +33,6 @@ TwoPosSet twoPosSet = {0.0, 0.0, 0, 0};
 //Параметры 3-позиционного регулятора
 ThreePosSet threePosSet = {5.0, 1.0, 200, 200, 0, 1, {0, 0}, 0};
 //Параметры ПИД регулятора
-PIDset pidSet = {1.0, 10.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0};
+PIDset pidSet = {1.0, 10.0, 0.0, 0.025, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0};
 
 #endif

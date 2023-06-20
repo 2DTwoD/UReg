@@ -44,20 +44,19 @@ void updatePID(){
 	pidSet.q2 = pidSet.td / pidSet.t;
 }
 
-double getPIDout(){
+void calculatePIDout(){
 	deviation = sp - pv;
 	if(fabs(deviation) < pidSet.db){
-		return pidSet.out;
+		return;
 	}
 	pidSet.e2 = pidSet.e1;
 	pidSet.e1 = pidSet.e0;
 	pidSet.e0 = deviation * pidSet.inverse? -1: 1;
 	pidSet.out += pidSet.q0 * pidSet.e0 + pidSet.q1 * pidSet.e1 + pidSet.q2 * pidSet.e2;
 	if (pidSet.out > pidSet.upOutLim){
-		return pidSet.upOutLim;
+		pidSet.out = pidSet.upOutLim;
 	}
 	if (pidSet.out < pidSet.downOutLim){
-		return pidSet.downOutLim;
+		pidSet.out =  pidSet.downOutLim;
 	}
-	return pidSet.out;
 }

@@ -8,6 +8,8 @@ void restorePID(PIDset *newPIDpars);
 
 void resetPID();
 
-double getPIDout();
+void updatePID();
+
+void calculatePIDout();
 
 #endif

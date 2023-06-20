@@ -5,6 +5,6 @@
 
 void setTwoPosPars(TwoPosSet *newTwoPosSet);
 
-uint8_t getTwoPosOut();
+void calculateTwoPosOut();
 
 #endif

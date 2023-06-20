@@ -11,12 +11,11 @@ void setTwoPosPars(TwoPosSet *newTwoPosSet){
 	twoPosSet.inverse = newTwoPosSet->inverse;
 }
 
-uint8_t getTwoPosOut(){
-	deviation = sp - pv;
+void calculateTwoPosOut(){
+	deviation = twoPosSet.inverse > 0? pv - sp: sp - pv;
 	if(deviation > twoPosSet.up_indent){
 		twoPosSet.out = 1;
 	} else if(deviation < -twoPosSet.down_indent){
 		twoPosSet.out = 0;
 	}
-	return twoPosSet.inverse > 0? twoPosSet.out: !twoPosSet.out;
 }

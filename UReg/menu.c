@@ -12,17 +12,13 @@ extern ThreePosSet threePosSet;
 extern PIDset pidSet;
 extern int8_t prog;
 //Вертикальные позиции выбранные в меню
-int8_t navi[] = {0, 0, 0};
+static int8_t navi[] = {0, 0, 0};
 //Горизонтальная позиция меню
 static int8_t xPos = 0;
 //Курсор для редактирования значений
 static int8_t cursor = 0;
-//Размеры списков меню
-static int8_t sizes[][6] = {
-		{6, 6, 6, 6, 6, 6},
-		{2, 4, 1, 3, 5, 7},
-		{1, 1, 1, 1, 1, 1}
-};
+//Размеры списков в меню первой позиции
+static int8_t sizes[] = {1, 3, 0, 2, 4, 6};
 //Строки для меню позиции 0
 static char* menu0Strings[] = {"ISIg", " LI ", "USE ", "2POS", "3POS", "PId "};
 //Строки для меню позиции 1
@@ -172,13 +168,13 @@ void setMenuParameter(int8_t afterDot, int8_t step){
 	case 0:
 		switch(navi[1]){
 		case 0:
-			setMenuDigitDbl(&scale.down, cursor - afterDot, step);
+			setMenuDigitDbl(&scale.down, cursor + afterDot, step);
 			if(scale.down > scale.up){
 				scale.down = scale.up;
 			}
 			break;
 		case 1:
-			setMenuDigitDbl(&scale.up, cursor - afterDot, step);
+			setMenuDigitDbl(&scale.up, cursor + afterDot, step);
 			if(scale.up < scale.down){
 				scale.up = scale.down;
 			}
@@ -188,13 +184,13 @@ void setMenuParameter(int8_t afterDot, int8_t step){
 	case 1:
 		switch(navi[1]){
 		case 0:
-			setMenuDigitDbl(&limit.hh, cursor - afterDot, step);
+			setMenuDigitDbl(&limit.hh, cursor + afterDot, step);
 			if(limit.hh < limit.lh){
 				limit.hh = limit.lh;
 			}
 			break;
 		case 1:
-			setMenuDigitDbl(&limit.lh, cursor - afterDot, step);
+			setMenuDigitDbl(&limit.lh, cursor + afterDot, step);
 			if(limit.lh > limit.hh){
 				limit.lh = limit.hh;
 			} else if(limit.lh < limit.hl){
@@ -202,7 +198,7 @@ void setMenuParameter(int8_t afterDot, int8_t step){
 			}
 			break;
 		case 2:
-			setMenuDigitDbl(&limit.hl, cursor - afterDot, step);
+			setMenuDigitDbl(&limit.hl, cursor + afterDot, step);
 			if(limit.hl > limit.lh){
 				limit.hl = limit.lh;
 			} else if(limit.hl < limit.ll){
@@ -210,7 +206,7 @@ void setMenuParameter(int8_t afterDot, int8_t step){
 			}
 			break;
 		case 3:
-			setMenuDigitDbl(&limit.ll, cursor - afterDot, step);
+			setMenuDigitDbl(&limit.ll, cursor + afterDot, step);
 			if(limit.ll > limit.hl){
 				limit.ll = limit.hl;
 			}
@@ -218,71 +214,75 @@ void setMenuParameter(int8_t afterDot, int8_t step){
 		}
 		break;
 	case 2:
-		setMenuDigitInt(&mode, cursor - afterDot, step, 2);
+		setMenuDigitInt(&mode, cursor, step, 2);
+		twoPosSet.out = 0;
+		resetThreePos();
+		resetPID();
 		break;
 	case 3:
 		switch(navi[1]){
 		case 0:
-			setMenuDigitDbl(&twoPosSet.up_indent, cursor - afterDot, step);
+			setMenuDigitDbl(&twoPosSet.up_indent, cursor + afterDot, step);
 			break;
 		case 1:
-			setMenuDigitDbl(&twoPosSet.down_indent, cursor - afterDot, step);
+			setMenuDigitDbl(&twoPosSet.down_indent, cursor + afterDot, step);
 			break;
 		case 2:
-			setMenuDigitInt(&twoPosSet.inverse, cursor - afterDot, step, 1);
+			setMenuDigitInt(&twoPosSet.inverse, cursor, step, 1);
 			break;
 		}
 		break;
 	case 4:
 		switch(navi[1]){
 		case 0:
-			setMenuDigitDbl(&threePosSet.treshold, cursor - afterDot, step);
+			setMenuDigitDbl(&threePosSet.treshold, cursor + afterDot, step);
 			break;
 		case 1:
-			setMenuDigitDbl(&threePosSet.deadband, cursor - afterDot, step);
+			setMenuDigitDbl(&threePosSet.deadband, cursor + afterDot, step);
 			break;
 		case 2:
-			setMenuDigitInt(&threePosSet.waitTime, cursor - afterDot, step, 9);
+			setMenuDigitInt(&threePosSet.waitTime, cursor, step, 9);
 			break;
 		case 3:
-			setMenuDigitInt(&threePosSet.pulseTime, cursor - afterDot, step, 9);
+			setMenuDigitInt(&threePosSet.pulseTime, cursor, step, 9);
 			break;
 		case 4:
-			setMenuDigitInt(&threePosSet.inverse, cursor - afterDot, step, 1);
+			setMenuDigitInt(&threePosSet.inverse, cursor, step, 1);
 			break;
 		}
 		break;
 	case 5:
 		switch(navi[1]){
 		case 0:
-			setMenuDigitDbl(&pidSet.kp, cursor - afterDot, step);
+			setMenuDigitDbl(&pidSet.kp, cursor + afterDot, step);
 			break;
 		case 1:
-			setMenuDigitDbl(&pidSet.ti, cursor - afterDot, step);
+			setMenuDigitDbl(&pidSet.ti, cursor + afterDot, step);
 			break;
 		case 2:
-			setMenuDigitDbl(&pidSet.td, cursor - afterDot, step);
+			setMenuDigitDbl(&pidSet.td, cursor + afterDot, step);
 			break;
 		case 3:
-			setMenuDigitDbl(&pidSet.db, cursor - afterDot, step);
+			setMenuDigitDbl(&pidSet.db, cursor + afterDot, step);
 			break;
 		case 4:
-			setMenuDigitDbl(&pidSet.upOutLim, cursor - afterDot, step);
+			setMenuDigitDbl(&pidSet.upOutLim, cursor + afterDot, step);
 			if(pidSet.upOutLim < pidSet.downOutLim){
 				pidSet.upOutLim = pidSet.downOutLim;
 			}
 			break;
 		case 5:
-			setMenuDigitDbl(&pidSet.downOutLim, cursor - afterDot, step);
+			setMenuDigitDbl(&pidSet.downOutLim, cursor + afterDot, step);
 			if(pidSet.downOutLim > pidSet.upOutLim){
 				pidSet.downOutLim = pidSet.upOutLim;
 			}
 			break;
 		case 6:
-			setMenuDigitInt(&pidSet.inverse, cursor - afterDot, step, 1);
+			setMenuDigitInt(&pidSet.inverse, cursor, step, 1);
 			break;
 		}
 		break;
+		updatePID();
 	}
 }
 
@@ -302,36 +302,52 @@ void changeSP(int8_t dir){
 void changeOUT(int8_t dir){
 	switch(mode){
 	case 0:
-		if(out != 0.0){
-			out = 0.0;
-		} else {
-			out = 1.0;
-		}
+		twoPosSet.out = !twoPosSet.out;
 		break;
 	case 1:
-		out += dir;
-		if(out > 1.0){
-			out = 1.0;
-		} else if(out < -1){
-			out = -1.0;
+		if(dir > 0){
+			if(threePosSet.out.out2){
+				threePosSet.out.out2 = 0;
+			}else if(!threePosSet.out.out1){
+				threePosSet.out.out1 = 1;
+			}
+		} else {
+			if(threePosSet.out.out1){
+				threePosSet.out.out1 = 0;
+			} else if(!threePosSet.out.out2){
+				threePosSet.out.out2 = 1;
+			}
+		}
+		if(threePosSet.out.out1 && threePosSet.out.out2){
+			threePosSet.out.out1 = 0;
+			threePosSet.out.out2 = 0;
 		}
 		break;
 	case 2:
-		out += dir;
-		if(out > 100.0){
-			out = 100.0;
-		} else if(out < 0.0){
-			out = 0.0;
+		pidSet.out += dir;
+		if(pidSet.out > 100.0){
+			pidSet.out = 100.0;
+		} else if(pidSet.out < 0.0){
+			pidSet.out = 0.0;
 		}
 		break;
 	}
 }
 
-int8_t getNaviLimit(int8_t step){
-	if(navi[xPos] + step < 0){
-		return sizes[xPos][navi[xPos]] - 1;
+int8_t getMenuSize(int8_t prevNavi){
+	switch(xPos){
+	case 0: return 5;
+	case 1: return sizes[prevNavi];
+	default: return 0;
 	}
-	if(navi[xPos] + step > sizes[xPos][navi[xPos]] - 1){
+}
+
+int8_t getNaviLimit(int8_t step){
+	int8_t prevNaviIndex = xPos - 1 >= 0? xPos - 1: 0;
+	if(navi[xPos] + step < 0){
+		return getMenuSize(navi[prevNaviIndex]);
+	}
+	if(navi[xPos] + step > getMenuSize(navi[prevNaviIndex])){
 		return 0;
 	}
 	return navi[xPos] + step;
@@ -423,7 +439,17 @@ char* getDisp2(){
 		sprintf(field, "%05.1f", sp);
 		return field;
 	}
-	sprintf(field, "%05.1f", out);
+	switch(mode){
+	case 0:
+		sprintf(field, "%04d", twoPosSet.out);
+		break;
+	case 1:
+		sprintf(field, "%04d", threePosSet.out.out1 - threePosSet.out.out2);
+		break;
+	default:
+		sprintf(field, "%05.1f", pidSet.out);
+		break;
+	}
 	return field;
 }
 void exitMenu(){

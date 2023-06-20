@@ -5,8 +5,10 @@
 
 void setThreePosPars(ThreePosSet *newThreePosSet);
 
+void resetThreePos();
+
 void setThreePosCurrentTime();
 
-ThreePosOut getThreePosOut();
+void calculateThreePosOut();
 
 #endif

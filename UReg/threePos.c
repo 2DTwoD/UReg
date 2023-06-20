@@ -16,6 +16,13 @@ void setThreePosPars(ThreePosSet *newThreePosSet){
 	threePosSet.pulseFlag = 0;
 }
 
+void resetThreePos(){
+	threePosSet.currentTime = 0;
+	threePosSet.out.out1 = 0;
+	threePosSet.out.out2 = 0;
+	threePosSet.pulseFlag = 0;
+}
+
 void setThreePosCurrentTime(){
 	deviation = fabs(pv - sp);
 	if(deviation < threePosSet.deadband || deviation > threePosSet.treshold){
@@ -25,32 +32,30 @@ void setThreePosCurrentTime(){
 	threePosSet.currentTime ++;
 }
 
-ThreePosOut getThreePosOut(){
-	deviation = sp - pv;
+void calculateThreePosOut(){
+	deviation = threePosSet.inverse? pv - sp: sp - pv;
 	if(fabs(deviation) < threePosSet.deadband){
 		threePosSet.out.out1 = 0;
 		threePosSet.out.out2 = 0;
-		goto end;
+		return;
 	}
 	if(fabs(deviation) > threePosSet.treshold){
-		threePosSet.out.out1 = deviation * threePosSet.inverse == 0;
-		threePosSet.out.out2 = deviation * threePosSet.inverse != 0;
-		goto end;
+		threePosSet.out.out1 = deviation > 0;
+		threePosSet.out.out2 = deviation < 0;
+		return;
 	}
 	if(threePosSet.currentTime < threePosSet.waitTime){
 		threePosSet.out.out1 = 0;
 		threePosSet.out.out2 = 0;
-		goto end;
+		return;
 	}
 	if(!threePosSet.pulseFlag){
-		threePosSet.out.out1 = deviation * threePosSet.inverse == 0;
-		threePosSet.out.out2 = deviation * threePosSet.inverse != 0;
+		threePosSet.out.out1 = deviation > 0;
+		threePosSet.out.out2 = deviation < 0;
 		threePosSet.pulseFlag = 1;
 	}
 	if(threePosSet.currentTime > threePosSet.waitTime + threePosSet.pulseTime){
 		threePosSet.currentTime = 0;
 		threePosSet.pulseFlag = 0;
 	}
-	end:
-	return threePosSet.out;
 }

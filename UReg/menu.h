@@ -3,7 +3,10 @@
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
+
 #include "globals.h"
+#include "threePos.h"
+#include "pid.h"
 
 void naviUp();
 void naviDown();
