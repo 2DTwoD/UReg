@@ -34,9 +34,6 @@ void TIM3_IRQHandler(){
 
 	pv = pvRaw * (scale.up - scale.down) / 4095.0 + scale.down;
 
-	if(!AUTO){
-		return;
-	}
 	switch(mode){
 	case 0:
 		calculateTwoPosOut();
@@ -66,10 +63,10 @@ void TIM4_IRQHandler(){
 
 	percPv = (pv - scale.down) * 100 / (scale.up - scale.down);
 
-	HHdelay.start = percPv > limit.hh;
-	LHdelay.start = percPv > limit.lh;
-	HLdelay.start = percPv < limit.hl;
-	LLdelay.start = percPv < limit.ll;
+	HHdelay.start = percPv > limit.hh && 1;
+	LHdelay.start = percPv > limit.lh && 1;
+	HLdelay.start = percPv < limit.hl && 1;
+	LLdelay.start = percPv < limit.ll && 1;
 
 	timerUpdater(&buttonUp);
 	timerUpdater(&buttonDown);

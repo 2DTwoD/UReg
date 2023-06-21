@@ -2,6 +2,7 @@
 
 extern double pv;
 extern double sp;
+extern uint8_t AUTO;
 extern TwoPosSet twoPosSet;
 
 static double deviation;
@@ -19,10 +20,11 @@ void resetTwoPos(){
 }
 
 void calculateTwoPosOut(){
+	if(!AUTO) return;
 	deviation = twoPosSet.inverse? pv - sp: sp - pv;
 	if(deviation > twoPosSet.up_indent){
 		twoPosSet.out = 1;
-	} else if(deviation < -twoPosSet.down_indent){
+	} else if(deviation <= -twoPosSet.down_indent){
 		twoPosSet.out = 0;
 	}
 }

@@ -3,6 +3,7 @@
 
 extern double pv;
 extern double sp;
+extern uint8_t AUTO;
 extern ThreePosSet threePosSet;
 
 static double deviation;
@@ -27,6 +28,7 @@ void resetThreePos(){
 }
 
 void setThreePosCurrentTime(){
+	if(!AUTO)return;
 	deviation = fabs(pv - sp);
 	if(deviation < threePosSet.deadband || deviation > threePosSet.treshold){
 		threePosSet.currentTime = 0;
@@ -36,6 +38,7 @@ void setThreePosCurrentTime(){
 }
 
 void calculateThreePosOut(){
+	if(!AUTO)return;
 	deviation = threePosSet.inverse? pv - sp: sp - pv;
 	if(fabs(deviation) < threePosSet.deadband){
 		threePosSet.out.out1 = 0;

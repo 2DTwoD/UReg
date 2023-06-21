@@ -2,6 +2,7 @@
 
 extern double pv;
 extern double sp;
+extern uint8_t AUTO;
 extern uint16_t outRaw;
 extern PIDset pidSet;
 
@@ -29,9 +30,7 @@ void resetPID(){
 
 
 void updatePID(){
-	if(pidSet.t == 0){
-		return;
-	}
+	if(pidSet.t == 0)return;
 	pidSet.q0 = pidSet.kp + pidSet.td / pidSet.t;
 	if(pidSet.ti > 0){
 		pidSet.q1 = -pidSet.kp + pidSet.t / pidSet.ti - 2 * pidSet.td / pidSet.t;
@@ -42,10 +41,9 @@ void updatePID(){
 }
 
 void calculatePIDout(){
+	if(!AUTO) return;
 	deviation = pidSet.inverse? pv - sp: sp - pv;
-	if(fabs(deviation) < pidSet.db){
-		return;
-	}
+	if(fabs(deviation) < pidSet.db)return;
 	pidSet.e2 = pidSet.e1;
 	pidSet.e1 = pidSet.e0;
 	pidSet.e0 = deviation;
