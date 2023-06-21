@@ -6,12 +6,13 @@ static uint8_t field2[4];
 static uint8_t blinkCount = 0;
 static uint8_t pidCount = 0;
 static uint8_t blink = 0;
+static uint8_t percPv = 0;
 static onDelay buttonUp = {0, 2, 0, 0};
 static onDelay buttonDown = {0, 2, 0, 0};
 static onDelay buttonLeft = {0, 2, 0, 0};
 static onDelay buttonRight = {0, 2, 0, 0};
-static onDelay auxLeft = {0, 120, 0, 0};
-static onDelay auxRight = {0, 120, 0, 0};
+static onDelay auxLeft = {0, 80, 0, 0};
+static onDelay auxRight = {0, 80, 0, 0};
 static onDelay HHdelay = {0, 4, 0, 0};
 static onDelay LHdelay = {0, 4, 0, 0};
 static onDelay HLdelay = {0, 4, 0, 0};
@@ -23,13 +24,16 @@ int main(void)
 	EXTIinit();
 	NVICinit();
 	TIMinit();
+
+	resetRegulators();
     while(1);
 }
-int u =0;
 //Цикл 1мс
-void TIM3_IRQHandler(void){
-
+void TIM3_IRQHandler(){
 	TIM_ClearITPendingBit(TIM3, TIM_IT_Update);
+
+	pv = pvRaw * (scale.up - scale.down) / 4095.0 + scale.down;
+
 	if(!AUTO){
 		return;
 	}
@@ -37,11 +41,13 @@ void TIM3_IRQHandler(void){
 	case 0:
 		calculateTwoPosOut();
 		changeDO(GPIOC, 0x10, twoPosSet.out << 4);
+		changeDO(GPIOE, 0x400, twoPosSet.out << 10);
 		break;
 	case 1:
 		setThreePosCurrentTime();
 		calculateThreePosOut();
 		changeDO(GPIOC, 0x30, threePosSet.out.out1 << 4 | threePosSet.out.out2 << 5);
+		changeDO(GPIOE, 0xC00, threePosSet.out.out1 << 10 | threePosSet.out.out2 << 11);
 		break;
 	default:
 		pidCount++;
@@ -49,19 +55,21 @@ void TIM3_IRQHandler(void){
 			pidCount = 0;
 			calculatePIDout();
 		}
+		outRaw = pidSet.out * 10;
 		break;
 	}
 }
 
 //Цикл 25мс
-void TIM4_IRQHandler(void){
-	u++;
+void TIM4_IRQHandler(){
 	TIM_ClearITPendingBit(TIM4, TIM_IT_Update);
 
-	HHdelay.start = pv > limit.hh;
-	LHdelay.start = pv > limit.lh;
-	HLdelay.start = pv < limit.hl;
-	LLdelay.start = pv < limit.ll;
+	percPv = (pv - scale.down) * 100 / (scale.up - scale.down);
+
+	HHdelay.start = percPv > limit.hh;
+	LHdelay.start = percPv > limit.lh;
+	HLdelay.start = percPv < limit.hl;
+	LLdelay.start = percPv < limit.ll;
 
 	timerUpdater(&buttonUp);
 	timerUpdater(&buttonDown);
@@ -74,13 +82,15 @@ void TIM4_IRQHandler(void){
 	timerUpdater(&HLdelay);
 	timerUpdater(&LLdelay);
 
+	changeDO(GPIOE, 0x100, AUTO << 8);
+	changeDO(GPIOE, 0xF000, HHdelay.finish << 12 | LHdelay.finish << 13 | HLdelay.finish << 14 | LLdelay.finish << 15);
 	changeDO(GPIOC, 0xF, HHdelay.finish | LHdelay.finish << 1 | HLdelay.finish << 2 | LLdelay.finish << 3);
 }
 
 //Цикл 2,5мс для обновления семисегментного индикатора
-void TIM7_IRQHandler(void){
+void TIM7_IRQHandler(){
 	TIM_ClearITPendingBit(TIM7, TIM_IT_Update);
-	if(blinkCount < 125){
+	if(blinkCount < 60){
 		blinkCount++;
 	} else {
 		blinkCount = 0;

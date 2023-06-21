@@ -4,6 +4,7 @@
 #include <math.h>
 #include <string.h>
 
+#include "misc.h"
 #include "globals.h"
 #include "threePos.h"
 #include "pid.h"

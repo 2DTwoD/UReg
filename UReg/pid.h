@@ -4,7 +4,7 @@
 #include <math.h>
 #include "globals.h"
 
-void restorePID(PIDset *newPIDpars);
+void setPID(PIDset *newPIDpars);
 
 void resetPID();
 

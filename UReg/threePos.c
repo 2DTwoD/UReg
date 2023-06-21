@@ -1,10 +1,11 @@
 #include <math.h>
 #include "threePos.h"
 
-static double deviation;
 extern double pv;
 extern double sp;
 extern ThreePosSet threePosSet;
+
+static double deviation;
 
 void setThreePosPars(ThreePosSet *newThreePosSet){
 	threePosSet.treshold = newThreePosSet->treshold;
@@ -21,6 +22,8 @@ void resetThreePos(){
 	threePosSet.out.out1 = 0;
 	threePosSet.out.out2 = 0;
 	threePosSet.pulseFlag = 0;
+	changeDO(GPIOC, 0x30, 0);
+	changeDO(GPIOE, 0xC00, 0);
 }
 
 void setThreePosCurrentTime(){

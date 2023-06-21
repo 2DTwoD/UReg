@@ -1,5 +1,11 @@
 #include "misc.h"
 
+void resetRegulators(){
+	resetTwoPos();
+	resetThreePos();
+	resetPID();
+}
+
 void timerUpdater(onDelay* timer){
 	if(timer->start){
 		if(timer->currentTime < timer->delay){
@@ -16,6 +22,6 @@ void timerUpdater(onDelay* timer){
 void changeDO(GPIO_TypeDef* gpio, uint16_t mask, uint16_t value){
 	if((gpio->ODR & mask) != value){
 		gpio->ODR &= ~mask;
-		gpio->ODR |= mask;
+		gpio->ODR |= value;
 	}
 }

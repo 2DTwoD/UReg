@@ -4,6 +4,11 @@
 #include <stm32f30x.h>
 
 #include "globals.h"
+#include "twoPos.h"
+#include "threePos.h"
+#include "pid.h"
+
+void resetRegulators();
 
 void timerUpdater(onDelay* timer);
 

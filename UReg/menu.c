@@ -4,13 +4,13 @@ extern uint16_t mode;
 extern uint8_t AUTO;
 extern double pv;
 extern double sp;
-extern double out;
 extern Scale scale;
 extern Limit limit;
 extern TwoPosSet twoPosSet;
 extern ThreePosSet threePosSet;
 extern PIDset pidSet;
 extern int8_t prog;
+
 //Вертикальные позиции выбранные в меню
 static int8_t navi[] = {0, 0, 0};
 //Горизонтальная позиция меню
@@ -130,19 +130,50 @@ char* getTemplate(){
 	return "%05.1f";
 }
 
+void cutLower(double* parameter, double limit){
+	if(*parameter < limit){
+		*parameter = limit;
+	}
+}
+
+void cutHigher(double* parameter, double limit){
+	if(*parameter > limit){
+		*parameter = limit;
+	}
+}
+
+void cutAround(double* parameter, double downLimit, double upLimit){
+	if(*parameter > upLimit){
+		*parameter = upLimit;
+	} else if(*parameter < downLimit){
+		*parameter = downLimit;
+	}
+}
 
 void setMenuDigitDbl(double* value, int8_t digit, int8_t step){
 	double powTen = pow(10, 4 - digit);
 	int16_t valDigit = ceil((*value) / powTen);
 	valDigit %= 10;
-	*value -= valDigit * powTen;
+	if(cursor == 1) {
+		if((valDigit == 0 && *value > 0.0  && step < 0) || (valDigit == 9 && *value > 0.0 && step > 0)){
+			*value -= valDigit * powTen;
+			*value *= -1;
+			return;
+		} else {
+			if(*value < 0.0){
+				*value *= -1;
+			}
+		}
+	}
+	int8_t sign = *value >= 0.0? 1: -1;
+	*value -= valDigit * powTen * sign;
 	valDigit += step;
 	if(valDigit > 9){
 		valDigit = 0;
 	} else if(valDigit < 0){
 		valDigit = 9;
 	}
-	*value += valDigit * powTen;
+	*value += valDigit * powTen * sign;
 }
 void setMenuDigitInt(uint16_t* value, int8_t digit, int8_t step, uint16_t upLim){
 	if(upLim != 9 && digit != 4){
@@ -168,15 +199,11 @@ void setMenuParameter(int8_t afterDot, int8_t step){
 		switch(navi[1]){
 		case 0:
 			setMenuDigitDbl(&scale.down, cursor + afterDot, step);
-			if(scale.down > scale.up){
-				scale.down = scale.up;
-			}
+			cutHigher(&scale.down, scale.up);
 			break;
 		case 1:
 			setMenuDigitDbl(&scale.up, cursor + afterDot, step);
-			if(scale.up < scale.down){
-				scale.up = scale.down;
-			}
+			cutLower(&scale.up, scale.down);
 			break;
 		}
 		break;
@@ -184,47 +211,35 @@ void setMenuParameter(int8_t afterDot, int8_t step){
 		switch(navi[1]){
 		case 0:
 			setMenuDigitDbl(&limit.hh, cursor + afterDot, step);
-			if(limit.hh < limit.lh){
-				limit.hh = limit.lh;
-			}
+			cutAround(&limit.hh, limit.lh, 100.0);
 			break;
 		case 1:
 			setMenuDigitDbl(&limit.lh, cursor + afterDot, step);
-			if(limit.lh > limit.hh){
-				limit.lh = limit.hh;
-			} else if(limit.lh < limit.hl){
-				limit.lh = limit.hl;
-			}
+			cutAround(&limit.lh, limit.hl, limit.hh);
 			break;
 		case 2:
 			setMenuDigitDbl(&limit.hl, cursor + afterDot, step);
-			if(limit.hl > limit.lh){
-				limit.hl = limit.lh;
-			} else if(limit.hl < limit.ll){
-				limit.hl = limit.ll;
-			}
+			cutAround(&limit.hl, limit.ll, limit.lh);
 			break;
 		case 3:
 			setMenuDigitDbl(&limit.ll, cursor + afterDot, step);
-			if(limit.ll > limit.hl){
-				limit.ll = limit.hl;
-			}
+			cutAround(&limit.ll, 0.0, limit.hl);
 			break;
 		}
 		break;
 	case 2:
 		setMenuDigitInt(&mode, cursor, step, 2);
-		twoPosSet.out = 0;
-		resetThreePos();
-		resetPID();
+		resetRegulators();
 		break;
 	case 3:
 		switch(navi[1]){
 		case 0:
 			setMenuDigitDbl(&twoPosSet.up_indent, cursor + afterDot, step);
+			cutLower(&twoPosSet.up_indent, 0.0);
 			break;
 		case 1:
 			setMenuDigitDbl(&twoPosSet.down_indent, cursor + afterDot, step);
+			cutLower(&twoPosSet.down_indent, 0.0);
 			break;
 		case 2:
 			setMenuDigitInt(&twoPosSet.inverse, cursor, step, 1);
@@ -235,9 +250,11 @@ void setMenuParameter(int8_t afterDot, int8_t step){
 		switch(navi[1]){
 		case 0:
 			setMenuDigitDbl(&threePosSet.treshold, cursor + afterDot, step);
+			cutLower(&threePosSet.treshold, 0.0);
 			break;
 		case 1:
 			setMenuDigitDbl(&threePosSet.deadband, cursor + afterDot, step);
+			cutLower(&threePosSet.deadband, 0.0);
 			break;
 		case 2:
 			setMenuDigitInt(&threePosSet.waitTime, cursor, step, 9);
@@ -254,27 +271,27 @@ void setMenuParameter(int8_t afterDot, int8_t step){
 		switch(navi[1]){
 		case 0:
 			setMenuDigitDbl(&pidSet.kp, cursor + afterDot, step);
+			cutLower(&pidSet.kp, 0.0);
 			break;
 		case 1:
 			setMenuDigitDbl(&pidSet.ti, cursor + afterDot, step);
+			cutLower(&pidSet.ti, 0.0);
 			break;
 		case 2:
 			setMenuDigitDbl(&pidSet.td, cursor + afterDot, step);
+			cutLower(&pidSet.td, 0.0);
 			break;
 		case 3:
 			setMenuDigitDbl(&pidSet.db, cursor + afterDot, step);
+			cutLower(&pidSet.db, 0.0);
 			break;
 		case 4:
 			setMenuDigitDbl(&pidSet.upOutLim, cursor + afterDot, step);
-			if(pidSet.upOutLim < pidSet.downOutLim){
-				pidSet.upOutLim = pidSet.downOutLim;
-			}
+			cutAround(&pidSet.upOutLim, pidSet.downOutLim, 100.0);
 			break;
 		case 5:
 			setMenuDigitDbl(&pidSet.downOutLim, cursor + afterDot, step);
-			if(pidSet.downOutLim > pidSet.upOutLim){
-				pidSet.downOutLim = pidSet.upOutLim;
-			}
+			cutAround(&pidSet.downOutLim, 0.0, pidSet.upOutLim);
 			break;
 		case 6:
 			setMenuDigitInt(&pidSet.inverse, cursor, step, 1);

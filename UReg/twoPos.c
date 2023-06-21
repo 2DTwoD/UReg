@@ -1,9 +1,10 @@
 #include "twoPos.h"
 
-static double deviation;
 extern double pv;
 extern double sp;
 extern TwoPosSet twoPosSet;
+
+static double deviation;
 
 void setTwoPosPars(TwoPosSet *newTwoPosSet){
 	twoPosSet.up_indent = newTwoPosSet->up_indent;
@@ -11,8 +12,14 @@ void setTwoPosPars(TwoPosSet *newTwoPosSet){
 	twoPosSet.inverse = newTwoPosSet->inverse;
 }
 
+void resetTwoPos(){
+	twoPosSet.out = 0;
+	changeDO(GPIOC, 0x10, 0);
+	changeDO(GPIOE, 0x400, 0);
+}
+
 void calculateTwoPosOut(){
-	deviation = twoPosSet.inverse > 0? pv - sp: sp - pv;
+	deviation = twoPosSet.inverse? pv - sp: sp - pv;
 	if(deviation > twoPosSet.up_indent){
 		twoPosSet.out = 1;
 	} else if(deviation < -twoPosSet.down_indent){

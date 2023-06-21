@@ -40,7 +40,7 @@ void GPIOinit(){
 	gpioStruct.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	GPIO_Init(GPIOD, &gpioStruct);
 
-	//test
+	//indicators
 	gpioStruct.GPIO_Pin = 0xFF00;
 	gpioStruct.GPIO_Mode = GPIO_Mode_OUT;
 	gpioStruct.GPIO_Speed = GPIO_Speed_Level_1;
