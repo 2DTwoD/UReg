@@ -10,6 +10,8 @@
 
 void resetRegulators();
 
+uint16_t getAvgRawPv();
+
 void timerUpdater(onDelay* timer);
 
 void changeDO(GPIO_TypeDef* gpio, uint16_t mask, uint16_t value);

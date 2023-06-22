@@ -24,13 +24,13 @@ void GPIOinit(){
 	gpioStruct.GPIO_PuPd = GPIO_PuPd_DOWN;
 	GPIO_Init(GPIOA, &gpioStruct);
 
-	//b0 PWM AO
-	gpioStruct.GPIO_Pin = GPIO_Pin_0;
+	//a9 PWM AO
+	gpioStruct.GPIO_Pin = GPIO_Pin_9;
 	gpioStruct.GPIO_Mode = GPIO_Mode_AF;
 	gpioStruct.GPIO_Speed = GPIO_Speed_Level_1;
 	gpioStruct.GPIO_OType = GPIO_OType_PP;
-	GPIO_PinAFConfig(GPIOB, GPIO_PinSource0, GPIO_AF_6);
-	GPIO_Init(GPIOB, &gpioStruct);
+	GPIO_Init(GPIOA, &gpioStruct);
+	GPIO_PinAFConfig(GPIOA, GPIO_PinSource9, GPIO_AF_6);
 
 	//b8-b15 2x common cathode
 	gpioStruct.GPIO_Pin = 0xFF00;
@@ -126,7 +126,7 @@ void TIMinit(){
 
 	timStruct.TIM_CounterMode = TIM_CounterMode_Up;
 	timStruct.TIM_Prescaler = 36;
-	timStruct.TIM_Period = 4095;
+	timStruct.TIM_Period = 1000;
 
 	TIM_TimeBaseInit(TIM1, &timStruct);
 	TIM_Cmd(TIM1, ENABLE);
@@ -196,8 +196,8 @@ void DMAinit(){
 
 	DMA_InitTypeDef dmaStruct;
 
-	dmaStruct.DMA_PeripheralBaseAddr = (uint32_t)&(ADC1->DR);
-	dmaStruct.DMA_MemoryBaseAddr = (uint32_t)&pvRaw;
+	dmaStruct.DMA_PeripheralBaseAddr = (uint32_t) &(ADC1->DR);
+	dmaStruct.DMA_MemoryBaseAddr = (uint32_t) &pvRaw;
 	dmaStruct.DMA_DIR = DMA_DIR_PeripheralSRC;
 	dmaStruct.DMA_BufferSize = 1;
 	dmaStruct.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
@@ -209,8 +209,8 @@ void DMAinit(){
 	dmaStruct.DMA_M2M = DMA_M2M_Disable;
 	DMA_Init(DMA1_Channel1, &dmaStruct);
 
-	dmaStruct.DMA_PeripheralBaseAddr = (uint32_t)&outRaw;
-	dmaStruct.DMA_MemoryBaseAddr = (uint32_t)&(TIM1->CCR2);
+	dmaStruct.DMA_PeripheralBaseAddr = (uint32_t) &outRaw;
+	dmaStruct.DMA_MemoryBaseAddr = (uint32_t) &(TIM1->CCR2);
 	dmaStruct.DMA_DIR = DMA_DIR_PeripheralSRC;
 	dmaStruct.DMA_BufferSize = 1;
 	dmaStruct.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
@@ -219,7 +219,7 @@ void DMAinit(){
 	dmaStruct.DMA_MemoryDataSize = DMA_MemoryDataSize_HalfWord;
 	dmaStruct.DMA_Mode = DMA_Mode_Circular;
 	dmaStruct.DMA_Priority = DMA_Priority_High;
-	dmaStruct.DMA_M2M = DMA_M2M_Disable;
+	dmaStruct.DMA_M2M = DMA_M2M_Enable;
 	DMA_Init(DMA1_Channel3, &dmaStruct);
 
 	DMA_Cmd(DMA1_Channel1, ENABLE);
@@ -228,7 +228,7 @@ void DMAinit(){
 
 void PWMinit(){
 	TIM_OCInitTypeDef pwmStruct;
-	pwmStruct.TIM_Pulse = 4095;
+	pwmStruct.TIM_Pulse = 1000;
 	pwmStruct.TIM_OCMode = TIM_OCMode_PWM1;
 	pwmStruct.TIM_OutputState = TIM_OutputState_Enable;
 	pwmStruct.TIM_OutputNState = TIM_OutputNState_Enable;
@@ -236,5 +236,5 @@ void PWMinit(){
 	pwmStruct.TIM_OCNPolarity = TIM_OCNPolarity_High;
 	pwmStruct.TIM_OCIdleState = TIM_OCIdleState_Set;
 	pwmStruct.TIM_OCNIdleState = TIM_OCNIdleState_Set;
-	TIM_OC1Init(TIM1, &pwmStruct);
+	TIM_OC2Init(TIM1, &pwmStruct);
 }

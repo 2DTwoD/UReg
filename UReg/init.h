@@ -17,5 +17,6 @@ void NVICinit();
 void TIMinit();
 void ADCinit();
 void DMAinit();
+void PWMinit();
 
 #endif

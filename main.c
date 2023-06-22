@@ -26,16 +26,17 @@ int main(void)
 	TIMinit();
 	ADCinit();
 	DMAinit();
+	PWMinit();
 
 	resetRegulators();
+	updatePID();
     while(1);
 }
 //÷икл 1мс
 void TIM3_IRQHandler(){
 	TIM_ClearITPendingBit(TIM3, TIM_IT_Update);
 
-	pv = pvRaw * (scale.up - scale.down) / 4095.0 + scale.down;
-
+	pv = getAvgRawPv() * (scale.up - scale.down) / 4095.0 + scale.down;
 	switch(mode){
 	case 0:
 		calculateTwoPosOut();

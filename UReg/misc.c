@@ -1,5 +1,23 @@
 #include "misc.h"
 
+extern uint16_t pvRaw;
+
+static uint16_t pvArray[200];
+
+uint16_t getAvgRawPv(){
+	uint32_t avg = 0;
+	int16_t i;
+	for(i = 199; i >= 0; i--){
+		if(i == 0){
+			pvArray[i] = pvRaw;
+		} else {
+			pvArray[i] = pvArray[i - 1];
+		}
+		avg += pvArray[i];
+	}
+	return avg / 200;
+}
+
 void resetRegulators(){
 	resetTwoPos();
 	resetThreePos();
