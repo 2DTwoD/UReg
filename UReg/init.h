@@ -8,10 +8,14 @@
 #include <stm32f30x_misc.h>
 #include <stm32f30x_exti.h>
 #include <stm32f30x_syscfg.h>
+#include <stm32f30x_adc.h>
+#include <stm32f30x_dma.h>
 
 void GPIOinit();
 void EXTIinit();
 void NVICinit();
 void TIMinit();
+void ADCinit();
+void DMAinit();
 
 #endif

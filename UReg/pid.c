@@ -30,7 +30,7 @@ void resetPID(){
 
 
 void updatePID(){
-	if(pidSet.t == 0)return;
+	if(pidSet.t == 0) return;
 	pidSet.q0 = pidSet.kp + pidSet.td / pidSet.t;
 	if(pidSet.ti > 0){
 		pidSet.q1 = -pidSet.kp + pidSet.t / pidSet.ti - 2 * pidSet.td / pidSet.t;

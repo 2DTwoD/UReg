@@ -24,6 +24,8 @@ int main(void)
 	EXTIinit();
 	NVICinit();
 	TIMinit();
+	ADCinit();
+	DMAinit();
 
 	resetRegulators();
     while(1);
