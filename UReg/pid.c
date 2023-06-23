@@ -43,7 +43,7 @@ void updatePID(){
 void calculatePIDout(){
 	if(!AUTO) return;
 	deviation = pidSet.inverse? pv - sp: sp - pv;
-	if(fabs(deviation) < pidSet.db)return;
+	if(fabs(deviation) < pidSet.db) return;
 	pidSet.e2 = pidSet.e1;
 	pidSet.e1 = pidSet.e0;
 	pidSet.e0 = deviation;

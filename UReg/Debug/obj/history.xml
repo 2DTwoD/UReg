@@ -1,65 +1,74 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m4 -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F303VC -DSTM32F30X -ID:\GitProjects\UReg\cmsis_boot -ID:\GitProjects\UReg\UReg -ID:\ -ID:\GitProjects\UReg\cmsis_lib\include -ID:\GitProjects\UReg\cmsis_lib -ID:\GitProjects\UReg\cmsis -ID:\GitProjects -ID:\GitProjects\UReg">
-      <target file="threePos.o" lastModified="188e402db82">
-         <source file="..\..\threePos.c" lastModified="188e3913a92"/>
+      <target file="threePos.o" lastModified="188e7e91f67">
+         <source file="..\..\threePos.c" lastModified="188e15e00a9"/>
       </target>
-      <target file="system_stm32f30x_temp.o" lastModified="188e402d896">
-         <source file="..\..\..\cmsis_boot\system_stm32f30x_temp.c" lastModified="188c4ec3f08"/>
+      <target file="system_stm32f30x_temp.o" lastModified="188e7e91ce7">
+         <source file="..\..\..\cmsis_boot\system_stm32f30x_temp.c" lastModified="188d4e5dc70"/>
       </target>
-      <target file="menu.o" lastModified="188e402d83e">
-         <source file="..\..\menu.c" lastModified="188deb0f29d"/>
+      <target file="menu.o" lastModified="188e7e91ca5">
+         <source file="..\..\menu.c" lastModified="188e70a763d"/>
       </target>
-      <target file="globals.o" lastModified="188e402d55b">
-         <source file="..\..\globals.c" lastModified="188c4ec3f08"/>
+      <target file="globals.o" lastModified="188e7e91a85">
+         <source file="..\..\globals.c" lastModified="188d4e5dc70"/>
       </target>
-      <target file="stm32f30x_rcc.o" lastModified="188e402d408">
-         <source file="..\..\..\cmsis_lib\source\stm32f30x_rcc.c" lastModified="188c4ec3f08"/>
+      <target file="stm32f30x_rcc.o" lastModified="188e7e918d2">
+         <source file="..\..\..\cmsis_lib\source\stm32f30x_rcc.c" lastModified="188d4e5dc70"/>
       </target>
-      <target file="twoPos.o" lastModified="188e402d472">
-         <source file="..\..\twoPos.c" lastModified="188deb9a8bb"/>
+      <target file="twoPos.o" lastModified="188e7e919d6">
+         <source file="..\..\twoPos.c" lastModified="188e15c6cc8"/>
       </target>
-      <target file="misc.o" lastModified="188e402db19">
-         <source file="..\..\misc.c" lastModified="188e3b6f0aa"/>
+      <target file="misc.o" lastModified="188e7e91f18">
+         <source file="..\..\misc.c" lastModified="188e6616030"/>
       </target>
-      <target file="pid.o" lastModified="188e402dbe1">
-         <source file="..\..\pid.c" lastModified="188e3913a8f"/>
+      <target file="menuAux.o" lastModified="188e7e91e85">
+         <source file="..\..\menuAux.c" lastModified="188e70a6555"/>
       </target>
-      <target file="ledDigits.o" lastModified="188e402d5b8">
-         <source file="..\..\ledDigits.c" lastModified="188c4ec3f08"/>
+      <target file="pid.o" lastModified="188e7e91fac">
+         <source file="..\..\pid.c" lastModified="188e692aa88"/>
       </target>
-      <target file="stm32f30x_gpio.o" lastModified="188e402d61b">
-         <source file="..\..\..\cmsis_lib\source\stm32f30x_gpio.c" lastModified="188c4ec3f08"/>
+      <target file="ledDigits.o" lastModified="188e7e91ac4">
+         <source file="..\..\ledDigits.c" lastModified="188d4e5dc70"/>
       </target>
-      <target file="stm32f30x_exti.o" lastModified="188e402d7b9">
-         <source file="..\..\..\cmsis_lib\source\stm32f30x_exti.c" lastModified="188c4ec3f08"/>
+      <target file="flash.o" lastModified="188e7e91980">
+         <source file="..\..\flash.c" lastModified="188e7c59a97"/>
       </target>
-      <target file="syscalls.o" lastModified="188e402d8f5">
-         <source file="..\..\..\syscalls\syscalls.c" lastModified="188c4ec3f08"/>
+      <target file="stm32f30x_gpio.o" lastModified="188e7e91b0e">
+         <source file="..\..\..\cmsis_lib\source\stm32f30x_gpio.c" lastModified="188d4e5dc70"/>
       </target>
-      <target file="stm32f30x_adc.o" lastModified="188e402d503">
-         <source file="..\..\..\cmsis_lib\source\stm32f30x_adc.c" lastModified="188c4ec3f08"/>
+      <target file="stm32f30x_exti.o" lastModified="188e7e91c52">
+         <source file="..\..\..\cmsis_lib\source\stm32f30x_exti.c" lastModified="188d4e5dc70"/>
       </target>
-      <target file="stm32f30x_misc.o" lastModified="188e402d94c">
-         <source file="..\..\..\cmsis_lib\source\stm32f30x_misc.c" lastModified="188c4ec3f08"/>
+      <target file="syscalls.o" lastModified="188e7e91d2b">
+         <source file="..\..\..\syscalls\syscalls.c" lastModified="188d4e5dc70"/>
       </target>
-      <target file="stm32f30x_tim.o" lastModified="188e402da0a">
-         <source file="..\..\..\cmsis_lib\source\stm32f30x_tim.c" lastModified="188c4ec3f08"/>
+      <target file="stm32f30x_adc.o" lastModified="188e7e91a49">
+         <source file="..\..\..\cmsis_lib\source\stm32f30x_adc.c" lastModified="188d4e5dc70"/>
       </target>
-      <target file="init.o" lastModified="188e402d75a">
-         <source file="..\..\init.c" lastModified="188e3f6c94c"/>
+      <target file="stm32f30x_misc.o" lastModified="188e7e91d6d">
+         <source file="..\..\..\cmsis_lib\source\stm32f30x_misc.c" lastModified="188d4e5dc70"/>
       </target>
-      <target file="stm32f30x_dma.o" lastModified="188e402d6f7">
-         <source file="..\..\..\cmsis_lib\source\stm32f30x_dma.c" lastModified="188c4ec3f08"/>
+      <target file="stm32f30x_tim.o" lastModified="188e7e91e02">
+         <source file="..\..\..\cmsis_lib\source\stm32f30x_tim.c" lastModified="188d4e5dc70"/>
       </target>
-      <target file="stm32f30x_syscfg.o" lastModified="188e402daaa">
-         <source file="..\..\..\cmsis_lib\source\stm32f30x_syscfg.c" lastModified="188c4ec3f08"/>
+      <target file="init.o" lastModified="188e7e91c0b">
+         <source file="..\..\init.c" lastModified="188e661602e"/>
       </target>
-      <target file="startup_stm32f30x.o" lastModified="188e402da44">
-         <source file="..\..\..\cmsis_boot\startup\startup_stm32f30x.S" lastModified="188c4ec3f08"/>
+      <target file="stm32f30x_dma.o" lastModified="188e7e91bb4">
+         <source file="..\..\..\cmsis_lib\source\stm32f30x_dma.c" lastModified="188d4e5dc70"/>
       </target>
-      <target file="main.o" lastModified="188e402d697">
-         <source file="..\..\..\main.c" lastModified="188e3fef83a"/>
+      <target file="stm32f30x_syscfg.o" lastModified="188e7e91ecd">
+         <source file="..\..\..\cmsis_lib\source\stm32f30x_syscfg.c" lastModified="188d4e5dc70"/>
+      </target>
+      <target file="startup_stm32f30x.o" lastModified="188e7e91e29">
+         <source file="..\..\..\cmsis_boot\startup\startup_stm32f30x.S" lastModified="188d4e5dc70"/>
+      </target>
+      <target file="stm32f30x_flash.o" lastModified="188e7e9192c">
+         <source file="..\..\..\cmsis_lib\source\stm32f30x_flash.c" lastModified="188e7914963"/>
+      </target>
+      <target file="main.o" lastModified="188e7e91b6c">
+         <source file="..\..\..\main.c" lastModified="188e7c92a90"/>
       </target>
    </processor>
 </history>

@@ -1,13 +1,13 @@
 #ifndef _MENU_H
 #define _MENU_H
+
 #include <stdio.h>
-#include <math.h>
-#include <string.h>
 
 #include "misc.h"
 #include "globals.h"
 #include "threePos.h"
 #include "pid.h"
+#include "menuAux.h"
 
 void naviUp();
 void naviDown();

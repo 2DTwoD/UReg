@@ -28,6 +28,7 @@ int main(void)
 	DMAinit();
 	PWMinit();
 
+	readFlash();
 	resetRegulators();
 	updatePID();
     while(1);
@@ -54,8 +55,8 @@ void TIM3_IRQHandler(){
 		if(pidCount > 25){
 			pidCount = 0;
 			calculatePIDout();
+			outRaw = pidSet.out * 10;
 		}
-		outRaw = pidSet.out * 10;
 		break;
 	}
 }
@@ -115,12 +116,14 @@ void EXTI9_5_IRQHandler(){
 	EXTI_ClearFlag(EXTI_Line6);
 	EXTI_ClearFlag(EXTI_Line7);
 	EXTI_ClearFlag(EXTI_Line8);
+
 	buttonUp.start = GPIOA->IDR & GPIO_Pin_5 && 1;
 	buttonDown.start = GPIOA->IDR & GPIO_Pin_6 && 1;
 	buttonRight.start = GPIOA->IDR & GPIO_Pin_7 && 1;
 	buttonLeft.start = GPIOA->IDR & GPIO_Pin_8 && 1;
 	auxRight.start = GPIOA->IDR & GPIO_Pin_7 && 1;
 	auxLeft.start = GPIOA->IDR & GPIO_Pin_8 && 1;
+
 	if(buttonUp.finish && !(GPIOA->IDR & GPIO_Pin_5)){
 		naviUp();
 		buttonUp.finish = 0;
@@ -129,21 +132,10 @@ void EXTI9_5_IRQHandler(){
 		naviDown();
 		buttonDown.finish = 0;
 	}
-	if(buttonRight.finish && !auxRight.finish && !(GPIOA->IDR & GPIO_Pin_7)){
-		naviRight();
-		buttonRight.finish = 0;
-		blink = 0;
-		blinkCount = 0;
-	}
-	if(buttonLeft.finish && !auxLeft.finish && !(GPIOA->IDR & GPIO_Pin_8)){
-		naviLeft();
-		buttonLeft.finish = 0;
-		blink = 0;
-		blinkCount = 0;
-	}
 	if(auxRight.finish && !(GPIOA->IDR & GPIO_Pin_7)){
 		prog = 1;
 		auxRight.finish = 0;
+		buttonRight.finish = 0;
 	}
 	if(auxLeft.finish && !(GPIOA->IDR & GPIO_Pin_8)){
 		if(prog){
@@ -153,5 +145,18 @@ void EXTI9_5_IRQHandler(){
 			AUTO = !AUTO;
 		}
 		auxLeft.finish = 0;
+		buttonLeft.finish = 0;
+	}
+	if(buttonRight.finish && !(GPIOA->IDR & GPIO_Pin_7)){
+		naviRight();
+		buttonRight.finish = 0;
+		blink = 0;
+		blinkCount = 0;
+	}
+	if(buttonLeft.finish && !(GPIOA->IDR & GPIO_Pin_8)){
+		naviLeft();
+		buttonLeft.finish = 0;
+		blink = 0;
+		blinkCount = 0;
 	}
 }
