@@ -28,7 +28,7 @@ int main(void)
 	DMAinit();
 	PWMinit();
 
-	readFlash();
+	//readFlash();
 	resetRegulators();
 	updatePID();
     while(1);

@@ -5,6 +5,7 @@ extern uint8_t AUTO;
 extern double pv;
 extern double sp;
 extern int8_t prog;
+extern PIDset pidSet;
 
 //¬ертикальные позиции выбранные в меню
 static int8_t navi[] = {0, 0, 0};
@@ -131,7 +132,8 @@ char* getDisp2(){
 		return "----";
 	}
 	if(AUTO){
-		sprintf(field, "%05.1f", sp);
+		//sprintf(field, "%05.1f", sp);
+		sprintf(field, "%05.1f", pidSet.out);
 		return field;
 	}
 	getCurrentModeOut(field);
