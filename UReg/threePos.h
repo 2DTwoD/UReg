@@ -5,13 +5,11 @@
 
 #include "misc.h"
 #include "globals.h"
-
-void setThreePosPars(ThreePosSet *newThreePosSet);
-
+//Сброс выхода регулятора в 0
 void resetThreePos();
-
+//Обновить текущий счетчик времени для регулятора
 void setThreePosCurrentTime();
-
+//Рассчитать выход регулятора
 void calculateThreePosOut();
 
 #endif

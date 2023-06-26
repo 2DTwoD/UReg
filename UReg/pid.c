@@ -8,18 +8,6 @@ extern PIDset pidSet;
 
 static double deviation;
 
-void setPID(PIDset *newPIDset){
-	pidSet.kp = newPIDset->kp;
-	pidSet.ti = newPIDset->ti;
-	pidSet.td = newPIDset->td;
-	pidSet.t = newPIDset->t;
-	pidSet.db = newPIDset->db;
-	pidSet.upOutLim = newPIDset->upOutLim;
-	pidSet.downOutLim = newPIDset->downOutLim;
-	pidSet.inverse = newPIDset->inverse;
-	updatePID();
-}
-
 void resetPID(){
 	pidSet.out = 0.0;
 	outRaw = 0;

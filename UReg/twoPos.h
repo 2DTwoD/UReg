@@ -6,10 +6,9 @@
 #include "misc.h"
 #include "globals.h"
 
-void setTwoPosPars(TwoPosSet *newTwoPosSet);
-
+//Сброс выхода регулятора в 0
 void resetTwoPos();
-
+//Рассчитать выход регулятора
 void calculateTwoPosOut();
 
 #endif

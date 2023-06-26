@@ -29,7 +29,6 @@ static const int8_t sizes[] = {1, 3, 0, 2, 4, 6};
 //Поле для визуализации
 static char field[5];
 
-
 int8_t getMenuSize(int8_t prevNavi){
 	switch(xPos){
 	case 0: return 5;
@@ -139,6 +138,7 @@ char* getDisp2(){
 	getCurrentModeOut(field);
 	return field;
 }
+
 void exitMenu(){
 	navi[0] = 0;
 	navi[1] = 0;

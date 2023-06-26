@@ -255,8 +255,6 @@ Discarded input sections
                 0x00000000       0x33 ..\obj\flash.o
  .text          0x00000000        0x0 ..\obj\twoPos.o
  .data          0x00000000        0x0 ..\obj\twoPos.o
- .text.setTwoPosPars
-                0x00000000       0x38 ..\obj\twoPos.o
  .text          0x00000000        0x0 ..\obj\stm32f30x_adc.o
  .data          0x00000000        0x0 ..\obj\stm32f30x_adc.o
  .bss           0x00000000        0x0 ..\obj\stm32f30x_adc.o
@@ -737,11 +735,8 @@ Discarded input sections
  .data          0x00000000        0x0 ..\obj\misc.o
  .text          0x00000000        0x0 ..\obj\threePos.o
  .data          0x00000000        0x0 ..\obj\threePos.o
- .text.setThreePosPars
-                0x00000000       0x54 ..\obj\threePos.o
  .text          0x00000000        0x0 ..\obj\pid.o
  .data          0x00000000        0x0 ..\obj\pid.o
- .text.setPID   0x00000000       0x78 ..\obj\pid.o
  .text          0x00000000        0x0 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libm.a(lib_a-w_pow.o)
  .data          0x00000000        0x0 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libm.a(lib_a-w_pow.o)
  .bss           0x00000000        0x0 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libm.a(lib_a-w_pow.o)
@@ -1526,8 +1521,8 @@ Linker script and memory map
  .bss           0x20000a80        0xd ..\obj\menu.o
  *fill*         0x20000a8d        0x3 
  .bss           0x20000a90        0x4 ..\obj\syscalls.o
- .bss           0x20000a94      0x190 ..\obj\misc.o
- *fill*         0x20000c24        0x4 
+ .bss           0x20000a94      0x191 ..\obj\misc.o
+ *fill*         0x20000c25        0x3 
  .bss           0x20000c28        0x8 ..\obj\threePos.o
  .bss           0x20000c30        0x8 ..\obj\pid.o
  .bss.__malloc_max_total_mem
@@ -1594,175 +1589,175 @@ LOAD C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\
 END GROUP
 OUTPUT(UReg.elf elf32-littlearm)
 
-.debug_info     0x00000000     0x8b8f
+.debug_info     0x00000000     0x8b22
  .debug_info    0x00000000      0xacc ..\obj\stm32f30x_rcc.o
- .debug_info    0x00000acc      0x2ae ..\obj\twoPos.o
- .debug_info    0x00000d7a     0x131f ..\obj\stm32f30x_adc.o
- .debug_info    0x00002099       0xfb ..\obj\ledDigits.o
- .debug_info    0x00002194      0x612 ..\obj\stm32f30x_gpio.o
- .debug_info    0x000027a6      0x829 ..\obj\main.o
- .debug_info    0x00002fcf      0x47b ..\obj\stm32f30x_dma.o
- .debug_info    0x0000344a      0xe0d ..\obj\init.o
- .debug_info    0x00004257      0x3c4 ..\obj\stm32f30x_exti.o
- .debug_info    0x0000461b      0x3ae ..\obj\menu.o
- .debug_info    0x000049c9      0x4bb ..\obj\system_stm32f30x_temp.o
- .debug_info    0x00004e84      0x3f5 ..\obj\syscalls.o
- .debug_info    0x00005279      0x556 ..\obj\stm32f30x_misc.o
- .debug_info    0x000057cf     0x218c ..\obj\stm32f30x_tim.o
- .debug_info    0x0000795b       0x82 ..\obj\startup_stm32f30x.o
- .debug_info    0x000079dd      0x591 ..\obj\menuAux.o
- .debug_info    0x00007f6e      0x3ce ..\obj\stm32f30x_syscfg.o
- .debug_info    0x0000833c      0x31e ..\obj\misc.o
- .debug_info    0x0000865a      0x31b ..\obj\threePos.o
- .debug_info    0x00008975      0x21a ..\obj\pid.o
+ .debug_info    0x00000acc      0x284 ..\obj\twoPos.o
+ .debug_info    0x00000d50     0x131f ..\obj\stm32f30x_adc.o
+ .debug_info    0x0000206f       0xfb ..\obj\ledDigits.o
+ .debug_info    0x0000216a      0x612 ..\obj\stm32f30x_gpio.o
+ .debug_info    0x0000277c      0x829 ..\obj\main.o
+ .debug_info    0x00002fa5      0x47b ..\obj\stm32f30x_dma.o
+ .debug_info    0x00003420      0xe0d ..\obj\init.o
+ .debug_info    0x0000422d      0x3c4 ..\obj\stm32f30x_exti.o
+ .debug_info    0x000045f1      0x3ae ..\obj\menu.o
+ .debug_info    0x0000499f      0x4bb ..\obj\system_stm32f30x_temp.o
+ .debug_info    0x00004e5a      0x3f5 ..\obj\syscalls.o
+ .debug_info    0x0000524f      0x556 ..\obj\stm32f30x_misc.o
+ .debug_info    0x000057a5     0x218c ..\obj\stm32f30x_tim.o
+ .debug_info    0x00007931       0x82 ..\obj\startup_stm32f30x.o
+ .debug_info    0x000079b3      0x591 ..\obj\menuAux.o
+ .debug_info    0x00007f44      0x3ce ..\obj\stm32f30x_syscfg.o
+ .debug_info    0x00008312      0x32f ..\obj\misc.o
+ .debug_info    0x00008641      0x2f1 ..\obj\threePos.o
+ .debug_info    0x00008932      0x1f0 ..\obj\pid.o
 
-.debug_abbrev   0x00000000     0x1932
+.debug_abbrev   0x00000000     0x189c
  .debug_abbrev  0x00000000      0x1e5 ..\obj\stm32f30x_rcc.o
- .debug_abbrev  0x000001e5      0x13d ..\obj\twoPos.o
- .debug_abbrev  0x00000322      0x192 ..\obj\stm32f30x_adc.o
- .debug_abbrev  0x000004b4       0x94 ..\obj\ledDigits.o
- .debug_abbrev  0x00000548      0x198 ..\obj\stm32f30x_gpio.o
- .debug_abbrev  0x000006e0      0x125 ..\obj\main.o
- .debug_abbrev  0x00000805      0x157 ..\obj\stm32f30x_dma.o
- .debug_abbrev  0x0000095c      0x187 ..\obj\init.o
- .debug_abbrev  0x00000ae3      0x17e ..\obj\stm32f30x_exti.o
- .debug_abbrev  0x00000c61      0x170 ..\obj\menu.o
- .debug_abbrev  0x00000dd1      0x147 ..\obj\system_stm32f30x_temp.o
- .debug_abbrev  0x00000f18       0xe5 ..\obj\syscalls.o
- .debug_abbrev  0x00000ffd      0x147 ..\obj\stm32f30x_misc.o
- .debug_abbrev  0x00001144      0x189 ..\obj\stm32f30x_tim.o
- .debug_abbrev  0x000012cd       0x12 ..\obj\startup_stm32f30x.o
- .debug_abbrev  0x000012df      0x15c ..\obj\menuAux.o
- .debug_abbrev  0x0000143b      0x183 ..\obj\stm32f30x_syscfg.o
- .debug_abbrev  0x000015be      0x146 ..\obj\misc.o
- .debug_abbrev  0x00001704      0x13d ..\obj\threePos.o
- .debug_abbrev  0x00001841       0xf1 ..\obj\pid.o
+ .debug_abbrev  0x000001e5      0x10b ..\obj\twoPos.o
+ .debug_abbrev  0x000002f0      0x192 ..\obj\stm32f30x_adc.o
+ .debug_abbrev  0x00000482       0x94 ..\obj\ledDigits.o
+ .debug_abbrev  0x00000516      0x198 ..\obj\stm32f30x_gpio.o
+ .debug_abbrev  0x000006ae      0x125 ..\obj\main.o
+ .debug_abbrev  0x000007d3      0x157 ..\obj\stm32f30x_dma.o
+ .debug_abbrev  0x0000092a      0x187 ..\obj\init.o
+ .debug_abbrev  0x00000ab1      0x17e ..\obj\stm32f30x_exti.o
+ .debug_abbrev  0x00000c2f      0x170 ..\obj\menu.o
+ .debug_abbrev  0x00000d9f      0x147 ..\obj\system_stm32f30x_temp.o
+ .debug_abbrev  0x00000ee6       0xe5 ..\obj\syscalls.o
+ .debug_abbrev  0x00000fcb      0x147 ..\obj\stm32f30x_misc.o
+ .debug_abbrev  0x00001112      0x189 ..\obj\stm32f30x_tim.o
+ .debug_abbrev  0x0000129b       0x12 ..\obj\startup_stm32f30x.o
+ .debug_abbrev  0x000012ad      0x15c ..\obj\menuAux.o
+ .debug_abbrev  0x00001409      0x183 ..\obj\stm32f30x_syscfg.o
+ .debug_abbrev  0x0000158c      0x146 ..\obj\misc.o
+ .debug_abbrev  0x000016d2      0x10b ..\obj\threePos.o
+ .debug_abbrev  0x000017dd       0xbf ..\obj\pid.o
 
-.debug_aranges  0x00000000      0xc30
+.debug_aranges  0x00000000      0xc18
  .debug_aranges
                 0x00000000      0x150 ..\obj\stm32f30x_rcc.o
  .debug_aranges
-                0x00000150       0x30 ..\obj\twoPos.o
+                0x00000150       0x28 ..\obj\twoPos.o
  .debug_aranges
-                0x00000180      0x210 ..\obj\stm32f30x_adc.o
+                0x00000178      0x210 ..\obj\stm32f30x_adc.o
  .debug_aranges
-                0x00000390       0x28 ..\obj\ledDigits.o
+                0x00000388       0x28 ..\obj\ledDigits.o
  .debug_aranges
-                0x000003b8       0x80 ..\obj\stm32f30x_gpio.o
+                0x000003b0       0x80 ..\obj\stm32f30x_gpio.o
  .debug_aranges
-                0x00000438       0x40 ..\obj\main.o
+                0x00000430       0x40 ..\obj\main.o
  .debug_aranges
-                0x00000478       0x70 ..\obj\stm32f30x_dma.o
+                0x00000470       0x70 ..\obj\stm32f30x_dma.o
  .debug_aranges
-                0x000004e8       0x58 ..\obj\init.o
+                0x000004e0       0x58 ..\obj\init.o
  .debug_aranges
-                0x00000540       0x58 ..\obj\stm32f30x_exti.o
+                0x00000538       0x58 ..\obj\stm32f30x_exti.o
  .debug_aranges
-                0x00000598       0x68 ..\obj\menu.o
+                0x00000590       0x68 ..\obj\menu.o
  .debug_aranges
-                0x00000600       0x30 ..\obj\system_stm32f30x_temp.o
+                0x000005f8       0x30 ..\obj\system_stm32f30x_temp.o
  .debug_aranges
-                0x00000630       0x60 ..\obj\syscalls.o
+                0x00000628       0x60 ..\obj\syscalls.o
  .debug_aranges
-                0x00000690       0x40 ..\obj\stm32f30x_misc.o
+                0x00000688       0x40 ..\obj\stm32f30x_misc.o
  .debug_aranges
-                0x000006d0      0x3a8 ..\obj\stm32f30x_tim.o
+                0x000006c8      0x3a8 ..\obj\stm32f30x_tim.o
  .debug_aranges
-                0x00000a78       0x28 ..\obj\startup_stm32f30x.o
+                0x00000a70       0x28 ..\obj\startup_stm32f30x.o
  .debug_aranges
-                0x00000aa0       0x60 ..\obj\menuAux.o
+                0x00000a98       0x60 ..\obj\menuAux.o
  .debug_aranges
-                0x00000b00       0x88 ..\obj\stm32f30x_syscfg.o
+                0x00000af8       0x88 ..\obj\stm32f30x_syscfg.o
  .debug_aranges
-                0x00000b88       0x38 ..\obj\misc.o
+                0x00000b80       0x38 ..\obj\misc.o
  .debug_aranges
-                0x00000bc0       0x38 ..\obj\threePos.o
+                0x00000bb8       0x30 ..\obj\threePos.o
  .debug_aranges
-                0x00000bf8       0x38 ..\obj\pid.o
+                0x00000be8       0x30 ..\obj\pid.o
 
-.debug_ranges   0x00000000      0xaf8
+.debug_ranges   0x00000000      0xae0
  .debug_ranges  0x00000000      0x140 ..\obj\stm32f30x_rcc.o
- .debug_ranges  0x00000140       0x20 ..\obj\twoPos.o
- .debug_ranges  0x00000160      0x200 ..\obj\stm32f30x_adc.o
- .debug_ranges  0x00000360       0x18 ..\obj\ledDigits.o
- .debug_ranges  0x00000378       0x70 ..\obj\stm32f30x_gpio.o
- .debug_ranges  0x000003e8       0x30 ..\obj\main.o
- .debug_ranges  0x00000418       0x60 ..\obj\stm32f30x_dma.o
- .debug_ranges  0x00000478       0x48 ..\obj\init.o
- .debug_ranges  0x000004c0       0x48 ..\obj\stm32f30x_exti.o
- .debug_ranges  0x00000508       0x58 ..\obj\menu.o
- .debug_ranges  0x00000560       0x20 ..\obj\system_stm32f30x_temp.o
- .debug_ranges  0x00000580       0x50 ..\obj\syscalls.o
- .debug_ranges  0x000005d0       0x30 ..\obj\stm32f30x_misc.o
- .debug_ranges  0x00000600      0x398 ..\obj\stm32f30x_tim.o
- .debug_ranges  0x00000998       0x20 ..\obj\startup_stm32f30x.o
- .debug_ranges  0x000009b8       0x50 ..\obj\menuAux.o
- .debug_ranges  0x00000a08       0x78 ..\obj\stm32f30x_syscfg.o
- .debug_ranges  0x00000a80       0x28 ..\obj\misc.o
- .debug_ranges  0x00000aa8       0x28 ..\obj\threePos.o
- .debug_ranges  0x00000ad0       0x28 ..\obj\pid.o
+ .debug_ranges  0x00000140       0x18 ..\obj\twoPos.o
+ .debug_ranges  0x00000158      0x200 ..\obj\stm32f30x_adc.o
+ .debug_ranges  0x00000358       0x18 ..\obj\ledDigits.o
+ .debug_ranges  0x00000370       0x70 ..\obj\stm32f30x_gpio.o
+ .debug_ranges  0x000003e0       0x30 ..\obj\main.o
+ .debug_ranges  0x00000410       0x60 ..\obj\stm32f30x_dma.o
+ .debug_ranges  0x00000470       0x48 ..\obj\init.o
+ .debug_ranges  0x000004b8       0x48 ..\obj\stm32f30x_exti.o
+ .debug_ranges  0x00000500       0x58 ..\obj\menu.o
+ .debug_ranges  0x00000558       0x20 ..\obj\system_stm32f30x_temp.o
+ .debug_ranges  0x00000578       0x50 ..\obj\syscalls.o
+ .debug_ranges  0x000005c8       0x30 ..\obj\stm32f30x_misc.o
+ .debug_ranges  0x000005f8      0x398 ..\obj\stm32f30x_tim.o
+ .debug_ranges  0x00000990       0x20 ..\obj\startup_stm32f30x.o
+ .debug_ranges  0x000009b0       0x50 ..\obj\menuAux.o
+ .debug_ranges  0x00000a00       0x78 ..\obj\stm32f30x_syscfg.o
+ .debug_ranges  0x00000a78       0x28 ..\obj\misc.o
+ .debug_ranges  0x00000aa0       0x20 ..\obj\threePos.o
+ .debug_ranges  0x00000ac0       0x20 ..\obj\pid.o
 
-.debug_line     0x00000000     0x3eb3
+.debug_line     0x00000000     0x3e6f
  .debug_line    0x00000000      0x56c ..\obj\stm32f30x_rcc.o
- .debug_line    0x0000056c      0x1c3 ..\obj\twoPos.o
- .debug_line    0x0000072f      0x7a7 ..\obj\stm32f30x_adc.o
- .debug_line    0x00000ed6      0x157 ..\obj\ledDigits.o
- .debug_line    0x0000102d      0x307 ..\obj\stm32f30x_gpio.o
- .debug_line    0x00001334      0x318 ..\obj\main.o
- .debug_line    0x0000164c      0x303 ..\obj\stm32f30x_dma.o
- .debug_line    0x0000194f      0x338 ..\obj\init.o
- .debug_line    0x00001c87      0x281 ..\obj\stm32f30x_exti.o
- .debug_line    0x00001f08      0x230 ..\obj\menu.o
- .debug_line    0x00002138      0x1df ..\obj\system_stm32f30x_temp.o
- .debug_line    0x00002317      0x172 ..\obj\syscalls.o
- .debug_line    0x00002489      0x222 ..\obj\stm32f30x_misc.o
- .debug_line    0x000026ab      0xc76 ..\obj\stm32f30x_tim.o
- .debug_line    0x00003321       0x96 ..\obj\startup_stm32f30x.o
- .debug_line    0x000033b7      0x2dc ..\obj\menuAux.o
- .debug_line    0x00003693      0x296 ..\obj\stm32f30x_syscfg.o
- .debug_line    0x00003929      0x1d5 ..\obj\misc.o
- .debug_line    0x00003afe      0x204 ..\obj\threePos.o
- .debug_line    0x00003d02      0x1b1 ..\obj\pid.o
+ .debug_line    0x0000056c      0x1b0 ..\obj\twoPos.o
+ .debug_line    0x0000071c      0x7a7 ..\obj\stm32f30x_adc.o
+ .debug_line    0x00000ec3      0x157 ..\obj\ledDigits.o
+ .debug_line    0x0000101a      0x307 ..\obj\stm32f30x_gpio.o
+ .debug_line    0x00001321      0x318 ..\obj\main.o
+ .debug_line    0x00001639      0x303 ..\obj\stm32f30x_dma.o
+ .debug_line    0x0000193c      0x338 ..\obj\init.o
+ .debug_line    0x00001c74      0x281 ..\obj\stm32f30x_exti.o
+ .debug_line    0x00001ef5      0x230 ..\obj\menu.o
+ .debug_line    0x00002125      0x1df ..\obj\system_stm32f30x_temp.o
+ .debug_line    0x00002304      0x172 ..\obj\syscalls.o
+ .debug_line    0x00002476      0x222 ..\obj\stm32f30x_misc.o
+ .debug_line    0x00002698      0xc76 ..\obj\stm32f30x_tim.o
+ .debug_line    0x0000330e       0x96 ..\obj\startup_stm32f30x.o
+ .debug_line    0x000033a4      0x2dc ..\obj\menuAux.o
+ .debug_line    0x00003680      0x296 ..\obj\stm32f30x_syscfg.o
+ .debug_line    0x00003916      0x1d4 ..\obj\misc.o
+ .debug_line    0x00003aea      0x1ed ..\obj\threePos.o
+ .debug_line    0x00003cd7      0x198 ..\obj\pid.o
 
-.debug_str      0x00000000     0x3628
+.debug_str      0x00000000     0x3611
  .debug_str     0x00000000      0x759 ..\obj\stm32f30x_rcc.o
                                 0x7ea (size before relaxing)
- .debug_str     0x00000759      0x122 ..\obj\twoPos.o
-                                0x29a (size before relaxing)
- .debug_str     0x0000087b      0x994 ..\obj\stm32f30x_adc.o
+ .debug_str     0x00000759      0x111 ..\obj\twoPos.o
+                                0x27f (size before relaxing)
+ .debug_str     0x0000086a      0x994 ..\obj\stm32f30x_adc.o
                                 0xb86 (size before relaxing)
- .debug_str     0x0000120f       0x47 ..\obj\ledDigits.o
+ .debug_str     0x000011fe       0x47 ..\obj\ledDigits.o
                                 0x196 (size before relaxing)
- .debug_str     0x00001256      0x2ba ..\obj\stm32f30x_gpio.o
+ .debug_str     0x00001245      0x2ba ..\obj\stm32f30x_gpio.o
                                 0x495 (size before relaxing)
- .debug_str     0x00001510      0x21f ..\obj\main.o
+ .debug_str     0x000014ff      0x232 ..\obj\main.o
                                 0x494 (size before relaxing)
- .debug_str     0x0000172f      0x210 ..\obj\stm32f30x_dma.o
+ .debug_str     0x00001731      0x210 ..\obj\stm32f30x_dma.o
                                 0x3b3 (size before relaxing)
- .debug_str     0x0000193f      0x752 ..\obj\init.o
+ .debug_str     0x00001941      0x752 ..\obj\init.o
                                 0xd92 (size before relaxing)
- .debug_str     0x00002091      0x116 ..\obj\stm32f30x_exti.o
+ .debug_str     0x00002093      0x116 ..\obj\stm32f30x_exti.o
                                 0x376 (size before relaxing)
- .debug_str     0x000021a7       0xd4 ..\obj\menu.o
+ .debug_str     0x000021a9       0xd4 ..\obj\menu.o
                                 0x2a7 (size before relaxing)
- .debug_str     0x0000227b       0xe6 ..\obj\system_stm32f30x_temp.o
+ .debug_str     0x0000227d       0xe6 ..\obj\system_stm32f30x_temp.o
                                 0x300 (size before relaxing)
- .debug_str     0x00002361      0x14f ..\obj\syscalls.o
+ .debug_str     0x00002363      0x14f ..\obj\syscalls.o
                                 0x2b3 (size before relaxing)
- .debug_str     0x000024b0      0x11f ..\obj\stm32f30x_misc.o
+ .debug_str     0x000024b2      0x11f ..\obj\stm32f30x_misc.o
                                 0x3c4 (size before relaxing)
- .debug_str     0x000025cf      0xbd6 ..\obj\stm32f30x_tim.o
+ .debug_str     0x000025d1      0xbd6 ..\obj\stm32f30x_tim.o
                                 0xf6d (size before relaxing)
- .debug_str     0x000031a5       0xf1 ..\obj\menuAux.o
+ .debug_str     0x000031a7       0xf1 ..\obj\menuAux.o
                                 0x38e (size before relaxing)
- .debug_str     0x00003296      0x25f ..\obj\stm32f30x_syscfg.o
+ .debug_str     0x00003298      0x25f ..\obj\stm32f30x_syscfg.o
                                 0x3f6 (size before relaxing)
- .debug_str     0x000034f5       0x6a ..\obj\misc.o
-                                0x2ac (size before relaxing)
- .debug_str     0x0000355f       0x7d ..\obj\threePos.o
-                                0x2fa (size before relaxing)
- .debug_str     0x000035dc       0x4c ..\obj\pid.o
-                                0x203 (size before relaxing)
+ .debug_str     0x000034f7       0x7a ..\obj\misc.o
+                                0x2bc (size before relaxing)
+ .debug_str     0x00003571       0x5e ..\obj\threePos.o
+                                0x2db (size before relaxing)
+ .debug_str     0x000035cf       0x42 ..\obj\pid.o
+                                0x1f2 (size before relaxing)
 
 .comment        0x00000000       0x6e
  .comment       0x00000000       0x6e ..\obj\stm32f30x_rcc.o
@@ -1909,51 +1904,51 @@ OUTPUT(UReg.elf elf32-littlearm)
  .ARM.attributes
                 0x00000a46       0x1e c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_dvmd_tls.o)
 
-.debug_frame    0x00000000     0x3ce8
+.debug_frame    0x00000000     0x3c70
  .debug_frame   0x00000000      0x60c ..\obj\stm32f30x_rcc.o
- .debug_frame   0x0000060c       0x78 ..\obj\twoPos.o
- .debug_frame   0x00000684      0x9e4 ..\obj\stm32f30x_adc.o
- .debug_frame   0x00001068       0x5c ..\obj\ledDigits.o
- .debug_frame   0x000010c4      0x214 ..\obj\stm32f30x_gpio.o
- .debug_frame   0x000012d8       0xb0 ..\obj\main.o
- .debug_frame   0x00001388      0x1c8 ..\obj\stm32f30x_dma.o
- .debug_frame   0x00001550      0x134 ..\obj\init.o
- .debug_frame   0x00001684      0x148 ..\obj\stm32f30x_exti.o
- .debug_frame   0x000017cc      0x160 ..\obj\menu.o
- .debug_frame   0x0000192c       0x7c ..\obj\system_stm32f30x_temp.o
- .debug_frame   0x000019a8      0x168 ..\obj\syscalls.o
- .debug_frame   0x00001b10       0xd8 ..\obj\stm32f30x_misc.o
- .debug_frame   0x00001be8     0x11c4 ..\obj\stm32f30x_tim.o
- .debug_frame   0x00002dac      0x178 ..\obj\menuAux.o
- .debug_frame   0x00002f24      0x230 ..\obj\stm32f30x_syscfg.o
- .debug_frame   0x00003154       0xa4 ..\obj\misc.o
- .debug_frame   0x000031f8       0x9c ..\obj\threePos.o
- .debug_frame   0x00003294       0xac ..\obj\pid.o
- .debug_frame   0x00003340       0x4c C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libm.a(lib_a-w_pow.o)
- .debug_frame   0x0000338c       0x68 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libm.a(lib_a-e_pow.o)
- .debug_frame   0x000033f4       0x34 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libm.a(lib_a-e_sqrt.o)
- .debug_frame   0x00003428       0x20 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libm.a(lib_a-s_fabs.o)
- .debug_frame   0x00003448       0x20 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libm.a(lib_a-s_finite.o)
- .debug_frame   0x00003468       0x20 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libm.a(lib_a-s_matherr.o)
- .debug_frame   0x00003488       0x20 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libm.a(lib_a-s_nan.o)
- .debug_frame   0x000034a8       0x3c C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libm.a(lib_a-s_rint.o)
- .debug_frame   0x000034e4       0x30 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libm.a(lib_a-s_scalbn.o)
- .debug_frame   0x00003514       0x20 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libm.a(lib_a-s_copysign.o)
- .debug_frame   0x00003534       0x20 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-errno.o)
- .debug_frame   0x00003554       0x84 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-sprintf.o)
- .debug_frame   0x000035d8       0x44 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-svfprintf.o)
- .debug_frame   0x0000361c       0x88 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-dtoa.o)
- .debug_frame   0x000036a4       0x9c C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-locale.o)
- .debug_frame   0x00003740       0x58 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-mallocr.o)
- .debug_frame   0x00003798       0x30 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-mlock.o)
- .debug_frame   0x000037c8      0x264 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-mprec.o)
- .debug_frame   0x00003a2c       0x2c C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-sbrkr.o)
- .debug_frame   0x00003a58       0x78 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-svfiprintf.o)
- .debug_frame   0x00003ad0       0x28 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-callocr.o)
- .debug_frame   0x00003af8       0x74 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-freer.o)
- .debug_frame   0x00003b6c       0x30 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-memmove.o)
- .debug_frame   0x00003b9c       0x34 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-memset.o)
- .debug_frame   0x00003bd0       0x60 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-reallocr.o)
- .debug_frame   0x00003c30       0x58 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-reent.o)
- .debug_frame   0x00003c88       0x2c c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x00003cb4       0x34 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x0000060c       0x50 ..\obj\twoPos.o
+ .debug_frame   0x0000065c      0x9e4 ..\obj\stm32f30x_adc.o
+ .debug_frame   0x00001040       0x5c ..\obj\ledDigits.o
+ .debug_frame   0x0000109c      0x214 ..\obj\stm32f30x_gpio.o
+ .debug_frame   0x000012b0       0xb0 ..\obj\main.o
+ .debug_frame   0x00001360      0x1c8 ..\obj\stm32f30x_dma.o
+ .debug_frame   0x00001528      0x134 ..\obj\init.o
+ .debug_frame   0x0000165c      0x148 ..\obj\stm32f30x_exti.o
+ .debug_frame   0x000017a4      0x160 ..\obj\menu.o
+ .debug_frame   0x00001904       0x7c ..\obj\system_stm32f30x_temp.o
+ .debug_frame   0x00001980      0x168 ..\obj\syscalls.o
+ .debug_frame   0x00001ae8       0xd8 ..\obj\stm32f30x_misc.o
+ .debug_frame   0x00001bc0     0x11c4 ..\obj\stm32f30x_tim.o
+ .debug_frame   0x00002d84      0x178 ..\obj\menuAux.o
+ .debug_frame   0x00002efc      0x230 ..\obj\stm32f30x_syscfg.o
+ .debug_frame   0x0000312c       0xa4 ..\obj\misc.o
+ .debug_frame   0x000031d0       0x74 ..\obj\threePos.o
+ .debug_frame   0x00003244       0x84 ..\obj\pid.o
+ .debug_frame   0x000032c8       0x4c C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libm.a(lib_a-w_pow.o)
+ .debug_frame   0x00003314       0x68 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libm.a(lib_a-e_pow.o)
+ .debug_frame   0x0000337c       0x34 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libm.a(lib_a-e_sqrt.o)
+ .debug_frame   0x000033b0       0x20 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libm.a(lib_a-s_fabs.o)
+ .debug_frame   0x000033d0       0x20 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libm.a(lib_a-s_finite.o)
+ .debug_frame   0x000033f0       0x20 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libm.a(lib_a-s_matherr.o)
+ .debug_frame   0x00003410       0x20 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libm.a(lib_a-s_nan.o)
+ .debug_frame   0x00003430       0x3c C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libm.a(lib_a-s_rint.o)
+ .debug_frame   0x0000346c       0x30 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libm.a(lib_a-s_scalbn.o)
+ .debug_frame   0x0000349c       0x20 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libm.a(lib_a-s_copysign.o)
+ .debug_frame   0x000034bc       0x20 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-errno.o)
+ .debug_frame   0x000034dc       0x84 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-sprintf.o)
+ .debug_frame   0x00003560       0x44 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-svfprintf.o)
+ .debug_frame   0x000035a4       0x88 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-dtoa.o)
+ .debug_frame   0x0000362c       0x9c C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-locale.o)
+ .debug_frame   0x000036c8       0x58 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-mallocr.o)
+ .debug_frame   0x00003720       0x30 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-mlock.o)
+ .debug_frame   0x00003750      0x264 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-mprec.o)
+ .debug_frame   0x000039b4       0x2c C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-sbrkr.o)
+ .debug_frame   0x000039e0       0x78 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-svfiprintf.o)
+ .debug_frame   0x00003a58       0x28 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-callocr.o)
+ .debug_frame   0x00003a80       0x74 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-freer.o)
+ .debug_frame   0x00003af4       0x30 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-memmove.o)
+ .debug_frame   0x00003b24       0x34 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-memset.o)
+ .debug_frame   0x00003b58       0x60 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-reallocr.o)
+ .debug_frame   0x00003bb8       0x58 C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libg.a(lib_a-reent.o)
+ .debug_frame   0x00003c10       0x2c c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x00003c3c       0x34 c:/program files (x86)/gnu tools arm embedded/5.3 2016q1/bin/../lib/gcc/arm-none-eabi/5.3.1/armv7e-m\libgcc.a(_udivmoddi4.o)

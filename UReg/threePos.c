@@ -8,16 +8,6 @@ extern ThreePosSet threePosSet;
 
 static double deviation;
 
-void setThreePosPars(ThreePosSet *newThreePosSet){
-	threePosSet.treshold = newThreePosSet->treshold;
-	threePosSet.deadband = newThreePosSet->deadband;
-	threePosSet.waitTime = newThreePosSet->waitTime;
-	threePosSet.pulseTime = newThreePosSet->pulseTime;
-	threePosSet.inverse = newThreePosSet->inverse;
-	threePosSet.currentTime = 0;
-	threePosSet.pulseFlag = 0;
-}
-
 void resetThreePos(){
 	threePosSet.currentTime = 0;
 	threePosSet.out.out1 = 0;

@@ -7,12 +7,6 @@ extern TwoPosSet twoPosSet;
 
 static double deviation;
 
-void setTwoPosPars(TwoPosSet *newTwoPosSet){
-	twoPosSet.up_indent = newTwoPosSet->up_indent;
-	twoPosSet.up_indent = newTwoPosSet->down_indent;
-	twoPosSet.inverse = newTwoPosSet->inverse;
-}
-
 void resetTwoPos(){
 	twoPosSet.out = 0;
 	changeDO(GPIOC, 0x10, 0);

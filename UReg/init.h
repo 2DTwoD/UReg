@@ -11,12 +11,19 @@
 #include <stm32f30x_adc.h>
 #include <stm32f30x_dma.h>
 
+//Настройка пинов ввода/вывода
 void GPIOinit();
+//Настройка внешних прерываний(от кнопок)
 void EXTIinit();
+//Настройка приоритетов прерываний
 void NVICinit();
+//Настройка таймеров
 void TIMinit();
+//Настройка АЦП
 void ADCinit();
+//Настройка прямого доступа в память
 void DMAinit();
+//Настройка ШИМ
 void PWMinit();
 
 #endif

@@ -127,7 +127,6 @@ void TIMinit(){
 	timStruct.TIM_CounterMode = TIM_CounterMode_Up;
 	timStruct.TIM_Prescaler = 36;
 	timStruct.TIM_Period = 1000;
-
 	TIM_TimeBaseInit(TIM1, &timStruct);
 	TIM_Cmd(TIM1, ENABLE);
 	TIM_CtrlPWMOutputs(TIM1, ENABLE);

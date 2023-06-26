@@ -2,20 +2,21 @@
 
 extern uint16_t pvRaw;
 
-static uint16_t pvArray[200];
+static uint16_t pvArray[MAX_AVG_NUM];
+static uint8_t currentAvgIndex = 0;
 
 uint16_t getAvgRawPv(){
+	pvArray[currentAvgIndex] = pvRaw;
+	currentAvgIndex++;
+	if(currentAvgIndex >= MAX_AVG_NUM){
+		currentAvgIndex = 0;
+	}
 	uint32_t avg = 0;
 	int16_t i;
-	for(i = 199; i >= 0; i--){
-		if(i == 0){
-			pvArray[i] = pvRaw;
-		} else {
-			pvArray[i] = pvArray[i - 1];
-		}
+	for(i = 0; i < MAX_AVG_NUM; i++){
 		avg += pvArray[i];
 	}
-	return avg / 200;
+	return avg / MAX_AVG_NUM;
 }
 
 void resetRegulators(){

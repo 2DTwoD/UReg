@@ -4,12 +4,11 @@
 #include <math.h>
 #include "globals.h"
 
-void setPID(PIDset *newPIDpars);
-
+//Сброс выхода регулятора в 0
 void resetPID();
-
+//обновление коэффициентов регулятора
 void updatePID();
-
+//Расчет выхода регулятора
 void calculatePIDout();
 
 #endif

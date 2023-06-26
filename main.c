@@ -31,6 +31,7 @@ int main(void)
 	//readFlash();
 	resetRegulators();
 	updatePID();
+
     while(1);
 }
 //÷икл 1мс
@@ -67,10 +68,10 @@ void TIM4_IRQHandler(){
 
 	percPv = (pv - scale.down) * 100 / (scale.up - scale.down);
 
-	HHdelay.start = percPv > limit.hh && 1;
-	LHdelay.start = percPv > limit.lh && 1;
-	HLdelay.start = percPv < limit.hl && 1;
-	LLdelay.start = percPv < limit.ll && 1;
+	HHdelay.start = (percPv > limit.hh);
+	LHdelay.start = (percPv > limit.lh);
+	HLdelay.start = (percPv < limit.hl);
+	LLdelay.start = (percPv < limit.ll);
 
 	timerUpdater(&buttonUp);
 	timerUpdater(&buttonDown);
