@@ -84,57 +84,55 @@
   </Components>
   <Files>
     <File name="cmsis_lib/include/stm32f30x_gpio.h" path="cmsis_lib/include/stm32f30x_gpio.h" type="1"/>
-    <File name="init" path="" type="2"/>
     <File name="utils/source" path="" type="2"/>
     <File name="regulators/include/twoPos.h" path="UReg/twoPos.h" type="1"/>
-    <File name="global/source" path="" type="2"/>
     <File name="cmsis_lib/include/stm32f30x_flash.h" path="cmsis_lib/include/stm32f30x_flash.h" type="1"/>
+    <File name="utils/include/init.h" path="UReg/init.h" type="1"/>
     <File name="cmsis_lib/include/stm32f30x_exti.h" path="cmsis_lib/include/stm32f30x_exti.h" type="1"/>
     <File name="cmsis_boot" path="" type="2"/>
     <File name="cmsis_lib/source/stm32f30x_flash.c" path="cmsis_lib/source/stm32f30x_flash.c" type="1"/>
     <File name="regulators/include/threePos.h" path="UReg/threePos.h" type="1"/>
     <File name="regulators" path="" type="2"/>
-    <File name="menu" path="" type="2"/>
     <File name="cmsis_lib/source/stm32f30x_exti.c" path="cmsis_lib/source/stm32f30x_exti.c" type="1"/>
-    <File name="init/source" path="" type="2"/>
+    <File name="menu" path="" type="2"/>
     <File name="cmsis_boot/startup/startup_stm32f30x.S" path="cmsis_boot/startup/startup_stm32f30x.S" type="1"/>
     <File name="cmsis/core_cm4_simd.h" path="cmsis/core_cm4_simd.h" type="1"/>
     <File name="cmsis_boot/startup" path="" type="2"/>
     <File name="cmsis_lib/include/stm32f30x_dma.h" path="cmsis_lib/include/stm32f30x_dma.h" type="1"/>
-    <File name="cmsis_lib/source/stm32f30x_misc.c" path="cmsis_lib/source/stm32f30x_misc.c" type="1"/>
     <File name="cmsis/core_cmFunc.h" path="cmsis/core_cmFunc.h" type="1"/>
+    <File name="cmsis_lib/source/stm32f30x_misc.c" path="cmsis_lib/source/stm32f30x_misc.c" type="1"/>
     <File name="cmsis/core_cm4.h" path="cmsis/core_cm4.h" type="1"/>
     <File name="utils/include" path="" type="2"/>
-    <File name="cmsis_lib/include/stm32f30x_rcc.h" path="cmsis_lib/include/stm32f30x_rcc.h" type="1"/>
     <File name="cmsis_lib/include/stm32f30x_tim.h" path="cmsis_lib/include/stm32f30x_tim.h" type="1"/>
+    <File name="cmsis_lib/include/stm32f30x_rcc.h" path="cmsis_lib/include/stm32f30x_rcc.h" type="1"/>
     <File name="main.h" path="main.h" type="1"/>
-    <File name="cmsis_lib/include/stm32f30x_adc.h" path="cmsis_lib/include/stm32f30x_adc.h" type="1"/>
     <File name="syscalls/syscalls.c" path="syscalls/syscalls.c" type="1"/>
+    <File name="cmsis_lib/include/stm32f30x_adc.h" path="cmsis_lib/include/stm32f30x_adc.h" type="1"/>
     <File name="regulators/include" path="" type="2"/>
     <File name="cmsis_lib/source" path="" type="2"/>
     <File name="menu/source/menuAux.c" path="UReg/menuAux.c" type="1"/>
-    <File name="init/source/init.c" path="UReg/init.c" type="1"/>
     <File name="cmsis_boot/system_stm32f30x.h" path="cmsis_boot/system_stm32f30x.h" type="1"/>
     <File name="utils/include/flash.h" path="UReg/flash.h" type="1"/>
+    <File name="utils/include/globals.h" path="UReg/globals.h" type="1"/>
     <File name="regulators/source" path="" type="2"/>
     <File name="cmsis_lib/source/stm32f30x_adc.c" path="cmsis_lib/source/stm32f30x_adc.c" type="1"/>
     <File name="cmsis_lib/include/stm32f30x_misc.h" path="cmsis_lib/include/stm32f30x_misc.h" type="1"/>
     <File name="utils/source/misc.c" path="UReg/misc.c" type="1"/>
-    <File name="global" path="" type="2"/>
+    <File name="utils/source/globals.c" path="UReg/globals.c" type="1"/>
     <File name="regulators/source/pid.c" path="UReg/pid.c" type="1"/>
     <File name="utils/source/ledDigits.c" path="UReg/ledDigits.c" type="1"/>
-    <File name="cmsis_lib/source/stm32f30x_syscfg.c" path="cmsis_lib/source/stm32f30x_syscfg.c" type="1"/>
     <File name="cmsis/core_cmInstr.h" path="cmsis/core_cmInstr.h" type="1"/>
+    <File name="cmsis_lib/source/stm32f30x_syscfg.c" path="cmsis_lib/source/stm32f30x_syscfg.c" type="1"/>
     <File name="cmsis_boot/stm32f30x.h" path="cmsis_boot/stm32f30x.h" type="1"/>
     <File name="utils/include/ledDigits.h" path="UReg/ledDigits.h" type="1"/>
+    <File name="utils/source/flash.c" path="UReg/flash.c" type="1"/>
     <File name="cmsis_lib/include/stm32f30x_syscfg.h" path="cmsis_lib/include/stm32f30x_syscfg.h" type="1"/>
     <File name="utils/include/misc.h" path="UReg/misc.h" type="1"/>
-    <File name="utils/source/flash.c" path="UReg/flash.c" type="1"/>
     <File name="cmsis_lib/source/stm32f30x_dma.c" path="cmsis_lib/source/stm32f30x_dma.c" type="1"/>
-    <File name="init/include" path="" type="2"/>
     <File name="menu/source/menu.c" path="UReg/menu.c" type="1"/>
     <File name="menu/include/menu.h" path="UReg/menu.h" type="1"/>
     <File name="menu/source" path="" type="2"/>
+    <File name="utils/source/init.c" path="UReg/init.c" type="1"/>
     <File name="cmsis_lib/source/stm32f30x_tim.c" path="cmsis_lib/source/stm32f30x_tim.c" type="1"/>
     <File name="cmsis_lib/source/stm32f30x_gpio.c" path="cmsis_lib/source/stm32f30x_gpio.c" type="1"/>
     <File name="cmsis" path="" type="2"/>
@@ -143,15 +141,11 @@
     <File name="utils" path="" type="2"/>
     <File name="regulators/include/pid.h" path="UReg/pid.h" type="1"/>
     <File name="syscalls" path="" type="2"/>
-    <File name="init/include/init.h" path="UReg/init.h" type="1"/>
-    <File name="global/include" path="" type="2"/>
     <File name="cmsis_boot/system_stm32f30x_temp.c" path="cmsis_boot/system_stm32f30x_temp.c" type="1"/>
     <File name="cmsis_lib/include" path="" type="2"/>
-    <File name="global/source/globals.c" path="UReg/globals.c" type="1"/>
     <File name="regulators/source/twoPos.c" path="UReg/twoPos.c" type="1"/>
     <File name="regulators/source/threePos.c" path="UReg/threePos.c" type="1"/>
     <File name="menu/include/menuAux.h" path="UReg/menuAux.h" type="1"/>
-    <File name="global/include/globals.h" path="UReg/globals.h" type="1"/>
     <File name="main.c" path="main.c" type="1"/>
     <File name="cmsis_lib/source/stm32f30x_rcc.c" path="cmsis_lib/source/stm32f30x_rcc.c" type="1"/>
   </Files>

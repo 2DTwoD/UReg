@@ -25,7 +25,7 @@ static char* menu1Strings[][7] = {
 		{"PrOP", " tI ", " td ", " db ", "UPOL", "doOL", " rE "}
 };
 //Размеры списков в меню первой позиции
-static int8_t sizes[] = {1, 3, 0, 2, 4, 6};
+static const int8_t sizes[] = {1, 3, 0, 2, 4, 6};
 //Поле для визуализации
 static char field[5];
 
