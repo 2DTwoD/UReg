@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dependencies>
+   <includePath signature="/ID:\GitProjects\UReg\cmsis_boot /ID:\GitProjects\UReg\UReg /ID:\ /ID:\GitProjects\UReg\cmsis_lib\include /ID:\GitProjects\UReg\cmsis_lib /ID:\GitProjects\UReg\cmsis /ID:\GitProjects /ID:\GitProjects\UReg">
+      <source file="..\..\init.h" lastModified="188f82f131c">
+         <include file="..\..\..\cmsis_boot\stm32f30x.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f30x_gpio.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f30x_rcc.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f30x_tim.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f30x_misc.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f30x_exti.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f30x_syscfg.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f30x_adc.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f30x_dma.h"/>
+      </source>
+      <source file="..\..\ledDigits.h" lastModified="188f82f1707">
+      </source>
+      <source file="..\..\flash.h" lastModified="188f87576ea">
+         <include file="..\..\..\cmsis_boot\stm32f30x.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f30x_flash.h"/>
+         <include file="..\..\globals.h"/>
+      </source>
+      <source file="..\..\..\cmsis_lib\include\stm32f30x_syscfg.h" lastModified="188c4ec3f08">
+         <include file="..\..\..\cmsis_boot\stm32f30x.h"/>
+      </source>
+      <source file="..\..\init.c" lastModified="188f82f1319">
+         <include file="..\..\init.h"/>
+      </source>
+      <source file="..\..\..\cmsis_lib\source\stm32f30x_exti.c" lastModified="188c4ec3f08">
+         <include file="..\..\..\cmsis_lib\include\stm32f30x_exti.h"/>
+      </source>
+      <source file="..\..\..\cmsis_lib\source\stm32f30x_rcc.c" lastModified="188c4ec3f08">
+         <include file="..\..\..\cmsis_lib\include\stm32f30x_rcc.h"/>
+      </source>
+      <source file="..\..\..\cmsis_lib\source\stm32f30x_gpio.c" lastModified="188c4ec3f08">
+         <include file="..\..\..\cmsis_lib\include\stm32f30x_gpio.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f30x_rcc.h"/>
+      </source>
+      <source file="..\..\flash.c" lastModified="188f874a32b">
+         <include file="..\..\flash.h"/>
+      </source>
+      <source file="..\..\ledDigits.c" lastModified="188c4ec3f08">
+         <include file="..\..\ledDigits.h"/>
+      </source>
+      <source file="..\..\twoPos.h" lastModified="188f82f1738">
+         <include file="..\..\..\cmsis_boot\stm32f30x.h"/>
+         <include file="..\..\misc.h"/>
+         <include file="..\..\globals.h"/>
+      </source>
+      <source file="..\..\..\cmsis_lib\source\stm32f30x_syscfg.c" lastModified="188c4ec3f08">
+         <include file="..\..\..\cmsis_lib\include\stm32f30x_syscfg.h"/>
+      </source>
+      <source file="..\..\..\cmsis_boot\stm32f30x.h" lastModified="188c4ec42f0">
+         <include file="..\..\..\cmsis\core_cm4.h"/>
+         <include file="..\..\..\cmsis_boot\system_stm32f30x.h"/>
+      </source>
+      <source file="..\..\..\cmsis_lib\include\stm32f30x_misc.h" lastModified="188c4ec3f08">
+         <include file="..\..\..\cmsis_boot\stm32f30x.h"/>
+      </source>
+      <source file="..\..\..\cmsis_lib\include\stm32f30x_rcc.h" lastModified="188c4ec3f08">
+         <include file="..\..\..\cmsis_boot\stm32f30x.h"/>
+      </source>
+      <source file="..\..\..\cmsis_lib\source\stm32f30x_adc.c" lastModified="188c4ec3f08">
+         <include file="..\..\..\cmsis_lib\include\stm32f30x_adc.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f30x_rcc.h"/>
+      </source>
+      <source file="..\..\twoPos.c" lastModified="188f82f134d">
+         <include file="..\..\twoPos.h"/>
+      </source>
+      <source file="..\..\..\cmsis_lib\include\stm32f30x_adc.h" lastModified="188c4ec3f08">
+         <include file="..\..\..\cmsis_boot\stm32f30x.h"/>
+      </source>
+      <source file="..\..\..\cmsis_lib\source\stm32f30x_dma.c" lastModified="188c4ec3f08">
+         <include file="..\..\..\cmsis_lib\include\stm32f30x_dma.h"/>
+      </source>
+      <source file="..\..\..\cmsis_lib\include\stm32f30x_dma.h" lastModified="188c4ec3f08">
+         <include file="..\..\..\cmsis_boot\stm32f30x.h"/>
+      </source>
+      <source file="..\..\..\cmsis\core_cmFunc.h" lastModified="188c4ec46d8">
+      </source>
+      <source file="..\..\..\cmsis\core_cm4_simd.h" lastModified="188c4ec46d8">
+      </source>
+      <source file="..\..\menuAux.h" lastModified="188f82f1b07">
+         <include file="..\..\globals.h"/>
+         <include file="..\..\misc.h"/>
+      </source>
+      <source file="..\..\..\cmsis_lib\include\stm32f30x_flash.h" lastModified="188e8878d8b">
+         <include file="..\..\..\cmsis_boot\stm32f30x.h"/>
+      </source>
+      <source file="..\..\menuAux.c" lastModified="188e8878d80">
+         <include file="..\..\menuAux.h"/>
+      </source>
+      <source file="..\..\..\cmsis_lib\source\stm32f30x_flash.c" lastModified="188e8878d8e">
+         <include file="..\..\..\cmsis_lib\include\stm32f30x_flash.h"/>
+      </source>
+      <source file="..\..\..\cmsis_boot\system_stm32f30x_temp.c" lastModified="188c4ec3f08">
+         <include file="..\..\..\cmsis_boot\stm32f30x.h"/>
+      </source>
+      <source file="..\..\menu.h" lastModified="188f84855bb">
+         <include file="..\..\misc.h"/>
+         <include file="..\..\globals.h"/>
+         <include file="..\..\threePos.h"/>
+         <include file="..\..\pid.h"/>
+         <include file="..\..\menuAux.h"/>
+      </source>
+      <source file="..\..\..\main.h" lastModified="188f85fc98a">
+         <include file="..\..\init.h"/>
+         <include file="..\..\globals.h"/>
+         <include file="..\..\misc.h"/>
+         <include file="..\..\menu.h"/>
+         <include file="..\..\ledDigits.h"/>
+         <include file="..\..\twoPos.h"/>
+         <include file="..\..\threePos.h"/>
+         <include file="..\..\pid.h"/>
+         <include file="..\..\flash.h"/>
+      </source>
+      <source file="..\..\..\syscalls\syscalls.c" lastModified="188c4ec4ea8">
+      </source>
+      <source file="..\..\misc.h" lastModified="188f82f133d">
+         <include file="..\..\..\cmsis_boot\stm32f30x.h"/>
+         <include file="..\..\globals.h"/>
+         <include file="..\..\twoPos.h"/>
+         <include file="..\..\threePos.h"/>
+         <include file="..\..\pid.h"/>
+      </source>
+      <source file="..\..\menu.c" lastModified="188f82f1322">
+         <include file="..\..\menu.h"/>
+      </source>
+      <source file="..\..\threePos.h" lastModified="188f82f1732">
+         <include file="..\..\..\cmsis_boot\stm32f30x.h"/>
+         <include file="..\..\misc.h"/>
+         <include file="..\..\globals.h"/>
+      </source>
+      <source file="..\..\..\cmsis\core_cmInstr.h" lastModified="188c4ec46d8">
+      </source>
+      <source file="..\..\..\main.c" lastModified="188f86baf62">
+         <include file="..\..\..\main.h"/>
+      </source>
+      <source file="..\..\..\cmsis_lib\include\stm32f30x_exti.h" lastModified="188c4ec3f08">
+         <include file="..\..\..\cmsis_boot\stm32f30x.h"/>
+      </source>
+      <source file="..\..\misc.c" lastModified="188f82f133a">
+         <include file="..\..\misc.h"/>
+      </source>
+      <source file="..\..\..\cmsis_lib\include\stm32f30x_gpio.h" lastModified="188c4ec3f08">
+         <include file="..\..\..\cmsis_boot\stm32f30x.h"/>
+      </source>
+      <source file="..\..\threePos.c" lastModified="188f82f172f">
+         <include file="..\..\threePos.h"/>
+      </source>
+      <source file="..\..\..\cmsis_boot\system_stm32f30x.h" lastModified="188c4ec3f08">
+      </source>
+      <source file="..\..\..\cmsis_lib\source\stm32f30x_misc.c" lastModified="188c4ec3f08">
+         <include file="..\..\..\cmsis_lib\include\stm32f30x_misc.h"/>
+      </source>
+      <source file="..\..\globals.h" lastModified="188f82f16fe">
+      </source>
+      <source file="..\..\globals.c" lastModified="188c4ec3f08">
+         <include file="..\..\globals.h"/>
+      </source>
+      <source file="..\..\pid.h" lastModified="188f82f1b14">
+         <include file="..\..\globals.h"/>
+      </source>
+      <source file="..\..\..\cmsis_boot\startup\startup_stm32f30x.S" lastModified="188c4ec3f08">
+      </source>
+      <source file="..\..\pid.c" lastModified="188f82f1340">
+         <include file="..\..\pid.h"/>
+      </source>
+      <source file="..\..\..\cmsis_lib\source\stm32f30x_tim.c" lastModified="188c4ec3f08">
+         <include file="..\..\..\cmsis_lib\include\stm32f30x_tim.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f30x_rcc.h"/>
+      </source>
+      <source file="..\..\..\cmsis_lib\include\stm32f30x_tim.h" lastModified="188c4ec3f08">
+         <include file="..\..\..\cmsis_boot\stm32f30x.h"/>
+      </source>
+      <source file="..\..\..\cmsis\core_cm4.h" lastModified="188c4ec42f0">
+         <include file="..\..\..\cmsis\core_cmInstr.h"/>
+         <include file="..\..\..\cmsis\core_cmFunc.h"/>
+         <include file="..\..\..\cmsis\core_cm4_simd.h"/>
+      </source>
+   </includePath>
+</dependencies>

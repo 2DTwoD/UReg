@@ -5,8 +5,11 @@ static uint8_t field1[4];
 static uint8_t field2[4];
 static uint8_t blinkCount = 0;
 static uint8_t pidCount = 0;
+static uint16_t saveCount = 0;
 static uint8_t blink = 0;
 static uint8_t percPv = 0;
+static uint8_t prevAUTO;
+static double prevSP;
 static onDelay buttonUp = {0, 2, 0, 0};
 static onDelay buttonDown = {0, 2, 0, 0};
 static onDelay buttonLeft = {0, 2, 0, 0};
@@ -28,7 +31,9 @@ int main(void)
 	DMAinit();
 	PWMinit();
 
-	//readFlash();
+	readFlash();
+	prevAUTO = AUTO;
+	prevSP = sp;
 	resetRegulators();
 	updatePID();
 
@@ -83,6 +88,17 @@ void TIM4_IRQHandler(){
 	timerUpdater(&LHdelay);
 	timerUpdater(&HLdelay);
 	timerUpdater(&LLdelay);
+	//1 раз в 5 минут проверять изменение уставки и "автомата", при необходимости сохранять на флэш
+	if(saveCount < 12000){
+		saveCount ++;
+	} else {
+		if(sp != prevSP || AUTO != prevAUTO){
+			prevAUTO = AUTO;
+			prevSP = sp;
+			saveFlash();
+		}
+		saveCount = 0;
+	}
 
 	changeDO(GPIOE, 0x100, AUTO << 8);
 	changeDO(GPIOE, 0xF000, HHdelay.finish << 12 | LHdelay.finish << 13 | HLdelay.finish << 14 | LLdelay.finish << 15);
@@ -141,6 +157,7 @@ void EXTI9_5_IRQHandler(){
 	if(auxLeft.finish && !(GPIOA->IDR & GPIO_Pin_8)){
 		if(prog){
 			prog = 0;
+			saveFlash();
 			exitMenu();
 		} else {
 			AUTO = !AUTO;

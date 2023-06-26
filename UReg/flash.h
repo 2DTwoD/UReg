@@ -1,10 +1,11 @@
 #ifndef _FLASH_H
 #define _FLASH_H
-
-#define FLASH_START_ADDRESS 0x0807F800
+//Адрес последних 2кБ флэш памяти
+#define FLASH_START_ADDRESS 0x0803E800//0x0803F7FF
 #define TOKEN 12321
 
 #include <stdio.h>
+#include <math.h>
 #include <stm32f30x.h>
 #include <stm32f30x_flash.h>
 

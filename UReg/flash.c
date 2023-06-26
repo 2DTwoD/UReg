@@ -9,7 +9,7 @@ extern TwoPosSet twoPosSet;
 extern ThreePosSet threePosSet;
 extern PIDset pidSet;
 
-static int32_t flashContain[25];
+int32_t flashContain[25];
 
 void readFlash(){
 	int8_t i;
@@ -54,27 +54,27 @@ void saveFlash(){
 	FLASH_ProgramWord(FLASH_START_ADDRESS, TOKEN);
 	FLASH_ProgramWord(FLASH_START_ADDRESS + 4, mode);
 	FLASH_ProgramWord(FLASH_START_ADDRESS + 8, AUTO);
-	FLASH_ProgramWord(FLASH_START_ADDRESS + 12, sp * 10);
-	FLASH_ProgramWord(FLASH_START_ADDRESS + 16, scale.up * 10);
-	FLASH_ProgramWord(FLASH_START_ADDRESS + 20, scale.down * 10);
-	FLASH_ProgramWord(FLASH_START_ADDRESS + 24, limit.hh * 10);
-	FLASH_ProgramWord(FLASH_START_ADDRESS + 28, limit.lh * 10);
-	FLASH_ProgramWord(FLASH_START_ADDRESS + 32, limit.hl * 10);
-	FLASH_ProgramWord(FLASH_START_ADDRESS + 36, limit.ll * 10);
-	FLASH_ProgramWord(FLASH_START_ADDRESS + 40, twoPosSet.up_indent * 10);
-	FLASH_ProgramWord(FLASH_START_ADDRESS + 44, twoPosSet.down_indent * 10);
+	FLASH_ProgramWord(FLASH_START_ADDRESS + 12, round(sp * 10));
+	FLASH_ProgramWord(FLASH_START_ADDRESS + 16, (int32_t)round(scale.up * 10));
+	FLASH_ProgramWord(FLASH_START_ADDRESS + 20, (int32_t)round(scale.down * 10));
+	FLASH_ProgramWord(FLASH_START_ADDRESS + 24, round(limit.hh * 10));
+	FLASH_ProgramWord(FLASH_START_ADDRESS + 28, round(limit.lh * 10));
+	FLASH_ProgramWord(FLASH_START_ADDRESS + 32, round(limit.hl * 10));
+	FLASH_ProgramWord(FLASH_START_ADDRESS + 36, round(limit.ll * 10));
+	FLASH_ProgramWord(FLASH_START_ADDRESS + 40, round(twoPosSet.up_indent * 10));
+	FLASH_ProgramWord(FLASH_START_ADDRESS + 44, round(twoPosSet.down_indent * 10));
 	FLASH_ProgramWord(FLASH_START_ADDRESS + 48, twoPosSet.inverse);
-	FLASH_ProgramWord(FLASH_START_ADDRESS + 52, threePosSet.treshold * 10);
-	FLASH_ProgramWord(FLASH_START_ADDRESS + 56, threePosSet.deadband * 10);
+	FLASH_ProgramWord(FLASH_START_ADDRESS + 52, round(threePosSet.treshold * 10));
+	FLASH_ProgramWord(FLASH_START_ADDRESS + 56, round(threePosSet.deadband * 10));
 	FLASH_ProgramWord(FLASH_START_ADDRESS + 60, threePosSet.waitTime);
 	FLASH_ProgramWord(FLASH_START_ADDRESS + 64, threePosSet.pulseTime);
 	FLASH_ProgramWord(FLASH_START_ADDRESS + 68, threePosSet.inverse);
-	FLASH_ProgramWord(FLASH_START_ADDRESS + 72, pidSet.kp * 100);
-	FLASH_ProgramWord(FLASH_START_ADDRESS + 76, pidSet.ti * 10);
-	FLASH_ProgramWord(FLASH_START_ADDRESS + 80, pidSet.td * 10);
-	FLASH_ProgramWord(FLASH_START_ADDRESS + 84, pidSet.db * 10);
-	FLASH_ProgramWord(FLASH_START_ADDRESS + 88, pidSet.upOutLim * 10);
-	FLASH_ProgramWord(FLASH_START_ADDRESS + 92, pidSet.downOutLim * 10);
+	FLASH_ProgramWord(FLASH_START_ADDRESS + 72, round(pidSet.kp * 100));
+	FLASH_ProgramWord(FLASH_START_ADDRESS + 76, round(pidSet.ti * 10));
+	FLASH_ProgramWord(FLASH_START_ADDRESS + 80, round(pidSet.td * 10));
+	FLASH_ProgramWord(FLASH_START_ADDRESS + 84, round(pidSet.db * 10));
+	FLASH_ProgramWord(FLASH_START_ADDRESS + 88, round(pidSet.upOutLim * 10));
+	FLASH_ProgramWord(FLASH_START_ADDRESS + 92, round(pidSet.downOutLim * 10));
 	FLASH_ProgramWord(FLASH_START_ADDRESS + 96, pidSet.inverse);
 
 	FLASH_Lock();
