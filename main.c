@@ -10,7 +10,7 @@ static uint8_t blink = 0;
 static uint8_t percPv = 0;
 static uint8_t prevAUTO;
 static double prevSP;
-//Таймеры
+//РўР°Р№РјРµСЂС‹
 static onDelay buttonUp = {0, 2, 0, 0};
 static onDelay buttonDown = {0, 2, 0, 0};
 static onDelay buttonLeft = {0, 2, 0, 0};
@@ -24,10 +24,11 @@ static onDelay LLdelay = {0, 4, 0, 0};
 
 int main(void)
 {
+	
 	prevAUTO = AUTO;
 	prevSP = sp;
 
-	//Настройка МК
+	//РќР°СЃС‚СЂРѕР№РєР° РњРљ
 	RCCinit();
 	GPIOinit();
 	EXTIinit();
@@ -37,36 +38,36 @@ int main(void)
 	DMAinit();
 	PWMinit();
 
-	//Чтение с внутренней флэш памяти
+	//РЎС‡РёС‚С‹РІР°РЅРёРµ РІРЅСѓС‚СЂРµРЅРЅРµР№ С„Р»СЌС€ РїР°РјСЏС‚Рё
 	readFlash();
-	//Сброс регуляторов
+	//РЎР±СЂРѕСЃ СЂРµРіСѓР»СЏС‚РѕСЂРѕРІ
 	resetRegulators();
 	updatePID();
 
     while(1);
 }
-//Цикл 1мс
+//Р¦РёРєР» 1РјСЃ
 void TIM3_IRQHandler(){
 	TIM_ClearITPendingBit(TIM3, TIM_IT_Update);
-	//Расчет сигнала с датчика
+	//Р Р°СЃС‡РµС‚ СЃРёРіРЅР°Р»Р° СЃ РґР°С‚С‡РёРєР° СЃ СѓС‡РµС‚РѕРј РїСЂРµРґРµР»РѕРІ С€РєР°Р»РёСЂРѕРІР°РЅРёСЏ
 	pv = getAvgRawPv() * (scale.up - scale.down) / 4095.0 + scale.down;
-	//Изменение выхода регулятора в зависимости от выбранного режима
+	//Р Р°СЃС‡РµС‚ РІС‹С…РѕРґР° СЂРµРіСѓР»СЏС‚РѕСЂР° РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РІС‹Р±СЂР°РЅРЅРѕРіРѕ СЂРµР¶РёРјР°
 	switch(mode){
 	case 0:
-		//Расчет выхода двупозиционного регулятора
+		//Р Р°СЃС‡РµС‚ РІС‹С…РѕРґР° РґРІСѓРїРѕР·РёС†РёРѕРЅРЅРѕРіРѕ СЂРµРіСѓР»СЏС‚РѕСЂР°
 		calculateTwoPosOut();
 		changeDO(GPIOC, 0x10, twoPosSet.out << 4);
 		changeDO(GPIOE, 0x400, twoPosSet.out << 10);
 		break;
 	case 1:
-		//Расчет выхода трехпозиционного регулятора
+		//Р Р°СЃС‡РµС‚ РІС‹С…РѕРґР° С‚СЂРµС…РїРѕР·РёС†РёРѕРЅРЅРѕРіРѕ СЂРµРіСѓР»СЏС‚РѕСЂР°
 		setThreePosCurrentTime();
 		calculateThreePosOut();
 		changeDO(GPIOC, 0x30, threePosSet.out.out1 << 4 | threePosSet.out.out2 << 5);
 		changeDO(GPIOE, 0xC00, threePosSet.out.out1 << 10 | threePosSet.out.out2 << 11);
 		break;
 	default:
-		//Расчет выхода ПИД регулятора с учетом периода дискретизации 25мс
+		//Р Р°СЃС‡РµС‚ РІС‹С…РѕРґР° РџРР” СЂРµРіСѓР»СЏС‚РѕСЂР°
 		pidCount++;
 		if(pidCount > 25){
 			pidCount = 0;
@@ -77,17 +78,17 @@ void TIM3_IRQHandler(){
 	}
 }
 
-//Цикл 25мс
+//Р¦РёРєР» 25РјСЃ
 void TIM4_IRQHandler(){
 	TIM_ClearITPendingBit(TIM4, TIM_IT_Update);
-	//Расчет сигнала с датчика в процентах
+	//Р Р°СЃС‡РµС‚ СЃРёРіРЅР°Р»Р° СЃ РґР°С‚С‡РёРєР° РІ РїСЂРѕС†РµРЅС‚Р°С…
 	percPv = (pv - scale.down) * 100 / (scale.up - scale.down);
-	//Запуск таймеров для сигналов предупреждения
+	//РЈСЃР»РѕРІРёСЏ СЃСЂР°Р±Р°С‚С‹РІР°РЅРёСЏ СЃРёРіРЅР°Р»РѕРІ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ
 	HHdelay.start = (percPv > limit.hh);
 	LHdelay.start = (percPv > limit.lh);
 	HLdelay.start = (percPv < limit.hl);
 	LLdelay.start = (percPv < limit.ll);
-	//Обновление таймеров
+	//РћР±РЅРѕРІР»РµРЅРёРµ С‚Р°Р№РјРµСЂРѕРІ РґР»СЏ РєРЅРѕРїРѕРє Рё РїСЂРµРґРµР»РѕРІ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ
 	timerUpdater(&buttonUp);
 	timerUpdater(&buttonDown);
 	timerUpdater(&buttonLeft);
@@ -98,7 +99,7 @@ void TIM4_IRQHandler(){
 	timerUpdater(&LHdelay);
 	timerUpdater(&HLdelay);
 	timerUpdater(&LLdelay);
-	//1 раз в 5 минут проверять изменение уставки и режима управления, при необходимости сохранять на флэш
+	//1 СЂР°Р· РІ 5 РјРёРЅСѓС‚ РїСЂРѕРІРµСЂСЏС‚СЊ Р±С‹Р»Рѕ Р»Рё РёР·РјРµРЅРµРёРµ СѓСЃС‚Р°РІРєРё РёР»Рё СЂРµР¶РёРјР° СЂР°Р±РѕС‚С‹, Рё СЃРѕС…СЂР°РЅРµРЅРёРµ РЅР° РІРЅСѓС‚СЂРµРЅРЅСЋСЋ С„Р»СЌС€ РїР°РјСЏС‚СЊ
 	if(saveCount < 12000){
 		saveCount ++;
 	} else {
@@ -109,28 +110,28 @@ void TIM4_IRQHandler(){
 		}
 		saveCount = 0;
 	}
-	//Изменение состояния дискретных выходов
+	//РћР±РЅРѕРІР»РµРЅРёРµ РґРёСЃРєСЂРµС‚РЅС‹С… РІС‹С…РѕРґРѕРІ
 	changeDO(GPIOE, 0x100, AUTO << 8);
 	changeDO(GPIOE, 0xF000, HHdelay.finish << 12 | LHdelay.finish << 13 | HLdelay.finish << 14 | LLdelay.finish << 15);
 	changeDO(GPIOC, 0xF, HHdelay.finish | LHdelay.finish << 1 | HLdelay.finish << 2 | LLdelay.finish << 3);
 }
 
-//Цикл 2,5мс для обновления семисегментного индикатора
+//Р¦РёРєР» 2.5РјСЃ РґР»СЏ СЃРµРјРёСЃРµРіРјРµРЅС‚РЅРѕРіРѕ РёРЅРґРёРєР°С‚РѕСЂР°
 void TIM7_IRQHandler(){
 	TIM_ClearITPendingBit(TIM7, TIM_IT_Update);
-	//Реализация мигания для курсора
+	//РџРµСЂРµРєР»СЋС‡РµРЅРёРµ "РјР°СЂРєРµСЂР°" РјРёРіР°РЅРёСЏ РІС‹Р±СЂР°РЅРЅРѕРіРѕ СЂР°Р·СЂСЏРґР° С‡РёСЃР»Р°
 	if(blinkCount < 60){
 		blinkCount++;
 	} else {
 		blinkCount = 0;
 		blink = !blink;
 	}
-	//Расчет кодов для индикации
+	//Р Р°СЃС‡РµС‚ РєРѕРґРѕРІ СЃРµРјРёСЃРµРіРјРµРЅС‚РЅРѕРіРѕ РёРЅРґРёРєС‚РѕСЂР°
 	if(segment == 0){
 		getLEDcodeArray(field1, getDisp1());
 		getLEDcodeArray(field2, getDisp2());
 	}
-	//Обновление индикации
+	//Р”РёРЅР°РјРёС‡РµСЃРєР°СЏ РёРЅРґРёРєР°С†РёСЏ СЃРµРјРёСЃРµРіРјРµРЅС‚РЅРѕРіРѕ РёРЅРґРёРєР°С‚РѕСЂР°
 	GPIOD->ODR = field1[segment] | field2[segment] << 8;
 	GPIOB->ODR &= 0xFF;
 	GPIOB->ODR |= 1 << (8 + segment) | (segment != getCursor() || blink) << (12 + segment);
@@ -140,20 +141,20 @@ void TIM7_IRQHandler(){
 	}
 }
 
-//Обработка прерываний кнопок
+//РџСЂРµСЂС‹РІР°РЅРёСЏ РґР»СЏ РєРЅРѕРїРѕРє
 void EXTI9_5_IRQHandler(){
 	EXTI_ClearFlag(EXTI_Line5);
 	EXTI_ClearFlag(EXTI_Line6);
 	EXTI_ClearFlag(EXTI_Line7);
 	EXTI_ClearFlag(EXTI_Line8);
-	//Старт таймеров антидребезга
+	//РЎС‚Р°СЂС‚ С‚Р°Р№РјРµСЂРѕРІ Р·Р°РґРµСЂР¶РєРё РєРЅРѕРїРѕРє (Р°РЅС‚РёРґСЂРµР±РµР·Рі)
 	buttonUp.start = GPIOA->IDR & GPIO_Pin_5 && 1;
 	buttonDown.start = GPIOA->IDR & GPIO_Pin_6 && 1;
 	buttonRight.start = GPIOA->IDR & GPIO_Pin_7 && 1;
 	buttonLeft.start = GPIOA->IDR & GPIO_Pin_8 && 1;
 	auxRight.start = GPIOA->IDR & GPIO_Pin_7 && 1;
 	auxLeft.start = GPIOA->IDR & GPIO_Pin_8 && 1;
-	//Обработка нажатий кнопок при отпускании с учетом таймера антидребезга
+	//Р”РµР№СЃС‚РІРёСЏ РїСЂРё РѕС‚РїСѓСЃРєР°РЅРёРё РєРЅРѕРїРѕРє СЃ СѓС‡РµС‚РѕРј С‚Р°Р№РјРµСЂРѕРІ Р°РЅС‚РёРґСЂРµР±РµР·РіР°
 	if(buttonUp.finish && !(GPIOA->IDR & GPIO_Pin_5)){
 		naviUp();
 		buttonUp.finish = 0;
