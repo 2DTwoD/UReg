@@ -9,7 +9,7 @@ extern TwoPosSet twoPosSet;
 extern ThreePosSet threePosSet;
 extern PIDset pidSet;
 
-int32_t flashContain[25];
+static int32_t flashContain[25];
 
 void readFlash(){
 	int8_t i;

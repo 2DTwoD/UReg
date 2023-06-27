@@ -10,6 +10,7 @@ static uint8_t blink = 0;
 static uint8_t percPv = 0;
 static uint8_t prevAUTO;
 static double prevSP;
+//Таймеры
 static onDelay buttonUp = {0, 2, 0, 0};
 static onDelay buttonDown = {0, 2, 0, 0};
 static onDelay buttonLeft = {0, 2, 0, 0};
@@ -23,6 +24,11 @@ static onDelay LLdelay = {0, 4, 0, 0};
 
 int main(void)
 {
+	prevAUTO = AUTO;
+	prevSP = sp;
+
+	//Настройка МК
+	RCCinit();
 	GPIOinit();
 	EXTIinit();
 	NVICinit();
@@ -31,9 +37,9 @@ int main(void)
 	DMAinit();
 	PWMinit();
 
+	//Чтение с внутренней флэш памяти
 	readFlash();
-	prevAUTO = AUTO;
-	prevSP = sp;
+	//Сброс регуляторов
 	resetRegulators();
 	updatePID();
 
@@ -42,21 +48,25 @@ int main(void)
 //Цикл 1мс
 void TIM3_IRQHandler(){
 	TIM_ClearITPendingBit(TIM3, TIM_IT_Update);
-
+	//Расчет сигнала с датчика
 	pv = getAvgRawPv() * (scale.up - scale.down) / 4095.0 + scale.down;
+	//Изменение выхода регулятора в зависимости от выбранного режима
 	switch(mode){
 	case 0:
+		//Расчет выхода двупозиционного регулятора
 		calculateTwoPosOut();
 		changeDO(GPIOC, 0x10, twoPosSet.out << 4);
 		changeDO(GPIOE, 0x400, twoPosSet.out << 10);
 		break;
 	case 1:
+		//Расчет выхода трехпозиционного регулятора
 		setThreePosCurrentTime();
 		calculateThreePosOut();
 		changeDO(GPIOC, 0x30, threePosSet.out.out1 << 4 | threePosSet.out.out2 << 5);
 		changeDO(GPIOE, 0xC00, threePosSet.out.out1 << 10 | threePosSet.out.out2 << 11);
 		break;
 	default:
+		//Расчет выхода ПИД регулятора с учетом периода дискретизации 25мс
 		pidCount++;
 		if(pidCount > 25){
 			pidCount = 0;
@@ -70,14 +80,14 @@ void TIM3_IRQHandler(){
 //Цикл 25мс
 void TIM4_IRQHandler(){
 	TIM_ClearITPendingBit(TIM4, TIM_IT_Update);
-
+	//Расчет сигнала с датчика в процентах
 	percPv = (pv - scale.down) * 100 / (scale.up - scale.down);
-
+	//Запуск таймеров для сигналов предупреждения
 	HHdelay.start = (percPv > limit.hh);
 	LHdelay.start = (percPv > limit.lh);
 	HLdelay.start = (percPv < limit.hl);
 	LLdelay.start = (percPv < limit.ll);
-
+	//Обновление таймеров
 	timerUpdater(&buttonUp);
 	timerUpdater(&buttonDown);
 	timerUpdater(&buttonLeft);
@@ -88,7 +98,7 @@ void TIM4_IRQHandler(){
 	timerUpdater(&LHdelay);
 	timerUpdater(&HLdelay);
 	timerUpdater(&LLdelay);
-	//1 раз в 5 минут проверять изменение уставки и "автомата", при необходимости сохранять на флэш
+	//1 раз в 5 минут проверять изменение уставки и режима управления, при необходимости сохранять на флэш
 	if(saveCount < 12000){
 		saveCount ++;
 	} else {
@@ -99,7 +109,7 @@ void TIM4_IRQHandler(){
 		}
 		saveCount = 0;
 	}
-
+	//Изменение состояния дискретных выходов
 	changeDO(GPIOE, 0x100, AUTO << 8);
 	changeDO(GPIOE, 0xF000, HHdelay.finish << 12 | LHdelay.finish << 13 | HLdelay.finish << 14 | LLdelay.finish << 15);
 	changeDO(GPIOC, 0xF, HHdelay.finish | LHdelay.finish << 1 | HLdelay.finish << 2 | LLdelay.finish << 3);
@@ -108,16 +118,19 @@ void TIM4_IRQHandler(){
 //Цикл 2,5мс для обновления семисегментного индикатора
 void TIM7_IRQHandler(){
 	TIM_ClearITPendingBit(TIM7, TIM_IT_Update);
+	//Реализация мигания для курсора
 	if(blinkCount < 60){
 		blinkCount++;
 	} else {
 		blinkCount = 0;
 		blink = !blink;
 	}
+	//Расчет кодов для индикации
 	if(segment == 0){
 		getLEDcodeArray(field1, getDisp1());
 		getLEDcodeArray(field2, getDisp2());
 	}
+	//Обновление индикации
 	GPIOD->ODR = field1[segment] | field2[segment] << 8;
 	GPIOB->ODR &= 0xFF;
 	GPIOB->ODR |= 1 << (8 + segment) | (segment != getCursor() || blink) << (12 + segment);
@@ -133,14 +146,14 @@ void EXTI9_5_IRQHandler(){
 	EXTI_ClearFlag(EXTI_Line6);
 	EXTI_ClearFlag(EXTI_Line7);
 	EXTI_ClearFlag(EXTI_Line8);
-
+	//Старт таймеров антидребезга
 	buttonUp.start = GPIOA->IDR & GPIO_Pin_5 && 1;
 	buttonDown.start = GPIOA->IDR & GPIO_Pin_6 && 1;
 	buttonRight.start = GPIOA->IDR & GPIO_Pin_7 && 1;
 	buttonLeft.start = GPIOA->IDR & GPIO_Pin_8 && 1;
 	auxRight.start = GPIOA->IDR & GPIO_Pin_7 && 1;
 	auxLeft.start = GPIOA->IDR & GPIO_Pin_8 && 1;
-
+	//Обработка нажатий кнопок при отпускании с учетом таймера антидребезга
 	if(buttonUp.finish && !(GPIOA->IDR & GPIO_Pin_5)){
 		naviUp();
 		buttonUp.finish = 0;
