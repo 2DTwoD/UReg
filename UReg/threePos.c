@@ -7,51 +7,46 @@ extern uint8_t AUTO;
 extern ThreePosSet threePosSet;
 
 static double deviation;
+static uint16_t currentTime = 0;
+static uint8_t pulseFlag = 0;
 
 void resetThreePos(){
-	threePosSet.currentTime = 0;
 	threePosSet.out.out1 = 0;
 	threePosSet.out.out2 = 0;
-	threePosSet.pulseFlag = 0;
+	currentTime = 0;
+	pulseFlag = 0;
 	changeDO(GPIOC, 0x30, 0);
 	changeDO(GPIOE, 0xC00, 0);
-}
-
-void setThreePosCurrentTime(){
-	if(!AUTO) return;
-	deviation = fabs(pv - sp);
-	if(deviation < threePosSet.deadband || deviation > threePosSet.treshold){
-		threePosSet.currentTime = 0;
-		return;
-	}
-	threePosSet.currentTime ++;
 }
 
 void calculateThreePosOut(){
 	if(!AUTO) return;
 	deviation = threePosSet.inverse? pv - sp: sp - pv;
-	if(fabs(deviation) < threePosSet.deadband){
+	if(fabs(deviation) < threePosSet.deadband && !pulseFlag){
+		threePosSet.out.out1 = 0;
+		threePosSet.out.out2 = 0;
+		currentTime = 0;
+		return;
+	}
+	if(fabs(deviation) > threePosSet.treshold && currentTime == 0){
+		threePosSet.out.out1 = deviation > 0;
+		threePosSet.out.out2 = deviation < 0;
+		currentTime = 0;
+		return;
+	}
+	currentTime++;
+	if(currentTime < threePosSet.waitTime){
 		threePosSet.out.out1 = 0;
 		threePosSet.out.out2 = 0;
 		return;
 	}
-	if(fabs(deviation) > threePosSet.treshold){
+	if(!pulseFlag){
 		threePosSet.out.out1 = deviation > 0;
 		threePosSet.out.out2 = deviation < 0;
-		return;
+		pulseFlag = 1;
 	}
-	if(threePosSet.currentTime < threePosSet.waitTime){
-		threePosSet.out.out1 = 0;
-		threePosSet.out.out2 = 0;
-		return;
-	}
-	if(!threePosSet.pulseFlag){
-		threePosSet.out.out1 = deviation > 0;
-		threePosSet.out.out2 = deviation < 0;
-		threePosSet.pulseFlag = 1;
-	}
-	if(threePosSet.currentTime > threePosSet.waitTime + threePosSet.pulseTime){
-		threePosSet.currentTime = 0;
-		threePosSet.pulseFlag = 0;
+	if(currentTime > threePosSet.waitTime + threePosSet.pulseTime){
+		currentTime = 0;
+		pulseFlag = 0;
 	}
 }

@@ -21,6 +21,7 @@ static onDelay HHdelay = {0, 4, 0, 0};
 static onDelay LHdelay = {0, 4, 0, 0};
 static onDelay HLdelay = {0, 4, 0, 0};
 static onDelay LLdelay = {0, 4, 0, 0};
+int tmp = 0;
 
 int main(void)
 {
@@ -49,6 +50,12 @@ int main(void)
 //Цикл 1мс
 void TIM3_IRQHandler(){
 	TIM_ClearITPendingBit(TIM3, TIM_IT_Update);
+	if(tmp < 1000){
+		tmp++;
+	} else {
+		GPIOE->ODR ^= 0x200;
+		tmp = 0;
+	}
 	//Расчет сигнала с датчика с учетом пределов шкалирования
 	pv = getAvgRawPv() * (scale.up - scale.down) / 4095.0 + scale.down;
 	//Расчет выхода регулятора в зависимости от выбранного режима
@@ -61,7 +68,6 @@ void TIM3_IRQHandler(){
 		break;
 	case 1:
 		//Расчет выхода трехпозиционного регулятора
-		setThreePosCurrentTime();
 		calculateThreePosOut();
 		changeDO(GPIOC, 0x30, threePosSet.out.out1 << 4 | threePosSet.out.out2 << 5);
 		changeDO(GPIOE, 0xC00, threePosSet.out.out1 << 10 | threePosSet.out.out2 << 11);
@@ -69,8 +75,9 @@ void TIM3_IRQHandler(){
 	default:
 		//Расчет выхода ПИД регулятора
 		pidCount++;
-		if(pidCount > 25){
+		if(pidCount > 50){
 			pidCount = 0;
+			updatePID();
 			calculatePIDout();
 			outRaw = pidSet.out * 10;
 		}
@@ -106,7 +113,7 @@ void TIM4_IRQHandler(){
 		if(sp != prevSP || AUTO != prevAUTO){
 			prevAUTO = AUTO;
 			prevSP = sp;
-			saveFlash();
+			//saveFlash();
 		}
 		saveCount = 0;
 	}
@@ -171,7 +178,7 @@ void EXTI9_5_IRQHandler(){
 	if(auxLeft.finish && !(GPIOA->IDR & GPIO_Pin_8)){
 		if(prog){
 			prog = 0;
-			saveFlash();
+			//saveFlash();
 			exitMenu();
 		} else {
 			AUTO = !AUTO;

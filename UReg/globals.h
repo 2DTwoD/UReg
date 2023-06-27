@@ -46,10 +46,8 @@ typedef struct{
 	double deadband;
 	uint16_t waitTime;
 	uint16_t pulseTime;
-	uint16_t currentTime;
 	uint16_t inverse;
 	ThreePosOut out;
-	uint8_t pulseFlag;
 } ThreePosSet;
 
 //Параметры ПИД регулятора

@@ -1,31 +1,31 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
-   <processor signature="arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -g -nostartfiles -Map=UReg.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\UReg -TC:\CooCox\CoIDE\configuration\ProgramData\UReg/arm-gcc-link.ld -g -LC:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m -lm">
-      <target file="UReg.elf" lastModified="188fc6cbd21">
+   <processor signature="5.3.1 -mcpu=cortex-m4 -mthumb -g -nostartfiles -Map=UReg.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\UReg -TC:\CooCox\CoIDE\configuration\ProgramData\UReg/arm-gcc-link.ld -g -LC:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m -lm">
+      <target file="UReg.elf" lastModified="188fd9e5d0d">
          <source file="C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\arm-none-eabi\lib\armv7e-m\libm.a" lastModified="153c935af20"/>
-         <source file="..\obj\stm32f30x_rcc.o" lastModified="188fc6cb397"/>
-         <source file="..\obj\stm32f30x_flash.o" lastModified="188fc6cb3f2"/>
-         <source file="..\obj\flash.o" lastModified="188fc6cb44b"/>
-         <source file="..\obj\twoPos.o" lastModified="188fc6cb4b1"/>
-         <source file="..\obj\stm32f30x_adc.o" lastModified="188fc6cb525"/>
-         <source file="..\obj\globals.o" lastModified="188fc6cb562"/>
-         <source file="..\obj\ledDigits.o" lastModified="188fc6cb5a6"/>
-         <source file="..\obj\stm32f30x_gpio.o" lastModified="188fc6cb5f3"/>
-         <source file="..\obj\main.o" lastModified="188fc6cb653"/>
-         <source file="..\obj\stm32f30x_dma.o" lastModified="188fc6cb69d"/>
-         <source file="..\obj\init.o" lastModified="188fc6cb6ec"/>
-         <source file="..\obj\stm32f30x_exti.o" lastModified="188fc6cb736"/>
-         <source file="..\obj\menu.o" lastModified="188fc6cb793"/>
-         <source file="..\obj\system_stm32f30x_temp.o" lastModified="188fc6cb7d9"/>
-         <source file="..\obj\syscalls.o" lastModified="188fc6cb821"/>
-         <source file="..\obj\stm32f30x_misc.o" lastModified="188fc6cb865"/>
-         <source file="..\obj\stm32f30x_tim.o" lastModified="188fc6cb8fc"/>
-         <source file="..\obj\startup_stm32f30x.o" lastModified="188fc6cb924"/>
-         <source file="..\obj\menuAux.o" lastModified="188fc6cb980"/>
-         <source file="..\obj\stm32f30x_syscfg.o" lastModified="188fc6cb9c7"/>
-         <source file="..\obj\misc.o" lastModified="188fc6cba14"/>
-         <source file="..\obj\threePos.o" lastModified="188fc6cba63"/>
-         <source file="..\obj\pid.o" lastModified="188fc6cbaa8"/>
+         <source file="..\obj\stm32f30x_rcc.o" lastModified="188fd9e451e"/>
+         <source file="..\obj\stm32f30x_flash.o" lastModified="188fd9e4591"/>
+         <source file="..\obj\flash.o" lastModified="188fd9e4608"/>
+         <source file="..\obj\twoPos.o" lastModified="188fd9e4675"/>
+         <source file="..\obj\stm32f30x_adc.o" lastModified="188fd9e470f"/>
+         <source file="..\obj\globals.o" lastModified="188fd9e4763"/>
+         <source file="..\obj\ledDigits.o" lastModified="188fd9e47bb"/>
+         <source file="..\obj\stm32f30x_gpio.o" lastModified="188fd9e481f"/>
+         <source file="..\obj\main.o" lastModified="188fd9e489b"/>
+         <source file="..\obj\stm32f30x_dma.o" lastModified="188fd9e48fb"/>
+         <source file="..\obj\init.o" lastModified="188fd9e4962"/>
+         <source file="..\obj\stm32f30x_exti.o" lastModified="188fd9e49c0"/>
+         <source file="..\obj\menu.o" lastModified="188fd9e4a30"/>
+         <source file="..\obj\system_stm32f30x_temp.o" lastModified="188fd9e4a8b"/>
+         <source file="..\obj\syscalls.o" lastModified="188fd9e4aee"/>
+         <source file="..\obj\stm32f30x_misc.o" lastModified="188fd9e4b4a"/>
+         <source file="..\obj\stm32f30x_tim.o" lastModified="188fd9e4c06"/>
+         <source file="..\obj\startup_stm32f30x.o" lastModified="188fd9e4c3f"/>
+         <source file="..\obj\menuAux.o" lastModified="188fd9e4cb9"/>
+         <source file="..\obj\stm32f30x_syscfg.o" lastModified="188fd9e4d18"/>
+         <source file="..\obj\misc.o" lastModified="188fd9e4d7f"/>
+         <source file="..\obj\threePos.o" lastModified="188fd9e4de9"/>
+         <source file="..\obj\pid.o" lastModified="188fd9e4e46"/>
       </target>
    </processor>
 </history>

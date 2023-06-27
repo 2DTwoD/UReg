@@ -11,7 +11,7 @@ void RCCinit(){
 	RCC_PLLCmd(ENABLE);
 	RCC_SYSCLKConfig(RCC_SYSCLKSource_PLLCLK);
 	RCC_HCLKConfig(RCC_SYSCLK_Div1);
-	RCC_PCLK1Config(RCC_HCLK_Div2);
+	RCC_PCLK1Config(RCC_HCLK_Div4);
 	RCC_PCLK2Config(RCC_HCLK_Div1);
 }
 
@@ -144,24 +144,24 @@ void TIMinit(){
 	TIM_CtrlPWMOutputs(TIM1, ENABLE);
 	//Цикл 1 мс
 	timStruct.TIM_CounterMode = TIM_CounterMode_Up;
-	timStruct.TIM_Prescaler = 8000;
-	timStruct.TIM_Period = 4;
+	timStruct.TIM_Prescaler = 100;
+	timStruct.TIM_Period = 320;
 	timStruct.TIM_ClockDivision = TIM_CKD_DIV1;
 	TIM_TimeBaseInit(TIM3, &timStruct);
 	TIM_Cmd(TIM3, ENABLE);
 	TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);
 	//Цикл 25 мс
 	timStruct.TIM_CounterMode = TIM_CounterMode_Up;
-	timStruct.TIM_Prescaler = 8000;
-	timStruct.TIM_Period = 100;
+	timStruct.TIM_Prescaler = 1000;
+	timStruct.TIM_Period = 800;
 	timStruct.TIM_ClockDivision = TIM_CKD_DIV1;
 	TIM_TimeBaseInit(TIM4, &timStruct);
 	TIM_Cmd(TIM4, ENABLE);
 	TIM_ITConfig(TIM4, TIM_IT_Update, ENABLE);
 	//Цикл 2.5 мс
 	timStruct.TIM_CounterMode = TIM_CounterMode_Up;
-	timStruct.TIM_Prescaler = 8000;
-	timStruct.TIM_Period = 10;
+	timStruct.TIM_Prescaler = 100;
+	timStruct.TIM_Period = 800;
 	TIM_TimeBaseInit(TIM7, &timStruct);
 	TIM_Cmd(TIM7, ENABLE);
 	TIM_ITConfig(TIM7, TIM_IT_Update, ENABLE);

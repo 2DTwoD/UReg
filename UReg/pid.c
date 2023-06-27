@@ -19,12 +19,12 @@ void resetPID(){
 
 void updatePID(){
 	if(pidSet.t == 0) return;
-	pidSet.q0 = pidSet.kp + pidSet.td / pidSet.t;
 	if(pidSet.ti > 0){
-		pidSet.q1 = -pidSet.kp + pidSet.t / pidSet.ti - 2 * pidSet.td / pidSet.t;
+		pidSet.q0 = pidSet.kp + pidSet.t / pidSet.ti + pidSet.td / pidSet.t;
 	} else {
-		pidSet.q1 = -pidSet.kp - 2 * pidSet.td / pidSet.t;
+		pidSet.q0 = pidSet.kp + pidSet.td / pidSet.t;
 	}
+	pidSet.q1 = -pidSet.kp - 2 * pidSet.td / pidSet.t;
 	pidSet.q2 = pidSet.td / pidSet.t;
 }
 

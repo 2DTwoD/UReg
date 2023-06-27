@@ -8,8 +8,6 @@
 
 //Сброс выхода регулятора в 0
 void resetThreePos();
-//Обновление счетчика текущего времени регулятора
-void setThreePosCurrentTime();
 //Расчет выхода регулятора
 void calculateThreePosOut();
 
