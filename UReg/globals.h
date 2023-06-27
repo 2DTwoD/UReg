@@ -2,39 +2,45 @@
 #define _GLOBALS_H
 #include <stdio.h>
 
-//Глобальные структуры
-//Таймер задержки вкючения
+//Р“Р»РѕР±Р°Р»СЊРЅС‹Рµ СЃС‚СЂСѓРєС‚СѓСЂС‹
+
+//РўР°Р№РјРµСЂ Р·Р°РґРµСЂР¶РєРё РІРєР»СЋС‡РµРЅРёСЏ
 typedef struct{
 	uint8_t start;
 	uint8_t delay;
 	uint8_t currentTime;
 	uint8_t finish;
 } onDelay;
-//Параметры шкалирования
+
+//РџСЂРµРґРµР»С‹ С€РєР°Р»РёСЂРѕРІР°РЅРёСЏ
 typedef struct{
 	double up;
 	double down;
 } Scale;
-//Параметры пределов для предупреждений
+
+//РџСЂРµРґРµР»С‹ СЃСЂР°Р±Р°С‚С‹РІР°РЅРёСЏ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№
 typedef struct{
 	double hh;
 	double lh;
 	double hl;
 	double ll;
 } Limit;
-//Параметры двупозиционнного регулятора
+
+//РџР°СЂР°РјРµС‚СЂС‹ РґРІСѓРїРѕР·РёС†РёРѕРЅРЅРѕРіРѕ СЂРµРіСѓР»СЏС‚РѕСЂР°
 typedef struct{
 	double up_indent;
 	double down_indent;
 	uint16_t inverse;
 	uint8_t out;
 } TwoPosSet;
-//Выход трехпозиционного регулятора
+
+//Р’С‹С…РѕРґ С‚СЂРµС…РїРѕР·РёС†РёРѕРЅРЅРѕРіРѕ СЂРµРіСѓР»СЏС‚РѕСЂР°
 typedef struct{
 	uint8_t out1;
 	uint8_t out2;
 } ThreePosOut;
-//Параметры трехпозиционного регулятора
+
+//РџР°СЂР°РјРµС‚СЂС‹ С‚СЂРµС…РїРѕР·РёС†РёРѕРЅРЅРѕРіРѕ СЂРµРіСѓР»СЏС‚РѕСЂР°
 typedef struct{
 	double treshold;
 	double deadband;
@@ -45,7 +51,8 @@ typedef struct{
 	ThreePosOut out;
 	uint8_t pulseFlag;
 } ThreePosSet;
-//Параметры ПИД регулятора
+
+//РџР°СЂР°РјРµС‚СЂС‹ РџРР” СЂРµРіСѓР»СЏС‚РѕСЂР°
 typedef struct {
 	double kp;
 	double ti;

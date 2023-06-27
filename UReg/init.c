@@ -24,19 +24,19 @@ void GPIOinit(){
 
 	GPIO_InitTypeDef gpioStruct;
 
-	//a1 АЦП AI
+	//a1 РђР¦Рџ AI
 	gpioStruct.GPIO_Pin = GPIO_Pin_1;
 	gpioStruct.GPIO_Mode = GPIO_Mode_AN;
 	GPIO_Init(GPIOA, &gpioStruct);
 
-	//a5-a8 Кнопки для управления меню
+	//a5-a8 РєРЅРѕРїРєРё СѓРїСЂР°РІР»РµРЅРёСЏ РІ РјРµРЅСЋ
 	gpioStruct.GPIO_Pin = 0x1E0;
 	gpioStruct.GPIO_Mode = GPIO_Mode_IN;
 	gpioStruct.GPIO_Speed = GPIO_Speed_Level_2;
 	gpioStruct.GPIO_PuPd = GPIO_PuPd_DOWN;
 	GPIO_Init(GPIOA, &gpioStruct);
 
-	//a9 ШИМ AO
+	//a9 РЁРРњ AO
 	gpioStruct.GPIO_Pin = GPIO_Pin_9;
 	gpioStruct.GPIO_Mode = GPIO_Mode_AF;
 	gpioStruct.GPIO_Speed = GPIO_Speed_Level_1;
@@ -44,7 +44,7 @@ void GPIOinit(){
 	GPIO_Init(GPIOA, &gpioStruct);
 	GPIO_PinAFConfig(GPIOA, GPIO_PinSource9, GPIO_AF_6);
 
-	//b8-b15 7-сегментный индикатор общий катод
+	//b8-b15 СЃРµРјРёСЃРµРіРјРµРЅС‚РЅС‹Р№ РёРЅРґРёРєР°С‚РѕСЂ, РѕР±С‰РёР№ РєР°С‚РѕРґ
 	gpioStruct.GPIO_Pin = 0xFF00;
 	gpioStruct.GPIO_Mode = GPIO_Mode_OUT;
 	gpioStruct.GPIO_Speed = GPIO_Speed_Level_1;
@@ -52,7 +52,7 @@ void GPIOinit(){
 	gpioStruct.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	GPIO_Init(GPIOB, &gpioStruct);
 
-	//d0-d15 2x 7-сегментный индикатор аноды
+	//d0-d15 2x СЃРµРјРёСЃРµРіРјРµРЅС‚РЅС‹Р№ РёРЅРґРёРєР°С‚РѕСЂ, Р°РЅРѕРґС‹
 	gpioStruct.GPIO_Pin = 0xFFFF;
 	gpioStruct.GPIO_Mode = GPIO_Mode_OUT;
 	gpioStruct.GPIO_Speed = GPIO_Speed_Level_1;
@@ -60,7 +60,7 @@ void GPIOinit(){
 	gpioStruct.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	GPIO_Init(GPIOD, &gpioStruct);
 
-	//c0-c5 пределы и дискретный выход 1/2 DO
+	//c0-c5 РґРёСЃРєСЂРµС‚РЅС‹Рµ РІС‹С…РѕРґС‹, РїСЂРµРґРµР»С‹ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ Рё РІС‹С…РѕРґ СЂРµРіСѓР»СЏС‚РѕСЂР° 1/2 DO
 	gpioStruct.GPIO_Pin = 0x3F;
 	gpioStruct.GPIO_Mode = GPIO_Mode_OUT;
 	gpioStruct.GPIO_Speed = GPIO_Speed_Level_1;
@@ -68,7 +68,7 @@ void GPIOinit(){
 	gpioStruct.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	GPIO_Init(GPIOC, &gpioStruct);
 
-	//e8-e15 Индикаторы на плате
+	//e8-e15 РёРЅРґРёРєР°С†РёСЏ РЅР° РїР»Р°С‚Рµ
 	gpioStruct.GPIO_Pin = 0xFF00;
 	gpioStruct.GPIO_Mode = GPIO_Mode_OUT;
 	gpioStruct.GPIO_Speed = GPIO_Speed_Level_1;
@@ -135,14 +135,14 @@ void TIMinit(){
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM7, ENABLE);
 
 	TIM_TimeBaseInitTypeDef timStruct;
-	//Таймер для ШИМ
+	//РўР°Р№РјРµСЂ РґР»СЏ РЁРРњ
 	timStruct.TIM_CounterMode = TIM_CounterMode_Up;
 	timStruct.TIM_Prescaler = 32;
 	timStruct.TIM_Period = 1000;
 	TIM_TimeBaseInit(TIM1, &timStruct);
 	TIM_Cmd(TIM1, ENABLE);
 	TIM_CtrlPWMOutputs(TIM1, ENABLE);
-	//Таймер 1 мс
+	//Р¦РёРєР» 1 РјСЃ
 	timStruct.TIM_CounterMode = TIM_CounterMode_Up;
 	timStruct.TIM_Prescaler = 8000;
 	timStruct.TIM_Period = 4;
@@ -150,7 +150,7 @@ void TIMinit(){
 	TIM_TimeBaseInit(TIM3, &timStruct);
 	TIM_Cmd(TIM3, ENABLE);
 	TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);
-	//Таймер 25 мс
+	//Р¦РёРєР» 25 РјСЃ
 	timStruct.TIM_CounterMode = TIM_CounterMode_Up;
 	timStruct.TIM_Prescaler = 8000;
 	timStruct.TIM_Period = 100;
@@ -158,7 +158,7 @@ void TIMinit(){
 	TIM_TimeBaseInit(TIM4, &timStruct);
 	TIM_Cmd(TIM4, ENABLE);
 	TIM_ITConfig(TIM4, TIM_IT_Update, ENABLE);
-	//Таймер 2,5 мс
+	//Р¦РёРєР» 2.5 РјСЃ
 	timStruct.TIM_CounterMode = TIM_CounterMode_Up;
 	timStruct.TIM_Prescaler = 8000;
 	timStruct.TIM_Period = 10;

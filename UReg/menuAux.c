@@ -191,11 +191,11 @@ void setMenuParameter(int8_t afterDot, int8_t step, int8_t* navi, int8_t cursor)
 		switch(navi[1]){
 		case 0:
 			setMenuDigitDbl(&threePosSet.treshold, cursor + afterDot, step);
-			cutAround(&threePosSet.treshold, 0.0, 999.9);
+			cutAround(&threePosSet.treshold, threePosSet.deadband, 999.9);
 			break;
 		case 1:
 			setMenuDigitDbl(&threePosSet.deadband, cursor + afterDot, step);
-			cutAround(&threePosSet.deadband, 0.0, 999.9);
+			cutAround(&threePosSet.deadband, 0.0, threePosSet.treshold);
 			break;
 		case 2:
 			setMenuDigitInt(&threePosSet.waitTime, cursor, step, 9);

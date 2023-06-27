@@ -14,53 +14,18 @@
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
-<part id="5"/>
 <part id="1"/>
-<part id="2"/>
-<part id="3"/>
-<part id="4"/>
-<part id="6"/>
-<part id="7"/>
-<part id="8"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="D:/GitProjects/UReg/main.c" title="main.c" tooltip="D:/GitProjects/UReg/main.c" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="D:/GitProjects/UReg/main.c" title="main.c" tooltip="D:/GitProjects/UReg/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/UReg/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4265" selectionTopPixel="900"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="240"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="flash.c" partName="flash.c" path="D:/GitProjects/UReg/UReg/flash.c" title="flash.c" tooltip="D:/GitProjects/UReg/UReg/flash.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/UReg/utils/source/flash.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1760" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="flash.h" partName="flash.h" path="D:/GitProjects/UReg/UReg/flash.h" title="flash.h" tooltip="D:/GitProjects/UReg/UReg/flash.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/UReg/utils/include/flash.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="261" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="menu.h" partName="menu.h" path="D:/GitProjects/UReg/UReg/menu.h" title="menu.h" tooltip="D:/GitProjects/UReg/UReg/menu.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/UReg/menu/include/menu.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="160" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="menu.c" partName="menu.c" path="D:/GitProjects/UReg/UReg/menu.c" title="menu.c" tooltip="D:/GitProjects/UReg/UReg/menu.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/UReg/menu/source/menu.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="75"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.h" partName="main.h" path="D:/GitProjects/UReg/main.h" title="main.h" tooltip="D:/GitProjects/UReg/main.h" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.h" partName="main.h" path="D:/GitProjects/UReg/main.h" title="main.h" tooltip="D:/GitProjects/UReg/main.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/UReg/main.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="462" selectionTopPixel="105"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="menuAux.c" partName="menuAux.c" path="D:/GitProjects/UReg/UReg/menuAux.c" title="menuAux.c" tooltip="D:/GitProjects/UReg/UReg/menuAux.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/UReg/menu/source/menuAux.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4581" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="init.h" partName="init.h" path="D:/GitProjects/UReg/UReg/init.h" title="init.h" tooltip="D:/GitProjects/UReg/UReg/init.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/UReg/utils/include/init.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="662" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="init.c" partName="init.c" path="D:/GitProjects/UReg/UReg/init.c" title="init.c" tooltip="D:/GitProjects/UReg/UReg/init.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/UReg/utils/source/init.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="689" selectionTopPixel="723"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="105"/>
 </editor>
 </editors>
 <views>
@@ -73,14 +38,15 @@
 <viewState/>
 </view>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="0">
+<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="8">
 <expanded>
 <element path="/UReg"/>
 <element path="/UReg/utils"/>
 <element path="/UReg/utils/include"/>
+<element path="/UReg/utils/source"/>
 </expanded>
 <selection>
-<element path="/UReg/utils/include/flash.h"/>
+<element path="/UReg/main.h"/>
 </selection>
 </viewState>
 </view>
@@ -292,172 +258,183 @@
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/main.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/main.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/utils/include/init.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/utils/source/init.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/cmsis_lib/include/stm32f30x_gpio.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/cmsis_lib/include/stm32f30x_tim.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/menu/source/menuAux.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/utils/source/flash.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/cmsis_lib/include/stm32f30x_misc.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/main.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/utils/include/flash.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/main.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/main.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/utils/source/flash.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/menu/include/menu.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/menu/source/menu.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/menu/source/menuAux.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/utils/include/init.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/utils/include/flash.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/main.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/menu/source/menu.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/menu/source/menuAux.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/menu/include/menu.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/menu/include/menuAux.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/regulators/include/pid.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/regulators/include/threePos.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/regulators/source/threePos.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/regulators/include/twoPos.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/regulators/source/twoPos.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/utils/include/flash.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/utils/include/globals.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/utils/include/init.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/utils/include/ledDigits.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/utils/include/misc.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/utils/source/flash.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/utils/source/globals.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/utils/source/init.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/utils/source/ledDigits.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/utils/source/misc.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/main.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/main.h"/>
 </editors>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="959" y="0"/>
-</item>
-<item historyLabel="init.h" index="2">
-<position info="not_deleted" x="383" y="0"/>
-</item>
-<item historyLabel="init.c" index="3">
-<position/>
-</item>
-<item historyLabel="init.h" index="2">
-<position/>
-</item>
-<item historyLabel="init.c" index="3">
-<position/>
-</item>
-<item historyLabel="init.h" index="2">
-<position/>
-</item>
-<item historyLabel="init.c" index="3">
-<position/>
-</item>
-<item historyLabel="stm32f30x_gpio.h" index="4">
-<position info="not_deleted" x="12525" y="1"/>
-</item>
-<item historyLabel="init.c" index="3">
-<position/>
-</item>
-<item historyLabel="stm32f30x_gpio.h" index="4">
-<position info="not_deleted" x="12507" y="18"/>
-</item>
-<item historyLabel="init.c" index="3">
-<position info="not_deleted" x="4605" y="0"/>
-</item>
-<item historyLabel="stm32f30x_tim.h" index="5">
-<position info="not_deleted" x="15954" y="12"/>
-</item>
-<item historyLabel="init.c" index="3">
-<position info="not_deleted" x="5129" y="1"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="1037" y="450"/>
-</item>
-<item historyLabel="init.c" index="3">
-<position info="not_deleted" x="356" y="0"/>
-</item>
-<item historyLabel="init.h" index="2">
-<position info="not_deleted" x="437" y="0"/>
-</item>
-<item historyLabel="init.c" index="3">
-<position info="not_deleted" x="2337" y="8"/>
-</item>
-<item historyLabel="init.h" index="2">
-<position info="not_deleted" x="437" y="0"/>
-</item>
-<item historyLabel="menuAux.c" index="6">
-<position info="not_deleted" x="4581" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="809" y="0"/>
-</item>
-<item historyLabel="init.c" index="3">
-<position info="not_deleted" x="5077" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3450" y="0"/>
-</item>
-<item historyLabel="init.c" index="3">
-<position info="not_deleted" x="5077" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3450" y="0"/>
-</item>
-<item historyLabel="init.c" index="3">
-<position info="not_deleted" x="194" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="981" y="0"/>
-</item>
-<item historyLabel="main.h" index="1">
-<position info="not_deleted" x="588" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="981" y="0"/>
-</item>
-<item historyLabel="flash.c" index="7">
-<position info="not_deleted" x="1760" y="0"/>
-</item>
-<item historyLabel="init.c" index="3">
-<position info="not_deleted" x="113" y="0"/>
-</item>
-<item historyLabel="stm32f30x_misc.h" index="8">
-<position info="not_deleted" x="8883" y="0"/>
-</item>
-<item historyLabel="init.c" index="3">
-<position info="not_deleted" x="39" y="0"/>
-</item>
-<item historyLabel="main.h" index="1">
-<position info="not_deleted" x="502" y="5"/>
-</item>
-<item historyLabel="init.c" index="3">
-<position info="not_deleted" x="7333" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="438" y="0"/>
-</item>
-<item historyLabel="init.c" index="3">
-<position info="not_deleted" x="7333" y="0"/>
-</item>
-<item historyLabel="main.c" index="9">
-<position info="not_deleted" x="311" y="0"/>
-</item>
-<item historyLabel="flash.h" index="10">
-<position info="not_deleted" x="239" y="0"/>
-</item>
-<item historyLabel="main.c" index="11">
-<position info="not_deleted" x="1115" y="0"/>
-</item>
-<item historyLabel="main.h" index="12">
-<position info="not_deleted" x="462" y="0"/>
-</item>
-<item historyLabel="main.c" index="11">
-<position info="not_deleted" x="1115" y="0"/>
-</item>
-<item historyLabel="flash.c" index="13">
-<position info="not_deleted" x="1760" y="0"/>
-</item>
-<item historyLabel="flash.h" index="10">
-<position info="not_deleted" x="261" y="0"/>
-</item>
-<item historyLabel="menu.h" index="14">
+<item historyLabel="menu.h" index="2">
 <position info="not_deleted" x="160" y="0"/>
 </item>
-<item historyLabel="menu.c" index="15">
+<item historyLabel="menu.c" index="3">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="menuAux.c" index="16">
+<item historyLabel="menuAux.c" index="4">
 <position info="not_deleted" x="4581" y="0"/>
 </item>
-<item historyLabel="init.h" index="17">
+<item historyLabel="init.h" index="5">
 <position info="not_deleted" x="662" y="0"/>
 </item>
-<item historyLabel="main.c" index="11">
+<item historyLabel="main.c" index="0">
 <position info="not_deleted" x="4265" y="0"/>
 </item>
-<item historyLabel="main.h" index="12">
+<item historyLabel="main.h" index="1">
 <position info="not_deleted" x="462" y="0"/>
 </item>
-<item active="true" historyLabel="main.c" index="11">
+<item historyLabel="main.c" index="0">
 <position info="not_deleted" x="4265" y="0"/>
+</item>
+<item historyLabel="flash.h" index="6">
+<position info="not_deleted" x="339" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="4316" y="0"/>
+</item>
+<item historyLabel="main.h" index="7">
+<position info="not_deleted" x="521" y="0"/>
+</item>
+<item historyLabel="menu.c" index="8">
+<position/>
+</item>
+<item historyLabel="menuAux.c" index="9">
+<position/>
+</item>
+<item historyLabel="menu.c" index="8">
+<position/>
+</item>
+<item historyLabel="menu.h" index="10">
+<position info="not_deleted" x="151" y="0"/>
+</item>
+<item historyLabel="menuAux.h" index="11">
+<position info="not_deleted" x="1117" y="0"/>
+</item>
+<item historyLabel="menu.c" index="8">
+<position info="not_deleted" x="864" y="0"/>
+</item>
+<item historyLabel="menuAux.c" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="pid.h" index="12">
+<position info="not_deleted" x="218" y="0"/>
+</item>
+<item historyLabel="threePos.h" index="13">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="pid.h" index="12">
+<position info="not_deleted" x="89" y="29"/>
+</item>
+<item historyLabel="threePos.h" index="13">
+<position info="not_deleted" x="152" y="0"/>
+</item>
+<item historyLabel="pid.h" index="12">
+<position info="not_deleted" x="192" y="26"/>
+</item>
+<item historyLabel="threePos.h" index="13">
+<position info="not_deleted" x="249" y="0"/>
+</item>
+<item historyLabel="threePos.c" index="14">
+<position info="not_deleted" x="555" y="0"/>
+</item>
+<item historyLabel="menu.c" index="8">
+<position info="not_deleted" x="864" y="0"/>
+</item>
+<item historyLabel="menuAux.c" index="9">
+<position info="not_deleted" x="4189" y="0"/>
+</item>
+<item historyLabel="threePos.h" index="13">
+<position info="not_deleted" x="249" y="0"/>
+</item>
+<item historyLabel="threePos.c" index="14">
+<position info="not_deleted" x="364" y="0"/>
+</item>
+<item historyLabel="twoPos.h" index="15">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="threePos.c" index="14">
+<position info="not_deleted" x="364" y="0"/>
+</item>
+<item historyLabel="threePos.h" index="13">
+<position info="not_deleted" x="123" y="29"/>
+</item>
+<item historyLabel="twoPos.h" index="15">
+<position info="not_deleted" x="148" y="0"/>
+</item>
+<item historyLabel="threePos.c" index="14">
+<position info="not_deleted" x="364" y="0"/>
+</item>
+<item historyLabel="threePos.h" index="13">
+<position info="not_deleted" x="256" y="26"/>
+</item>
+<item historyLabel="twoPos.h" index="15">
+<position info="not_deleted" x="195" y="0"/>
+</item>
+<item historyLabel="threePos.h" index="13">
+<position info="not_deleted" x="256" y="26"/>
+</item>
+<item historyLabel="twoPos.c" index="16">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="flash.h" index="17">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="globals.h" index="18">
+<position info="not_deleted" x="848" y="0"/>
+</item>
+<item historyLabel="init.h" index="19">
+<position info="not_deleted" x="623" y="0"/>
+</item>
+<item historyLabel="ledDigits.h" index="20">
+<position info="not_deleted" x="126" y="0"/>
+</item>
+<item historyLabel="misc.h" index="21">
+<position info="not_deleted" x="537" y="0"/>
+</item>
+<item historyLabel="flash.c" index="22">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="globals.c" index="23">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="init.c" index="24">
+<position info="not_deleted" x="5231" y="0"/>
+</item>
+<item historyLabel="ledDigits.c" index="25">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="misc.c" index="26">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="flash.c" index="22">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.c" index="27">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item active="true" historyLabel="main.h" index="28">
+<position info="not_deleted" x="0" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -466,29 +443,35 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f30x_misc.h" tooltip="UReg/cmsis_lib/include/stm32f30x_misc.h">
-<persistable path="/UReg/cmsis_lib/include/stm32f30x_misc.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.h" tooltip="UReg/main.h">
+<persistable path="/UReg/main.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="init.c" tooltip="UReg/utils/source/init.c">
-<persistable path="/UReg/utils/source/init.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="UReg/main.c">
+<persistable path="/UReg/main.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f30x_tim.h" tooltip="UReg/cmsis_lib/include/stm32f30x_tim.h">
-<persistable path="/UReg/cmsis_lib/include/stm32f30x_tim.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f30x_gpio.h" tooltip="UReg/cmsis_lib/include/stm32f30x_gpio.h">
-<persistable path="/UReg/cmsis_lib/include/stm32f30x_gpio.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="init.h" tooltip="UReg/utils/include/init.h">
-<persistable path="/UReg/utils/include/init.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="misc.h" tooltip="UReg/utils/include/misc.h">
-<persistable path="/UReg/utils/include/misc.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="misc.c" tooltip="UReg/utils/source/misc.c">
+<persistable path="/UReg/utils/source/misc.c"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ledDigits.c" tooltip="UReg/utils/source/ledDigits.c">
 <persistable path="/UReg/utils/source/ledDigits.c"/>
 </file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="init.c" tooltip="UReg/utils/source/init.c">
+<persistable path="/UReg/utils/source/init.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="globals.c" tooltip="UReg/utils/source/globals.c">
+<persistable path="/UReg/utils/source/globals.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="flash.c" tooltip="UReg/utils/source/flash.c">
+<persistable path="/UReg/utils/source/flash.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="misc.h" tooltip="UReg/utils/include/misc.h">
+<persistable path="/UReg/utils/include/misc.h"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ledDigits.h" tooltip="UReg/utils/include/ledDigits.h">
 <persistable path="/UReg/utils/include/ledDigits.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="init.h" tooltip="UReg/utils/include/init.h">
+<persistable path="/UReg/utils/include/init.h"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="globals.h" tooltip="UReg/utils/include/globals.h">
 <persistable path="/UReg/utils/include/globals.h"/>
@@ -501,12 +484,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="twoPos.h" tooltip="UReg/regulators/include/twoPos.h">
 <persistable path="/UReg/regulators/include/twoPos.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="threePos.c" tooltip="UReg/regulators/source/threePos.c">
-<persistable path="/UReg/regulators/source/threePos.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f30x_misc.h" tooltip="UReg/cmsis_lib/include/stm32f30x_misc.h">
-<persistable path="/UReg/cmsis_lib/include/stm32f30x_misc.h"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="threePos.c" tooltip="UReg/regulators/source/threePos.c">
 <persistable path="/UReg/regulators/source/threePos.c"/>
