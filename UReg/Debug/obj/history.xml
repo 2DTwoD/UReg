@@ -31,7 +31,7 @@
       <target file="ledDigits.o" lastModified="188fc491fea">
          <source file="..\..\ledDigits.c" lastModified="188d4e5dc70"/>
       </target>
-      <target file="flash.o" lastModified="188fc491e4a">
+      <target file="flash.o" lastModified="188fc4dd4a8">
          <source file="..\..\flash.c" lastModified="188fb9080d1"/>
       </target>
       <target file="stm32f30x_gpio.o" lastModified="188fc49203a">
@@ -58,16 +58,16 @@
       <target file="stm32f30x_dma.o" lastModified="188fc4920e3">
          <source file="..\..\..\cmsis_lib\source\stm32f30x_dma.c" lastModified="188d4e5dc70"/>
       </target>
-      <target file="stm32f30x_syscfg.o" lastModified="188fc492400">
-         <source file="..\..\..\cmsis_lib\source\stm32f30x_syscfg.c" lastModified="188d4e5dc70"/>
-      </target>
       <target file="startup_stm32f30x.o" lastModified="188fc492359">
          <source file="..\..\..\cmsis_boot\startup\startup_stm32f30x.S" lastModified="188d4e5dc70"/>
+      </target>
+      <target file="stm32f30x_syscfg.o" lastModified="188fc492400">
+         <source file="..\..\..\cmsis_lib\source\stm32f30x_syscfg.c" lastModified="188d4e5dc70"/>
       </target>
       <target file="stm32f30x_flash.o" lastModified="188fc491df1">
          <source file="..\..\..\cmsis_lib\source\stm32f30x_flash.c" lastModified="188e7914963"/>
       </target>
-      <target file="main.o" lastModified="188fc492099">
+      <target file="main.o" lastModified="188fc4dd509">
          <source file="..\..\..\main.c" lastModified="188fc48a6f9"/>
       </target>
    </processor>
