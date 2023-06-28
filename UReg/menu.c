@@ -24,7 +24,7 @@ static char* menu1Strings[][7] = {
 		{"trES", " db ", "0tI ", "1tI ", " rE "},
 		{"PrOP", " tI ", " td ", " db ", "UPOL", "doOL", " rE "}
 };
-//Размеры списков параметров в меню
+//Размеры списков параметров в меню уровня 1
 static const int8_t sizes[] = {1, 3, 0, 2, 4, 6};
 //Переменная для записи строки
 static char field[5];
