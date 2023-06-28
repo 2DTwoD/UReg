@@ -16,16 +16,15 @@ void resetPID(){
 	pidSet.e2 = 0.0;
 }
 
-
 void updatePID(){
-	if(pidSet.t == 0) return;
-	if(pidSet.ti > 0){
-		pidSet.q0 = pidSet.kp + pidSet.t / pidSet.ti + pidSet.td / pidSet.t;
+	if(pidSet.t == 0.0) return;
+	if(pidSet.ti == 0.0){
+		pidSet.g0 = pidSet.kp * (1.0 + pidSet.td / pidSet.t);
 	} else {
-		pidSet.q0 = pidSet.kp + pidSet.td / pidSet.t;
+		pidSet.g0 = pidSet.kp * (1.0 + pidSet.t / pidSet.ti + pidSet.td / pidSet.t);
 	}
-	pidSet.q1 = -pidSet.kp - 2 * pidSet.td / pidSet.t;
-	pidSet.q2 = pidSet.td / pidSet.t;
+	pidSet.g1 = pidSet.kp * (-1.0 - 2.0 * pidSet.td / pidSet.t);
+	pidSet.g2 = pidSet.kp * pidSet.td / pidSet.t;
 }
 
 void calculatePIDout(){
@@ -35,7 +34,7 @@ void calculatePIDout(){
 	pidSet.e2 = pidSet.e1;
 	pidSet.e1 = pidSet.e0;
 	pidSet.e0 = deviation;
-	pidSet.out += pidSet.q0 * pidSet.e0 + pidSet.q1 * pidSet.e1 + pidSet.q2 * pidSet.e2;
+	pidSet.out += pidSet.g0 * pidSet.e0 + pidSet.g1 * pidSet.e1 + pidSet.g2 * pidSet.e2;
 	if (pidSet.out > pidSet.upOutLim){
 		pidSet.out = pidSet.upOutLim;
 		return;

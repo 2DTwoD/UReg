@@ -96,6 +96,7 @@ char* getTemplate(int8_t* navi){
 	case 5:
 		switch(navi[1]){
 		case 0:
+		case 2:
 			return "%05.2f";
 		case 6:
 			return "%04.0f";
@@ -147,6 +148,7 @@ void setMenuParameter(int8_t afterDot, int8_t step, int8_t* navi, int8_t cursor)
 			cutAround(&scale.up, scale.down, 999.9);
 			break;
 		}
+		cutAround(&sp, scale.down, scale.up);
 		break;
 	case 1:
 		switch(navi[1]){
@@ -220,7 +222,7 @@ void setMenuParameter(int8_t afterDot, int8_t step, int8_t* navi, int8_t cursor)
 			break;
 		case 2:
 			setMenuDigitDbl(&pidSet.td, cursor + afterDot, step);
-			cutAround(&pidSet.td, 0.0, 999.9);
+			cutAround(&pidSet.td, 0.0, 99.99);
 			break;
 		case 3:
 			setMenuDigitDbl(&pidSet.db, cursor + afterDot, step);
@@ -249,11 +251,7 @@ void changeSP(int8_t dir){
 		step  = 0.1;
 	}
 	sp += step * dir;
-	if(sp > scale.up){
-		sp = scale.up;
-	} else if(sp < scale.down){
-		sp = scale.down;
-	}
+	cutAround(&sp, scale.down, scale.up);
 }
 
 void changeOUT(int8_t dir){
@@ -282,11 +280,7 @@ void changeOUT(int8_t dir){
 		break;
 	case 2:
 		pidSet.out += dir;
-		if(pidSet.out > 100.0){
-			pidSet.out = 100.0;
-		} else if(pidSet.out < 0.0){
-			pidSet.out = 0.0;
-		}
+		cutAround(&pidSet.out, 0.0, 100.0);
 		break;
 	}
 }

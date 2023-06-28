@@ -36,7 +36,7 @@ void readFlash(){
 		threePosSet.inverse = flashContain[17];
 		pidSet.kp = flashContain[18] / 100.0;
 		pidSet.ti = flashContain[19] / 10.0;
-		pidSet.td = flashContain[20] / 10.0;
+		pidSet.td = flashContain[20] / 100.0;
 		pidSet.db = flashContain[21] / 10.0;
 		pidSet.upOutLim = flashContain[22] / 10.0;
 		pidSet.downOutLim = flashContain[23] / 10.0;
@@ -71,7 +71,7 @@ void saveFlash(){
 	FLASH_ProgramWord(FLASH_START_ADDRESS + 68, threePosSet.inverse);
 	FLASH_ProgramWord(FLASH_START_ADDRESS + 72, round(pidSet.kp * 100));
 	FLASH_ProgramWord(FLASH_START_ADDRESS + 76, round(pidSet.ti * 10));
-	FLASH_ProgramWord(FLASH_START_ADDRESS + 80, round(pidSet.td * 10));
+	FLASH_ProgramWord(FLASH_START_ADDRESS + 80, round(pidSet.td * 100));
 	FLASH_ProgramWord(FLASH_START_ADDRESS + 84, round(pidSet.db * 10));
 	FLASH_ProgramWord(FLASH_START_ADDRESS + 88, round(pidSet.upOutLim * 10));
 	FLASH_ProgramWord(FLASH_START_ADDRESS + 92, round(pidSet.downOutLim * 10));

@@ -63,9 +63,9 @@ typedef struct {
 	double e0;
 	double e1;
 	double e2;
-	double q0;
-	double q1;
-	double q2;
+	double g0;
+	double g1;
+	double g2;
 	uint16_t inverse;
 } PIDset;
 
