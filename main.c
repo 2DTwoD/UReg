@@ -8,26 +8,20 @@ static uint8_t pidCount = 0;
 static uint16_t saveCount = 0;
 static uint8_t blink = 0;
 static uint8_t percPv = 0;
-static uint8_t prevAUTO;
-static double prevSP;
 //Таймеры
 static onDelay buttonUp = {0, 2, 0, 0};
 static onDelay buttonDown = {0, 2, 0, 0};
 static onDelay buttonLeft = {0, 2, 0, 0};
 static onDelay buttonRight = {0, 2, 0, 0};
-static onDelay auxLeft = {0, 80, 0, 0};
-static onDelay auxRight = {0, 80, 0, 0};
+static onDelay auxLeft = {0, 60, 0, 0};
+static onDelay auxRight = {0, 60, 0, 0};
 static onDelay HHdelay = {0, 4, 0, 0};
 static onDelay LHdelay = {0, 4, 0, 0};
 static onDelay HLdelay = {0, 4, 0, 0};
 static onDelay LLdelay = {0, 4, 0, 0};
-int tmp = 0;
 
 int main(void)
 {
-	
-	prevAUTO = AUTO;
-	prevSP = sp;
 
 	//Настройка МК
 	RCCinit();
@@ -50,12 +44,6 @@ int main(void)
 //Цикл 1мс
 void TIM3_IRQHandler(){
 	TIM_ClearITPendingBit(TIM3, TIM_IT_Update);
-	if(tmp < 1000){
-		tmp++;
-	} else {
-		GPIOE->ODR ^= 0x200;
-		tmp = 0;
-	}
 	//Расчет сигнала с датчика с учетом пределов шкалирования
 	pv = getAvgRawPv() * (scale.up - scale.down) / 4095.0 + scale.down;
 	//Расчет выхода регулятора в зависимости от выбранного режима
@@ -77,7 +65,6 @@ void TIM3_IRQHandler(){
 		pidCount++;
 		if(pidCount > 50){
 			pidCount = 0;
-			updatePID();
 			calculatePIDout();
 			outRaw = pidSet.out * 10;
 		}
@@ -106,14 +93,12 @@ void TIM4_IRQHandler(){
 	timerUpdater(&LHdelay);
 	timerUpdater(&HLdelay);
 	timerUpdater(&LLdelay);
-	//1 раз в 5 минут проверять было ли изменеие уставки или режима работы,при наличии изменения сохранение на внутреннюю флэш память
+	//1 раз в 5 минут проверять было ли изменеие уставки или режима работы, при наличии изменения сохранение на внутреннюю флэш память
 	if(saveCount < 12000){
-		saveCount ++;
+		saveCount++;
 	} else {
-		if(sp != prevSP || AUTO != prevAUTO){
-			prevAUTO = AUTO;
-			prevSP = sp;
-			//saveFlash();
+		if(menuParChanged && prog == 0){
+			saveFlash();
 		}
 		saveCount = 0;
 	}
@@ -178,9 +163,12 @@ void EXTI9_5_IRQHandler(){
 	if(auxLeft.finish && !(GPIOA->IDR & GPIO_Pin_8)){
 		if(prog){
 			prog = 0;
-			//saveFlash();
+			if(menuParChanged){
+				saveFlash();
+			}
 			exitMenu();
 		} else {
+			menuParChanged = 1;
 			AUTO = !AUTO;
 		}
 		auxLeft.finish = 0;

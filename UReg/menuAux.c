@@ -7,6 +7,7 @@ extern Limit limit;
 extern TwoPosSet twoPosSet;
 extern ThreePosSet threePosSet;
 extern PIDset pidSet;
+extern uint8_t menuParChanged;
 
 double getMenuParameter(int8_t* navi){
 	switch(navi[0]){
@@ -243,6 +244,7 @@ void setMenuParameter(int8_t afterDot, int8_t step, int8_t* navi, int8_t cursor)
 		break;
 		updatePID();
 	}
+	menuParChanged = 1;
 }
 
 void changeSP(int8_t dir){
@@ -251,6 +253,7 @@ void changeSP(int8_t dir){
 		step  = 0.1;
 	}
 	sp += step * dir;
+	menuParChanged = 1;
 	cutAround(&sp, scale.down, scale.up);
 }
 

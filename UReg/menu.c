@@ -131,8 +131,8 @@ char* getDisp2(){
 		return "----";
 	}
 	if(AUTO){
-		//sprintf(field, "%05.1f", sp);
-		sprintf(field, "%05.1f", pidSet.out);
+		sprintf(field, "%05.1f", sp);
+		//sprintf(field, "%05.1f", pidSet.out);
 		return field;
 	}
 	getCurrentModeOut(field);

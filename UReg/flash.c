@@ -8,6 +8,7 @@ extern Limit limit;
 extern TwoPosSet twoPosSet;
 extern ThreePosSet threePosSet;
 extern PIDset pidSet;
+extern uint8_t menuParChanged;
 
 static int32_t flashContain[25];
 
@@ -79,4 +80,5 @@ void saveFlash(){
 
 	FLASH_Lock();
 	__enable_irq();
+	menuParChanged = 0;
 }
