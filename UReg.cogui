@@ -19,6 +19,7 @@
 <part id="3"/>
 <part id="4"/>
 <part id="5"/>
+<part id="6"/>
 </presentation>
 </folder>
 </info>
@@ -29,7 +30,7 @@
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="D:/GitProjects/UReg/main.c" title="main.c" tooltip="D:/GitProjects/UReg/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/UReg/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="13" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="678" selectionTopPixel="330"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.h" partName="main.h" path="D:/GitProjects/UReg/main.h" title="main.h" tooltip="D:/GitProjects/UReg/main.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/UReg/main.h"/>
@@ -43,9 +44,13 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/UReg/utils/source/flash.c"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1628" selectionTopPixel="591"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="menu.c" partName="menu.c" path="D:/GitProjects/UReg/UReg/menu.c" title="menu.c" tooltip="D:/GitProjects/UReg/UReg/menu.c" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="menu.c" partName="menu.c" path="D:/GitProjects/UReg/UReg/menu.c" title="menu.c" tooltip="D:/GitProjects/UReg/UReg/menu.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/UReg/menu/source/menu.c"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1039" selectionTopPixel="0"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="init.c" partName="init.c" path="D:/GitProjects/UReg/UReg/init.c" title="init.c" tooltip="D:/GitProjects/UReg/UReg/init.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/UReg/utils/source/init.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1282" selectionTopPixel="360"/>
 </editor>
 </editors>
 <views>
@@ -65,12 +70,15 @@
 <element path="/UReg/menu/include"/>
 <element path="/UReg/menu/source"/>
 <element path="/UReg/regulators"/>
+<element path="/UReg/regulators/include"/>
+<element path="/UReg/regulators/source"/>
+<element path="/UReg/syscalls"/>
 <element path="/UReg/utils"/>
 <element path="/UReg/utils/include"/>
 <element path="/UReg/utils/source"/>
 </expanded>
 <selection>
-<element path="/UReg/menu/source/menu.c"/>
+<element path="/UReg/utils/source/init.c"/>
 </selection>
 </viewState>
 </view>
@@ -141,7 +149,7 @@
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@e19d66" ratio="0.6992561" ratioLeft="658" ratioRight="283" relationship="4" relative="org.eclipse.ui.internal.ViewStack@205435">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@e19d66" ratio="0.96908313" ratioLeft="909" ratioRight="29" relationship="4" relative="org.eclipse.ui.internal.ViewStack@205435">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.ui.views.ProgressView" label="Progress"/>
@@ -151,7 +159,7 @@
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@10d46ff" ratio="0.16238868" ratioLeft="310" ratioRight="1599" relationship="2" relative="org.eclipse.ui.internal.ViewStack@205435">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@10d46ff" ratio="0.18019906" ratioLeft="344" ratioRight="1565" relationship="2" relative="org.eclipse.ui.internal.ViewStack@205435">
 <folder appearance="2" expanded="2">
 <page content="org.coocox.builder.ui.exampleView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
@@ -168,7 +176,7 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.44952178" ratioLeft="423" ratioRight="518" relationship="4" relative="org.eclipse.ui.internal.ViewStack@10d46ff"/>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@7898fb" ratio="0.52607363" ratioLeft="343" ratioRight="309" relationship="4" relative="org.eclipse.ui.internal.ViewStack@205435">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@7898fb" ratio="0.2615894" ratioLeft="237" ratioRight="669" relationship="4" relative="org.eclipse.ui.internal.ViewStack@205435">
 <folder activePageID="org.coocox.builder.ui.views.ProjectView" appearance="2" expanded="2">
 <page content="org.coocox.builder.ui.views.ProjectView" label="Project"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
@@ -283,22 +291,10 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/main.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/menu/source/menuAux.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/menu/source/menu.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/utils/source/init.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/main.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/UReg/utils/source/init.c"/>
 </editors>
-<item historyLabel="main.h" index="3">
-<position info="not_deleted" x="1186" y="14"/>
-</item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="4703" y="0"/>
-</item>
-<item historyLabel="menu.c" index="1">
-<position info="not_deleted" x="2833" y="44"/>
-</item>
-<item historyLabel="menuAux.c" index="4">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="main.h" index="3">
-<position info="not_deleted" x="1178" y="27"/>
-</item>
 <item historyLabel="menuAux.c" index="4">
 <position info="not_deleted" x="208" y="14"/>
 </item>
@@ -431,8 +427,23 @@
 <item historyLabel="menuAux.c" index="7">
 <position info="not_deleted" x="6323" y="17"/>
 </item>
-<item active="true" historyLabel="menu.c" index="8">
+<item historyLabel="menu.c" index="8">
 <position info="not_deleted" x="2714" y="0"/>
+</item>
+<item historyLabel="init.c" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.c" index="10">
+<position info="not_deleted" x="13" y="0"/>
+</item>
+<item historyLabel="init.c" index="9">
+<position info="not_deleted" x="1282" y="0"/>
+</item>
+<item historyLabel="main.c" index="10">
+<position info="not_deleted" x="13" y="0"/>
+</item>
+<item active="true" historyLabel="init.c" index="11">
+<position info="not_deleted" x="1282" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -441,51 +452,51 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="FreeRTOSConfig.h" tooltip="11-FreeRTOS/FreeRTOS/Include/FreeRTOSConfig.h">
-<persistable path="/11-FreeRTOS/FreeRTOS/Include/FreeRTOSConfig.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usb_endp.c" tooltip="13_USB_PWM/cmsis_lib/source/usb_endp.c">
+<persistable path="/13_USB_PWM/cmsis_lib/source/usb_endp.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="11-FreeRTOS/main.c">
-<persistable path="/11-FreeRTOS/main.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="virtualComPort.c" tooltip="13_USB_PWM/cmsis_lib/source/virtualComPort.c">
+<persistable path="/13_USB_PWM/cmsis_lib/source/virtualComPort.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="hw_config.c" tooltip="13_USB_PWM/cmsis_lib/source/hw_config.c">
+<persistable path="/13_USB_PWM/cmsis_lib/source/hw_config.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="hw_config.h" tooltip="13_USB_PWM/cmsis_lib/include/hw_config.h">
+<persistable path="/13_USB_PWM/cmsis_lib/include/hw_config.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usb_init.c" tooltip="13_USB_PWM/cmsis_lib/source/usb_init.c">
+<persistable path="/13_USB_PWM/cmsis_lib/source/usb_init.c"/>
 </file>
 <file factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser" name="Repository" tooltip="Repository">
 <persistable>&#x0A;<subPage/>
 </persistable>
 </file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="13_USB_PWM/main.c">
+<persistable path="/13_USB_PWM/main.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="FreeRTOS.h" tooltip="11-FreeRTOS/FreeRTOS/Include/FreeRTOS.h">
+<persistable path="/11-FreeRTOS/FreeRTOS/Include/FreeRTOS.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f30x_gpio.c" tooltip="11-FreeRTOS/cmsis_lib/source/stm32f30x_gpio.c">
+<persistable path="/11-FreeRTOS/cmsis_lib/source/stm32f30x_gpio.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="FreeRTOSConfig.h" tooltip="11-FreeRTOS/FreeRTOS/Include/FreeRTOSConfig.h">
+<persistable path="/11-FreeRTOS/FreeRTOS/Include/FreeRTOSConfig.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="tasks.c" tooltip="11-FreeRTOS/FreeRTOS/Source/tasks.c">
+<persistable path="/11-FreeRTOS/FreeRTOS/Source/tasks.c"/>
+</file>
+<file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stddef.h" tooltip="C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\lib\gcc\arm-none-eabi\5.3.1\include\stddef.h">
+<persistable path="C:\Program Files (x86)\GNU Tools ARM Embedded\5.3 2016q1\lib\gcc\arm-none-eabi\5.3.1\include\stddef.h" project="11-FreeRTOS"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="11-FreeRTOS/main.c">
+<persistable path="/11-FreeRTOS/main.c"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="menu.c" tooltip="UReg/menu/source/menu.c">
 <persistable path="/UReg/menu/source/menu.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="flash.c" tooltip="UReg/utils/source/flash.c">
-<persistable path="/UReg/utils/source/flash.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="menuAux.c" tooltip="UReg/menu/source/menuAux.c">
-<persistable path="/UReg/menu/source/menuAux.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.h" tooltip="UReg/main.h">
-<persistable path="/UReg/main.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="UReg/main.c">
-<persistable path="/UReg/main.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="menu.h" tooltip="UReg/menu/include/menu.h">
-<persistable path="/UReg/menu/include/menu.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="misc.c" tooltip="UReg/utils/source/misc.c">
-<persistable path="/UReg/utils/source/misc.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="pid.c" tooltip="UReg/regulators/source/pid.c">
-<persistable path="/UReg/regulators/source/pid.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="globals.h" tooltip="UReg/utils/include/globals.h">
-<persistable path="/UReg/utils/include/globals.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="threePos.h" tooltip="UReg/regulators/include/threePos.h">
-<persistable path="/UReg/regulators/include/threePos.h"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="threePos.c" tooltip="UReg/regulators/source/threePos.c">
 <persistable path="/UReg/regulators/source/threePos.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f30x_flash.c" tooltip="UReg/cmsis_lib/source/stm32f30x_flash.c">
-<persistable path="/UReg/cmsis_lib/source/stm32f30x_flash.c"/>
 </file>
 </mruList>
 </workbench>
